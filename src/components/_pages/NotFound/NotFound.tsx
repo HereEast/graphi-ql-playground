@@ -14,7 +14,7 @@ function NotFound(): ReactElement {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Page not found</h1>
+      <h1 className={styles.title}>Sorry, page was not found 🙁🙁🙁</h1>
       <Button name="Back to Home" onClick={navigateHome} />
     </div>
   );
