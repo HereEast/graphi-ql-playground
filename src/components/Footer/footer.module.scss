@@ -1,0 +1,32 @@
+@import "../../styles/variables.scss";
+
+.footer {
+  padding: $padding-body;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $black;
+
+  .link {
+    color: $white;
+
+    &::after {
+      background-color: $white;
+    }
+  }
+}
+
+.footer__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course__links,
+.team__links {
+  display: flex;
+  gap: 2rem;
+}
