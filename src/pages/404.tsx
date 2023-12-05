@@ -12,9 +12,7 @@ export default function NoFoundPage(): ReactElement {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <NotFound />
-      </main>
+      <NotFound />
     </>
   );
 }

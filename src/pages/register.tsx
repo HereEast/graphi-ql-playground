@@ -12,9 +12,7 @@ export default function RegisterPage(): ReactElement {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Register />
-      </main>
+      <Register />
     </>
   );
 }

@@ -12,9 +12,7 @@ export default function PlaygroundPage(): ReactElement {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Playground />
-      </main>
+      <Playground />
     </>
   );
 }

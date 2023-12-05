@@ -12,9 +12,7 @@ export default function LoginPage(): ReactElement {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Login />
-      </main>
+      <Login />
     </>
   );
 }
