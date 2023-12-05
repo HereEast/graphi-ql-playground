@@ -1,4 +1,4 @@
-import "@testing-library/jest-dom";
+import "@testing-library/react";
 
 describe("Test", () => {
   test("should run a test", async () => {
