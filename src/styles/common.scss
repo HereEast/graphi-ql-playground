@@ -11,6 +11,64 @@ html {
   font-size: 10px;
 }
 
+body {
+  font-size: 1.8rem;
+}
+
 main {
   padding: 2rem;
+  min-height: calc(100vh - $header-height);
+  margin-top: $header-height;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+  width: fit-content;
+
+  transition: all 0.2s ease-in;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: $black;
+    left: 0;
+    bottom: 2px;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 0;
+    }
+  }
+}
+
+.link__blue {
+  color: $blue;
+
+  &::after {
+    background-color: $blue;
+  }
+}
+
+.link__white {
+  color: $white;
+
+  &::after {
+    background-color: $white;
+  }
+}
+
+.link__black {
+  color: $black;
+
+  &::after {
+    background-color: $black;
+  }
 }

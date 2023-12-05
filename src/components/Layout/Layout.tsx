@@ -1,4 +1,6 @@
 import { ReactElement, ReactNode } from "react";
+import { Header } from "../Header";
+import { Footer } from "../Footer";
 
 export interface LayoutProps {
   children: ReactNode;
@@ -7,9 +9,9 @@ export interface LayoutProps {
 function Layout({ children }: LayoutProps): ReactElement {
   return (
     <>
-      <p>Header</p>
+      <Header />
       <main>{children}</main>
-      <p>Footer</p>
+      <Footer />
     </>
   );
 }
