@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState, ChangeEvent } from "react";
 import Link from "next/link";
 import { Page } from "../../types";
-import { LANGS } from "../../utils/constants";
+import { LANGS, IS_AUTH } from "../../utils/constants";
 
 import classnames from "classnames";
 import styles from "./header.module.scss";
@@ -16,6 +16,10 @@ function Header(): ReactElement {
   }, []);
 
   useEffect(() => {
+    if (window.scrollY > 0) {
+      setIsScroll(true);
+    }
+
     window.addEventListener("scroll", () => {
       if (window.scrollY > 0) {
         setIsScroll(true);
@@ -35,19 +39,40 @@ function Header(): ReactElement {
   return (
     <header className={classnames(styles.header, isScroll && styles.header__blue)}>
       <nav className={styles.nav}>
-        <Link href={Page.HOME} className={styles.nav__logo}></Link>
-        <ul className={styles.nav__links}>
-          <li>
-            <Link href={Page.LOGIN} className={styles.link}>
-              Login
-            </Link>
-          </li>
-          <li>
-            <Link href={Page.REGISTER} className={styles.link}>
-              Register
-            </Link>
-          </li>
-        </ul>
+        <Link href={Page.HOME} className={styles.nav__logo}>
+          GraphQL PLAYGROUND
+        </Link>
+
+        {IS_AUTH && (
+          <ul className={styles.nav__links}>
+            <li>
+              <Link href={Page.PLAYGROUND} className={styles.link}>
+                Playground
+              </Link>
+            </li>
+            <li>
+              <Link href="" className={styles.link}>
+                Sign Out
+              </Link>
+            </li>
+          </ul>
+        )}
+
+        {!IS_AUTH && (
+          <ul className={styles.nav__links}>
+            <li>
+              <Link href={Page.LOGIN} className={styles.link}>
+                Login
+              </Link>
+            </li>
+            <li>
+              <Link href={Page.REGISTER} className={styles.link}>
+                Register
+              </Link>
+            </li>
+          </ul>
+        )}
+
         <div className={styles.nav__lang}>
           <select className={styles.select} value={lang} onChange={handleSelectLang}>
             {LANGS.map((option) => (
