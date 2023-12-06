@@ -15,7 +15,7 @@ function Footer(): ReactElement {
           </div>
           <ul className={styles.team__items}>
             {TEAM.map((member) => (
-              <li className={styles.item}>
+              <li className={styles.item} key={member.name}>
                 <Image
                   src={member.image}
                   width={600}
