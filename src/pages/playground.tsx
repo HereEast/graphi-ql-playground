@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import Head from "next/head";
 import { Playground } from "../components/_pages/Playground";
+import { ProtectedRoute } from "../components/ProtectedRoute";
 
 export default function PlaygroundPage(): ReactElement {
   return (
@@ -12,7 +13,9 @@ export default function PlaygroundPage(): ReactElement {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Playground />
+      <ProtectedRoute>
+        <Playground />
+      </ProtectedRoute>
     </>
   );
 }
