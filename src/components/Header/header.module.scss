@@ -17,23 +17,13 @@
   transition: all 0.1s ease-in;
 
   .link {
-    height: 3rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $white;
-    color: $blue;
+    color: $white;
     text-transform: uppercase;
-
-    padding: 0 1rem;
-    padding-bottom: 0.1rem;
+    margin-bottom: 3px;
 
     &::after {
-      display: none;
-    }
-
-    &:hover {
-      opacity: 0.8;
+      background-color: $white;
     }
   }
 }
@@ -44,23 +34,18 @@
   align-items: center;
 
   &__logo {
-    width: 26rem;
-    height: 2rem;
-    background-color: $white;
+    color: $white;
     margin-right: auto;
+    margin-bottom: 3px;
 
     &::after {
-      display: none;
-    }
-
-    &:hover {
-      opacity: 0.8;
+      background-color: $white;
     }
   }
 
   &__links {
     display: flex;
-    gap: 0.2rem;
+    gap: 2rem;
   }
 
   &__lang {
@@ -70,7 +55,7 @@
     align-items: center;
     gap: 1rem;
 
-    margin-left: 0.2rem;
+    margin-left: 2rem;
 
     .select {
       appearance: none;
@@ -88,11 +73,11 @@
       border-radius: 0;
       outline: none;
 
-      transition: all 0.2s ease-in;
+      transition: all 0.1s ease-in;
       cursor: pointer;
 
       &:hover {
-        opacity: 0.8;
+        background-color: $button-back;
       }
     }
 
