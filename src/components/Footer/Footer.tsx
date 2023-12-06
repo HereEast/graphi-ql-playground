@@ -1,4 +1,6 @@
 import { ReactElement } from "react";
+import Image from "next/image";
+import { TEAM, LINK_SCHOOL, LINK_COURSE } from "../../utils/constants";
 
 import styles from "./footer.module.scss";
 
@@ -6,35 +8,46 @@ function Footer(): ReactElement {
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__container}>
-        <ul className={styles.course__links}>
-          <li className={styles.course__links_item}>
-            <a href="" className={styles.link}>
-              RS School
-            </a>
-          </li>
-          <li className={styles.course__links_item}>
-            <a href="" className={styles.link}>
-              React Course (2023)
-            </a>
-          </li>
-        </ul>
-        <ul className={styles.team__links}>
-          <li className={styles.team__links_item}>
-            <a href="" className={styles.link}>
-              Andrei
-            </a>
-          </li>
-          <li className={styles.team__links_item}>
-            <a href="" className={styles.link}>
-              Nikita
-            </a>
-          </li>
-          <li className={styles.team__links_item}>
-            <a href="" className={styles.link}>
-              Nastia
-            </a>
-          </li>
-        </ul>
+        <div className={styles.team}>
+          <div className={styles.team__title}>
+            <p>Hi👋👋👋</p>
+            <p>Welcome the team:</p>
+          </div>
+          <ul className={styles.team__items}>
+            {TEAM.map((member) => (
+              <li className={styles.item}>
+                <Image
+                  src={member.image}
+                  width={600}
+                  height={750}
+                  alt={`Photo of ${member.name.split(" ")[0]}`}
+                  className={styles.item__image}
+                />
+                <a href={member.github} className={styles.item__link}>
+                  {member.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.course}>
+          <ul className={styles.course__items}>
+            <li className={styles.item}>
+              <a href={LINK_SCHOOL} className={styles.item__link} target="_blank">
+                RS School
+              </a>
+            </li>
+            <li className={styles.item}>
+              <a href={LINK_COURSE} className={styles.item__link} target="_blank">
+                React Course
+              </a>
+              <span>(2023)</span>
+            </li>
+          </ul>
+
+          <span>(c) All rights are very much reserved.</span>
+        </div>
       </div>
     </footer>
   );

@@ -1,32 +1,131 @@
 @import "../../styles/variables.scss";
 
 .footer {
-  padding: $padding-body;
+  padding: 6rem $padding-body $padding-body;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: $black;
 
-  .link {
-    color: $white;
+  @media (max-width: 768px) {
+    padding: 6rem 1rem $padding-body;
+  }
 
-    &::after {
-      background-color: $white;
+  @media (max-width: 570px) {
+    padding: 6rem 1rem 1rem;
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.team {
+  width: 100%;
+  margin-bottom: 6rem;
+
+  &__title {
+    font-size: $text-size;
+    font-weight: 400;
+    color: $white;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__items {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    @media (max-width: 700px) {
+      grid-template-columns: repeat(1, 100%);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .item {
+      position: relative;
+      max-width: 800px;
+      width: 100%;
+      aspect-ratio: 6/7.5;
+
+      transition: all 0.3s ease-in;
+
+      &__image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      &:hover {
+        .item__image {
+          opacity: 0.8;
+        }
+      }
+
+      &__link {
+        padding: 1rem;
+        width: calc(100% - 4rem);
+        height: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $blue;
+        color: $white;
+
+        position: absolute;
+        bottom: 2rem;
+        left: 2rem;
+
+        &:hover {
+          background-color: $white;
+          color: $black;
+        }
+
+        &::after {
+          display: none;
+        }
+      }
     }
   }
 }
 
-.footer__container {
+.course {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
+  align-items: flex-end;
+  color: $white;
 
-.course__links,
-.team__links {
-  display: flex;
-  gap: 2rem;
+  @media (max-width: 570px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  .item {
+    &__link {
+      color: $white;
+      text-transform: uppercase;
+
+      &::after {
+        background-color: $white;
+      }
+    }
+
+    span {
+      margin-left: 1rem;
+    }
+  }
 }
