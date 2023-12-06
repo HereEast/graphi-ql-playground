@@ -1,6 +1,7 @@
 @import "../../styles/variables.scss";
 
 .header {
+  position: relative;
   padding: 0 $padding-body;
   width: 100%;
   height: $header-height;
@@ -15,6 +16,10 @@
   z-index: 100;
 
   transition: all 0.1s ease-in;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 
   .link {
     display: flex;
@@ -31,39 +36,107 @@
 .nav {
   width: 100%;
   display: flex;
-  align-items: center;
 
   &__logo {
     color: $white;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
     margin-right: auto;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
+    position: relative;
+    z-index: 1000;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &_icon {
+      display: block;
+      width: 3.5rem;
+      height: 1.5rem;
+      background-image: url("../../../public/icons/ic_logo.svg");
+      background-size: contain;
+      background-position: 0 center;
+      background-repeat: repeat-x;
+      margin-top: 2px;
+
+      transition: all 0.2s linear;
+    }
+
+    .icon__scroll {
+      width: 9.4rem;
+      transition: all 0.2s linear;
+    }
 
     &::after {
-      background-color: $white;
+      display: none;
     }
+  }
+
+  .button__menu {
+    position: relative;
+    height: 3rem;
+    background-color: $white;
+    color: $blue;
+    z-index: 1000;
+    display: none;
+
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+
+    @media (max-width: 480px) {
+      display: block;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background-color: $white;
+      color: $blue;
+      opacity: 0.5;
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 480px) {
+    position: absolute;
+    width: 22rem;
+    height: 24rem;
+    right: 0;
+    top: 0;
+    background-color: $blue;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 1rem 1rem;
+    display: none;
   }
 
   &__links {
     display: flex;
     gap: 2rem;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0;
+      margin-bottom: 2rem;
+    }
   }
 
   &__lang {
     position: relative;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-
     margin-left: 2rem;
 
     .select {
+      position: relative;
       appearance: none;
       width: 5.8rem;
       height: 3rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       padding-left: 1rem;
       padding-bottom: 0.2rem;
       font-size: 1.6rem;
@@ -77,7 +150,7 @@
       cursor: pointer;
 
       &:hover {
-        background-color: $button-back;
+        opacity: 0.5;
       }
     }
 
@@ -96,6 +169,6 @@
   }
 }
 
-.header__blue {
-  height: 3.4rem;
+.menu__open {
+  display: flex;
 }
