@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Image from "next/image";
-import { TEAM, LINK_SCHOOL, LINK_COURSE } from "../../utils/constants";
+import { TEAM, LINK_SCHOOL, LINK_COURSE } from "../../utils";
 
 import styles from "./footer.module.scss";
 

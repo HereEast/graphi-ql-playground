@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useState, ChangeEvent } from "react";
 import Link from "next/link";
 import { Button } from "../Button";
 import { Page } from "../../types";
-import { LANGS, IS_AUTH } from "../../utils/constants";
+import { LANGS, IS_AUTH } from "../../utils";
 
 import classnames from "classnames";
 import styles from "./header.module.scss";
