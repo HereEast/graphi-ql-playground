@@ -1,30 +1,37 @@
-import { ReactElement } from "react";
+import { ReactElement, forwardRef } from "react";
+import { FieldErrors } from "react-hook-form";
+import { ErrorMessage } from "../ErrorMessage";
 
 import classnames from "classnames";
 import styles from "./input.module.scss";
 
 export interface InputProps {
-  inputName: string;
+  inputName: "email" | "password" | "name";
   type?: "text" | "email" | "password";
   placeholder?: string;
   className?: string;
-  isDisabled?: boolean;
+  errors: FieldErrors;
 }
 
-function Input({ inputName, type, placeholder, className, isDisabled }: InputProps): ReactElement {
-  return (
-    <div className={classnames(styles.field, className || "")}>
-      <label className={styles.field__label}>
-        <input
-          name={inputName}
-          type={type || "text"}
-          placeholder={placeholder || inputName}
-          className={styles.field__input}
-          disabled={isDisabled}
-        />
-      </label>
-    </div>
-  );
-}
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ inputName, placeholder, className, errors, ...inputProps }, ref): ReactElement => {
+    return (
+      <div className={classnames(styles.field, className || "")}>
+        <label className={styles.field__label}>
+          <input
+            ref={ref}
+            className={styles.field__input}
+            placeholder={
+              placeholder || (inputName && inputName[0].toUpperCase() + inputName.slice(1))
+            }
+            {...inputProps}
+          />
+        </label>
+
+        {errors[inputName] && <ErrorMessage message={errors[inputName]?.message as string} />}
+      </div>
+    );
+  },
+);
 
 export default Input;
