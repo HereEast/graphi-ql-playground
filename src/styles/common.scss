@@ -13,11 +13,10 @@ html {
 
 body {
   font-size: $text-size;
+  background-color: $page-back;
 }
 
 main {
-  padding: $padding-body;
-  min-height: calc(100vh - $header-height);
   margin-top: $header-height;
 }
 
@@ -46,29 +45,5 @@ a {
     &::after {
       opacity: 0;
     }
-  }
-}
-
-.link__blue {
-  color: $blue;
-
-  &::after {
-    background-color: $blue;
-  }
-}
-
-.link__white {
-  color: $white;
-
-  &::after {
-    background-color: $white;
-  }
-}
-
-.link__black {
-  color: $black;
-
-  &::after {
-    background-color: $black;
   }
 }
