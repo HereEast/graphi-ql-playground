@@ -14,7 +14,7 @@ export interface InputProps {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ inputName, placeholder, className, errors, ...inputProps }, ref): ReactElement => {
+  ({ inputName, placeholder, className, errors, ...restProps }, ref): ReactElement => {
     return (
       <div className={classnames(styles.field, className || "")}>
         <label className={styles.field__label}>
@@ -24,7 +24,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             placeholder={
               placeholder || (inputName && inputName[0].toUpperCase() + inputName.slice(1))
             }
-            {...inputProps}
+            {...restProps}
           />
         </label>
 
