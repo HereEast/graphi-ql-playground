@@ -55,17 +55,12 @@
       display: block;
       width: 3.5rem;
       height: 1.5rem;
-      background-image: url("../../../public/icons/ic_logo.svg");
+      background-image: url("/icons/ic_logo.svg");
       background-size: contain;
       background-position: 0 center;
       background-repeat: repeat-x;
       margin-top: 2px;
 
-      transition: all 0.2s linear;
-    }
-
-    .icon__scroll {
-      width: 9.4rem;
       transition: all 0.2s linear;
     }
 
@@ -169,6 +164,11 @@
   }
 }
 
-.menu__open {
+.scroll .nav__logo_icon {
+  width: 9.4rem;
+  transition: all 0.2s linear;
+}
+
+.menu__open .menu {
   display: flex;
 }

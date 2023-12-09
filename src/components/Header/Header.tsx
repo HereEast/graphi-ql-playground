@@ -62,13 +62,7 @@ function Header(): ReactElement {
   }, []);
 
   useEffect(() => {
-    if (window.scrollY > 0) {
-      setIsScroll(true);
-    }
-
-    if (window.innerWidth > 480) {
-      setMenuOpen(false);
-    }
+    animateHeader();
 
     window.addEventListener("scroll", animateHeader);
     window.addEventListener("resize", closeMenuOnResize);
@@ -87,18 +81,22 @@ function Header(): ReactElement {
   }
 
   return (
-    <header className={classnames(styles.header, isScroll && styles.header__scroll)}>
+    <header
+      className={classnames(
+        styles.header,
+        isScroll && styles.scroll,
+        menuOpen && styles.menu__open,
+      )}
+    >
       <nav className={styles.nav}>
         <Link href={Page.HOME} className={styles.nav__logo} onClick={closeMenu}>
           <span>GraphiQL</span>
-          <span
-            className={classnames(styles.nav__logo_icon, isScroll ? styles.icon__scroll : "")}
-          ></span>
+          <span className={styles.nav__logo_icon}></span>
         </Link>
 
         <Button name="Menu" className={styles.button__menu} onClick={toggleMenu} />
 
-        <div className={classnames(styles.menu, menuOpen ? styles.menu__open : "")}>
+        <div className={styles.menu}>
           {IS_AUTH && (
             <ul className={styles.menu__links}>
               <li>
