@@ -1,15 +1,20 @@
-import { ReactElement } from "react";
+import { ReactElement, useState, useEffect } from "react";
+import { passwordStrength } from "check-password-strength";
 
 import classnames from "classnames";
 import styles from "./passwordStrength.module.scss";
 
 interface PasswordStrengthProps {
-  strength: number;
   inputValue: string;
 }
 
-function PasswordStrength({ strength, inputValue }: PasswordStrengthProps): ReactElement {
-  console.log(strength);
+function PasswordStrength({ inputValue }: PasswordStrengthProps): ReactElement {
+  const [strength, setStrength] = useState(0);
+
+  useEffect(() => {
+    const strengthValue = passwordStrength(inputValue).id;
+    setStrength(strengthValue);
+  }, [inputValue]);
 
   return (
     <div className={styles.strength}>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,13 +8,11 @@ import { Button } from "../../Button";
 import { PasswordStrength } from "../../PasswordStrength";
 import { ButtonName, Page, IRegisterFormData } from "../../../types";
 import { registerValidationSchema } from "../../../utils";
-import { passwordStrength } from "check-password-strength";
 
 import styles from "./register.module.scss";
 
 function Register(): ReactElement {
   const router = useRouter();
-  const [strength, setStrength] = useState(0);
 
   const {
     register,
@@ -27,13 +25,6 @@ function Register(): ReactElement {
   });
 
   const watchPassword = watch("password");
-
-  useEffect(() => {
-    const strengthValue = passwordStrength(watchPassword).id;
-    setStrength(strengthValue);
-  }, [watchPassword]);
-
-  console.log(watchPassword);
 
   function onSubmit(data: IRegisterFormData): void {
     console.log(data);
@@ -56,7 +47,9 @@ function Register(): ReactElement {
             <Input inputName="email" type="text" errors={errors} {...register("email")} />
             <Input inputName="password" type="password" errors={errors} {...register("password")} />
           </div>
-          <PasswordStrength inputValue={watchPassword} strength={strength} />
+
+          <PasswordStrength inputValue={watchPassword} />
+
           <Button
             name={ButtonName.REGISTER}
             type="submit"
