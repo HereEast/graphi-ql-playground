@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../../Input";
+import { PasswordInput } from "../../PasswordInput";
 import { Button } from "../../Button";
 import { ButtonName, Page, IRegisterFormData } from "../../../types";
 import { registerValidationSchema } from "../../../utils";
@@ -41,7 +42,7 @@ function Register(): ReactElement {
           <div className={styles.register__form_inputs}>
             <Input inputName="name" type="text" errors={errors} {...register("name")} />
             <Input inputName="email" type="text" errors={errors} {...register("email")} />
-            <Input inputName="password" type="text" errors={errors} {...register("password")} />
+            <PasswordInput inputName="password" errors={errors} {...register("password")} />
           </div>
           <Button
             name={ButtonName.REGISTER}
