@@ -1,4 +1,4 @@
-import { ReactElement, forwardRef } from "react";
+import { ReactElement, ReactNode, forwardRef } from "react";
 import { FieldErrors } from "react-hook-form";
 import { ErrorMessage } from "../ErrorMessage";
 
@@ -11,10 +11,11 @@ export interface InputProps {
   placeholder?: string;
   className?: string;
   errors: FieldErrors;
+  children?: ReactNode;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ inputName, placeholder, className, errors, ...restProps }, ref): ReactElement => {
+  ({ inputName, placeholder, className, errors, children, ...restProps }, ref): ReactElement => {
     return (
       <div className={classnames(styles.field, className || "")}>
         <label className={styles.field__label}>
@@ -26,6 +27,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             }
             {...restProps}
           />
+          {children ? children : null}
         </label>
 
         {errors[inputName] && <ErrorMessage message={errors[inputName]?.message as string} />}
