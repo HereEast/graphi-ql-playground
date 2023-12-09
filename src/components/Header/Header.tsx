@@ -1,14 +1,20 @@
 import { ReactElement, useEffect, useState, ChangeEvent } from "react";
 import Link from "next/link";
+import { useAppContext } from "../../hooks";
 import { Button } from "../Button";
 import { Page } from "../../types";
-import { LANGS, IS_AUTH } from "../../utils";
+import { LANGS } from "../../utils";
+import { HEADER } from "../../constants";
 
 import classnames from "classnames";
 import styles from "./header.module.scss";
 
+const IS_AUTH = false;
+
 function Header(): ReactElement {
-  const [lang, setLang] = useState("");
+  const { lang, setLang } = useAppContext();
+
+  const [selectedLang, setSelectedLang] = useState("");
   const [isScroll, setIsScroll] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -46,8 +52,10 @@ function Header(): ReactElement {
 
   useEffect(() => {
     const savedLang = localStorage.getItem("lang") || "";
+
+    setSelectedLang(savedLang);
     setLang(savedLang);
-  }, []);
+  }, [setLang]);
 
   useEffect(() => {
     document.addEventListener("click", (e: MouseEvent) => {
@@ -74,10 +82,12 @@ function Header(): ReactElement {
   }, []);
 
   function handleSelectLang(e: ChangeEvent<HTMLSelectElement>): void {
-    const selectedLang = e.target.value;
+    const value = e.target.value;
 
-    setLang(selectedLang);
-    localStorage.setItem("lang", selectedLang);
+    setSelectedLang(value);
+    setLang(value);
+
+    localStorage.setItem("lang", value);
   }
 
   return (
@@ -94,19 +104,23 @@ function Header(): ReactElement {
           <span className={styles.nav__logo_icon}></span>
         </Link>
 
-        <Button name="Menu" className={styles.button__menu} onClick={toggleMenu} />
+        <Button
+          name={HEADER[lang].BUTTON_MENU}
+          className={styles.button__menu}
+          onClick={toggleMenu}
+        />
 
         <div className={styles.menu}>
           {IS_AUTH && (
             <ul className={styles.menu__links}>
               <li>
                 <Link href={Page.PLAYGROUND} className={styles.link} onClick={closeMenu}>
-                  Playground
+                  {HEADER[lang].LINK_PLAYGROUND}
                 </Link>
               </li>
               <li>
                 <Link href="" className={styles.link} onClick={closeMenu}>
-                  Sign Out
+                  {HEADER[lang].LINK_SIGNOUT}
                 </Link>
               </li>
             </ul>
@@ -116,19 +130,19 @@ function Header(): ReactElement {
             <ul className={styles.menu__links}>
               <li>
                 <Link href={Page.LOGIN} className={styles.link} onClick={closeMenu}>
-                  Login
+                  {HEADER[lang].LINK_LOGIN}
                 </Link>
               </li>
               <li>
                 <Link href={Page.REGISTER} className={styles.link} onClick={closeMenu}>
-                  Register
+                  {HEADER[lang].LINK_REGISTER}
                 </Link>
               </li>
             </ul>
           )}
 
           <div className={styles.menu__lang}>
-            <select className={styles.select} value={lang} onChange={handleSelectLang}>
+            <select className={styles.select} value={selectedLang} onChange={handleSelectLang}>
               {LANGS.map((option) => (
                 <option key={option} value={option}>
                   {option.toUpperCase()}
