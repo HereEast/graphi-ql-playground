@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../../Input";
-import { PasswordInput } from "../../PasswordInput";
 import { Button } from "../../Button";
 import { ButtonName, Page, IRegisterFormData } from "../../../types";
 import { registerValidationSchema } from "../../../utils";
@@ -17,11 +16,16 @@ function Register(): ReactElement {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm({
-    mode: "onChange",
+    mode: "all",
     resolver: yupResolver(registerValidationSchema),
   });
+
+  const watchPassword = watch("password");
+
+  console.log(watchPassword);
 
   function onSubmit(data: IRegisterFormData): void {
     console.log(data);
@@ -42,7 +46,7 @@ function Register(): ReactElement {
           <div className={styles.register__form_inputs}>
             <Input inputName="name" type="text" errors={errors} {...register("name")} />
             <Input inputName="email" type="text" errors={errors} {...register("email")} />
-            <PasswordInput inputName="password" errors={errors} {...register("password")} />
+            <Input inputName="password" type="password" errors={errors} {...register("password")} />
           </div>
           <Button
             name={ButtonName.REGISTER}

@@ -1,6 +1,7 @@
-import { ReactElement, ReactNode, forwardRef } from "react";
+import { ReactElement, useState, forwardRef } from "react";
 import { FieldErrors } from "react-hook-form";
 import { ErrorMessage } from "../ErrorMessage";
+import { Button } from "../Button";
 
 import classnames from "classnames";
 import styles from "./input.module.scss";
@@ -11,23 +12,41 @@ export interface InputProps {
   placeholder?: string;
   className?: string;
   errors: FieldErrors;
-  children?: ReactNode;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ inputName, placeholder, className, errors, children, ...restProps }, ref): ReactElement => {
+  ({ inputName, type, placeholder, className, errors, ...restProps }, ref): ReactElement => {
+    const [hidden, setHidden] = useState(true);
+
+    function handleClick(): void {
+      setHidden(!hidden);
+    }
+
     return (
-      <div className={classnames(styles.field, className || "")}>
+      <div
+        className={classnames(
+          styles.field,
+          type === "password" && styles.field__password,
+          className || "",
+        )}
+      >
         <label className={styles.field__label}>
           <input
             ref={ref}
             className={styles.field__input}
+            type={hidden ? "password" : "text"}
             placeholder={
               placeholder || (inputName && inputName[0].toUpperCase() + inputName.slice(1))
             }
             {...restProps}
           />
-          {children ? children : null}
+          {type === "password" && (
+            <Button
+              name={hidden ? "Show" : "Hide"}
+              className={styles.field__password_button}
+              onClick={handleClick}
+            />
+          )}
         </label>
 
         {errors[inputName] && <ErrorMessage message={errors[inputName]?.message as string} />}

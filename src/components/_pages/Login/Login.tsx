@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../../Input";
-import { PasswordInput } from "../../PasswordInput";
 import { Button } from "../../Button";
 import { ButtonName, Page, ILoginFormData } from "../../../types";
 import { loginValidationSchema } from "../../../utils";
@@ -41,7 +40,7 @@ function Login(): ReactElement {
         <form className={styles.login__form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.login__form_inputs}>
             <Input inputName="email" type="text" errors={errors} {...register("email")} />
-            <PasswordInput inputName="password" errors={errors} {...register("password")} />
+            <Input inputName="password" type="password" errors={errors} {...register("password")} />
           </div>
           <Button
             name={ButtonName.LOGIN}
