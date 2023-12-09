@@ -13,10 +13,13 @@ function NotFound(): ReactElement {
   }
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Sorry, page was not found 🙁🙁🙁</h1>
-      <Button name="Back to Home" onClick={navigateHome} />
-    </div>
+    <section className={styles.notFound}>
+      <div className={styles.notFound__container}>
+        <span className={styles.notFound__icons}>🙁🙁🙁</span>
+        <span className={styles.notFound__title}>Sorry, page was not found</span>
+        <Button name="Back to Home" className={styles.notFound__button} onClick={navigateHome} />
+      </div>
+    </section>
   );
 }
 
