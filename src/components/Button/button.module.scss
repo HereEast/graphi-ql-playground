@@ -3,12 +3,12 @@
 .button {
   display: inline-block;
   width: fit-content;
-  height: 3rem;
+  height: 6rem;
   padding: 0 1rem;
   padding-bottom: 1px;
   background-color: $blue;
   border: none;
-  font-size: $text-size;
+  font-size: $text-size-button;
   color: $white;
   text-transform: uppercase;
 

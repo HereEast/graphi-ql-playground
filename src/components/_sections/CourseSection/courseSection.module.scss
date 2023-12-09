@@ -33,11 +33,6 @@
     &_picture {
       width: 260px;
       height: auto;
-      aspect-ratio: 5/3;
-      background-image: url("/images/course.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
       margin-bottom: 1rem;
 
       @media (max-width: 580px) {
