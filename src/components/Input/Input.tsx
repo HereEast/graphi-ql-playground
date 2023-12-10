@@ -1,7 +1,9 @@
 import { ReactElement, useState, forwardRef } from "react";
+import { useAppContext } from "../../hooks";
 import { FieldErrors } from "react-hook-form";
 import { ErrorMessage } from "../ErrorMessage";
 import { Button } from "../Button";
+import { INPUT } from "../../constants/dictionary";
 
 import classnames from "classnames";
 import styles from "./input.module.scss";
@@ -16,6 +18,7 @@ export interface InputProps {
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ inputName, type, placeholder, className, errors, ...restProps }, ref): ReactElement => {
+    const { lang } = useAppContext();
     const [hidden, setHidden] = useState(true);
 
     function handleClick(): void {
@@ -35,14 +38,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             className={styles.field__input}
             type={hidden ? "password" : "text"}
-            placeholder={
-              placeholder || (inputName && inputName[0].toUpperCase() + inputName.slice(1))
-            }
+            placeholder={placeholder || (inputName && INPUT[lang][inputName])}
             {...restProps}
           />
           {type === "password" && (
             <Button
-              name={hidden ? "Show" : "Hide"}
+              name={hidden ? INPUT[lang].passwordButtonShow : INPUT[lang].passwordButtonHide}
               className={styles.field__password_button}
               onClick={handleClick}
             />
