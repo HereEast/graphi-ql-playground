@@ -3,18 +3,20 @@ import { ReactElement } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useAppContext } from "../../../hooks";
 import { Input } from "../../Input";
 import { Button } from "../../Button";
 import { Page, ILoginFormData } from "../../../types";
-import { loginValidationSchema } from "../../../utils";
+import { loginSchema } from "../../../utils";
 import { LOGIN } from "../../../constants/dictionary";
 
 import styles from "./login.module.scss";
-import { useAppContext } from "../../../hooks";
 
 function Login(): ReactElement {
   const router = useRouter();
   const { lang } = useAppContext();
+
+  const validationSchema = loginSchema[lang as keyof typeof loginSchema];
 
   const {
     register,
@@ -22,7 +24,7 @@ function Login(): ReactElement {
     formState: { errors, isSubmitting },
   } = useForm({
     mode: "onChange",
-    resolver: yupResolver(loginValidationSchema),
+    resolver: yupResolver(validationSchema),
   });
 
   function onSubmit(data: ILoginFormData): void {

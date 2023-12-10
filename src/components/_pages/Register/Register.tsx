@@ -8,7 +8,7 @@ import { Input } from "../../Input";
 import { Button } from "../../Button";
 import { PasswordStrength } from "../../PasswordStrength";
 import { Page, IRegisterFormData } from "../../../types";
-import { registerValidationSchema } from "../../../utils";
+import { registerSchema } from "../../../utils";
 import { REGISTER } from "../../../constants/dictionary";
 
 import styles from "./register.module.scss";
@@ -17,6 +17,8 @@ function Register(): ReactElement {
   const router = useRouter();
   const { lang } = useAppContext();
 
+  const validationSchema = registerSchema[lang as keyof typeof registerSchema];
+
   const {
     register,
     handleSubmit,
@@ -24,7 +26,7 @@ function Register(): ReactElement {
     formState: { errors, isSubmitting },
   } = useForm({
     mode: "all",
-    resolver: yupResolver(registerValidationSchema),
+    resolver: yupResolver(validationSchema),
   });
 
   const watchPassword = watch("password");

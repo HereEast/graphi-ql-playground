@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import { useAppContext } from "../../../hooks";
-import { HOME } from "../../../constants/dictionary";
-import { TEAM } from "../../../constants/dictionary";
+import { HOME, TEAM } from "../../../constants/dictionary";
 
 import styles from "./teamSection.module.scss";
 
