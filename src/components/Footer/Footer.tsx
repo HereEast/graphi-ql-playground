@@ -1,20 +1,24 @@
 import { ReactElement } from "react";
 import Image from "next/image";
-import { TEAM, LINK_SCHOOL, LINK_COURSE } from "../../utils";
+import { useAppContext } from "../../hooks";
+import { LINK_SCHOOL, LINK_COURSE } from "../../utils";
+import { TEAM, FOOTER } from "../../constants/dictionary";
 
 import styles from "./footer.module.scss";
 
 function Footer(): ReactElement {
+  const { lang } = useAppContext();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__container}>
         <div className={styles.team}>
           <div className={styles.team__title}>
-            <p>Hi👋👋👋</p>
-            <p>Welcome the team:</p>
+            <p>{FOOTER[lang].title}</p>
+            <p>{FOOTER[lang].subtitle}</p>
           </div>
           <ul className={styles.team__items}>
-            {TEAM.map((member) => (
+            {TEAM[lang].map((member) => (
               <li className={styles.item} key={member.name}>
                 <Image
                   src={member.image}
@@ -35,18 +39,18 @@ function Footer(): ReactElement {
           <ul className={styles.course__items}>
             <li className={styles.item}>
               <a href={LINK_SCHOOL} className={styles.item__link} target="_blank">
-                RS School
+                {FOOTER[lang].linkSchool}
               </a>
             </li>
             <li className={styles.item}>
               <a href={LINK_COURSE} className={styles.item__link} target="_blank">
-                React Course
+                {FOOTER[lang].linkCourse}
               </a>
               <span>(2023)</span>
             </li>
           </ul>
 
-          <span>(c) All rights are very much reserved.</span>
+          <span>{FOOTER[lang].copy}</span>
         </div>
       </div>
     </footer>

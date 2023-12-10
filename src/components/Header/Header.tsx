@@ -4,7 +4,7 @@ import { useAppContext } from "../../hooks";
 import { Button } from "../Button";
 import { Page } from "../../types";
 import { LANGS } from "../../utils";
-import { HEADER } from "../../constants";
+import { HEADER } from "../../constants/dictionary";
 
 import classnames from "classnames";
 import styles from "./header.module.scss";

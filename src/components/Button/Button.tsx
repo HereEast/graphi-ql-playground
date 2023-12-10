@@ -5,7 +5,7 @@ import styles from "./button.module.scss";
 
 interface ButtonProps {
   type?: "submit" | "reset" | "button";
-  name: string | number;
+  name: string | undefined;
   className?: string;
   disabled?: boolean;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
