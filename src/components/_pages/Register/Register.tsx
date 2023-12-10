@@ -1,21 +1,30 @@
 import Link from "next/link";
-import { ReactElement } from "react";
+import { ReactElement, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppContext } from "../../../hooks";
 import { Input } from "../../Input";
 import { Button } from "../../Button";
+import { ErrorMessage } from "../../ErrorMessage";
 import { PasswordStrength } from "../../PasswordStrength";
 import { Page, IRegisterFormData } from "../../../types";
 import { registerSchema } from "../../../utils";
-import { REGISTER } from "../../../constants/dictionary";
+import { REGISTER, FORM_ERROR } from "../../../constants/dictionary";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebase";
 
 import styles from "./register.module.scss";
 
 function Register(): ReactElement {
   const router = useRouter();
+
   const { lang } = useAppContext();
+
+  const [user] = useAuthState(auth);
+  const [authError, setAuthError] = useState("");
 
   const validationSchema = registerSchema[lang as keyof typeof registerSchema];
 
@@ -31,10 +40,27 @@ function Register(): ReactElement {
 
   const watchPassword = watch("password");
 
-  function onSubmit(data: IRegisterFormData): void {
-    console.log(data);
+  useEffect(() => {
+    if (user) {
+      router.replace(Page.PLAYGROUND);
+    }
+  }, [router, user]);
 
-    router.replace(Page.HOME);
+  async function onSubmit(data: IRegisterFormData): Promise<void> {
+    try {
+      await createUserWithEmailAndPassword(auth, data.email, data.password);
+
+      router.replace(Page.PLAYGROUND);
+      setAuthError("");
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.message.includes("email-already-in-use")) {
+          setAuthError(FORM_ERROR[lang].auth_email_in_use);
+        } else {
+          setAuthError(FORM_ERROR[lang].auth_something_wrong);
+        }
+      }
+    }
   }
 
   return (
@@ -60,6 +86,9 @@ function Register(): ReactElement {
             disabled={isSubmitting}
           />
         </form>
+
+        {/* Auth Error */}
+        {authError && <ErrorMessage message={authError} className={styles.register__error} />}
       </div>
       <div className={styles.register__footer}>
         <span>
