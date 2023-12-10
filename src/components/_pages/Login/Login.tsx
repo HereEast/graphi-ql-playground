@@ -5,13 +5,16 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Input } from "../../Input";
 import { Button } from "../../Button";
-import { ButtonName, Page, ILoginFormData } from "../../../types";
+import { Page, ILoginFormData } from "../../../types";
 import { loginValidationSchema } from "../../../utils";
+import { LOGIN } from "../../../constants/dictionary";
 
 import styles from "./login.module.scss";
+import { useAppContext } from "../../../hooks";
 
 function Login(): ReactElement {
   const router = useRouter();
+  const { lang } = useAppContext();
 
   const {
     register,
@@ -32,10 +35,8 @@ function Login(): ReactElement {
     <div className={styles.login}>
       <div className={styles.login__container}>
         <div className={styles.login__header}>
-          <h2 className={styles.login__header_title}>Hello again 👋</h2>
-          <p className={styles.login__header_subtitle}>
-            Please, log in to use GraphiQL Playground.
-          </p>
+          <h2 className={styles.login__header_title}>{LOGIN[lang].title}</h2>
+          <p className={styles.login__header_subtitle}>{LOGIN[lang].subtitle}</p>
         </div>
         <form className={styles.login__form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.login__form_inputs}>
@@ -43,7 +44,7 @@ function Login(): ReactElement {
             <Input inputName="password" type="password" errors={errors} {...register("password")} />
           </div>
           <Button
-            name={ButtonName.LOGIN}
+            name={LOGIN[lang].button}
             type="submit"
             className={styles.login__form_button}
             disabled={isSubmitting}
@@ -52,7 +53,7 @@ function Login(): ReactElement {
       </div>
       <div className={styles.login__footer}>
         <span>
-          Don't have an account? Please, <Link href={Page.REGISTER}>register.</Link>
+          {LOGIN[lang].note} <Link href={Page.REGISTER}>{LOGIN[lang].link}</Link>
         </span>
       </div>
     </div>

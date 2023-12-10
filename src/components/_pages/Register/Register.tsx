@@ -3,16 +3,19 @@ import { ReactElement } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useAppContext } from "../../../hooks";
 import { Input } from "../../Input";
 import { Button } from "../../Button";
 import { PasswordStrength } from "../../PasswordStrength";
-import { ButtonName, Page, IRegisterFormData } from "../../../types";
+import { Page, IRegisterFormData } from "../../../types";
 import { registerValidationSchema } from "../../../utils";
+import { REGISTER } from "../../../constants/dictionary";
 
 import styles from "./register.module.scss";
 
 function Register(): ReactElement {
   const router = useRouter();
+  const { lang } = useAppContext();
 
   const {
     register,
@@ -36,10 +39,8 @@ function Register(): ReactElement {
     <div className={styles.register}>
       <div className={styles.register__container}>
         <div className={styles.register__header}>
-          <h2 className={styles.register__header_title}>Register 🤓</h2>
-          <p className={styles.register__header_subtitle}>
-            Please, create account to use GraphiQL Playground.
-          </p>
+          <h2 className={styles.register__header_title}>{REGISTER[lang].title}</h2>
+          <p className={styles.register__header_subtitle}>{REGISTER[lang].subtitle}</p>
         </div>
         <form className={styles.register__form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.register__form_inputs}>
@@ -51,7 +52,7 @@ function Register(): ReactElement {
           <PasswordStrength inputValue={watchPassword} />
 
           <Button
-            name={ButtonName.REGISTER}
+            name={REGISTER[lang].button}
             type="submit"
             className={styles.register__form_button}
             disabled={isSubmitting}
@@ -60,7 +61,7 @@ function Register(): ReactElement {
       </div>
       <div className={styles.register__footer}>
         <span>
-          Already have an account? Please, <Link href={Page.LOGIN}>log in.</Link>
+          {REGISTER[lang].note} <Link href={Page.LOGIN}>{REGISTER[lang].link}</Link>
         </span>
       </div>
     </div>
