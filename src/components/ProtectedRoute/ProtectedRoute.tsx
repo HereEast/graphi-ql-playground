@@ -1,7 +1,9 @@
 import { ReactElement, ReactNode, useEffect } from "react";
 import { useRouter } from "next/router";
-import { IS_AUTH } from "../../constants";
 import { Page } from "../../types";
+
+import { auth } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export interface ProtectedRouteProps {
   children: ReactNode;
@@ -10,13 +12,15 @@ export interface ProtectedRouteProps {
 function ProtectedRoute({ children }: ProtectedRouteProps): ReactElement | null {
   const router = useRouter();
 
+  const [user] = useAuthState(auth);
+
   useEffect(() => {
-    if (!IS_AUTH) {
+    if (!user) {
       router.replace(Page.LOGIN);
     }
-  }, [router]);
+  }, [router, user]);
 
-  return IS_AUTH ? <>{children}</> : null;
+  return user ? <>{children}</> : null;
 }
 
 export default ProtectedRoute;

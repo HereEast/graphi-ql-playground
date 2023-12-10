@@ -4,12 +4,14 @@ import { useAppContext } from "../../../hooks";
 import { Page } from "../../../types";
 import { HOME } from "../../../constants/dictionary";
 
-import styles from "./heroSection.module.scss";
+import { auth } from "../../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
-const IS_AUTH = false;
+import styles from "./heroSection.module.scss";
 
 function HeroSection(): ReactElement {
   const { lang } = useAppContext();
+  const [user] = useAuthState(auth);
 
   return (
     <>
@@ -26,7 +28,7 @@ function HeroSection(): ReactElement {
           <div className={styles.hero__info}>
             <div className={styles.hero__info_text}>
               <p>{HOME[lang].heroPar}</p>
-              {IS_AUTH ? (
+              {user ? (
                 <Link href={Page.PLAYGROUND} className={styles.hero__info_button}>
                   {HOME[lang].heroButtonPlay}
                 </Link>

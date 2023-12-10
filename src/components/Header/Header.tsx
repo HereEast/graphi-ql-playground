@@ -1,4 +1,5 @@
 import { ReactElement, useEffect, useState, ChangeEvent } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { useAppContext } from "../../hooks";
 import { Button } from "../Button";
@@ -6,17 +7,29 @@ import { Page } from "../../types";
 import { LANGS } from "../../utils";
 import { HEADER } from "../../constants/dictionary";
 
+import { auth, logout } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 import classnames from "classnames";
 import styles from "./header.module.scss";
 
-const IS_AUTH = false;
-
 function Header(): ReactElement {
+  const router = useRouter();
+
   const { lang, setLang } = useAppContext();
 
-  const [selectedLang, setSelectedLang] = useState("");
+  // Handle loading and error
+  const [user] = useAuthState(auth);
+
   const [isScroll, setIsScroll] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  async function handleSignOut(): Promise<void> {
+    await logout();
+    closeMenu();
+
+    router.push(Page.HOME);
+  }
 
   function closeMenuOnResize(): void {
     if (window.innerWidth > 480) {
@@ -53,7 +66,6 @@ function Header(): ReactElement {
   useEffect(() => {
     const savedLang = localStorage.getItem("lang") || "";
 
-    setSelectedLang(savedLang);
     setLang(savedLang);
   }, [setLang]);
 
@@ -84,9 +96,7 @@ function Header(): ReactElement {
   function handleSelectLang(e: ChangeEvent<HTMLSelectElement>): void {
     const value = e.target.value;
 
-    setSelectedLang(value);
     setLang(value);
-
     localStorage.setItem("lang", value);
   }
 
@@ -111,7 +121,7 @@ function Header(): ReactElement {
         />
 
         <div className={styles.menu}>
-          {IS_AUTH && (
+          {user && (
             <ul className={styles.menu__links}>
               <li>
                 <Link href={Page.PLAYGROUND} className={styles.link} onClick={closeMenu}>
@@ -119,14 +129,14 @@ function Header(): ReactElement {
                 </Link>
               </li>
               <li>
-                <Link href="" className={styles.link} onClick={closeMenu}>
+                <Link href="" className={styles.link} onClick={handleSignOut}>
                   {HEADER[lang].LINK_SIGNOUT}
                 </Link>
               </li>
             </ul>
           )}
 
-          {!IS_AUTH && (
+          {!user && (
             <ul className={styles.menu__links}>
               <li>
                 <Link href={Page.LOGIN} className={styles.link} onClick={closeMenu}>
@@ -142,7 +152,7 @@ function Header(): ReactElement {
           )}
 
           <div className={styles.menu__lang}>
-            <select className={styles.select} value={selectedLang} onChange={handleSelectLang}>
+            <select className={styles.select} value={lang} onChange={handleSelectLang}>
               {LANGS.map((option) => (
                 <option key={option} value={option}>
                   {option.toUpperCase()}
