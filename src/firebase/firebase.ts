@@ -2,16 +2,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signOut } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB1l6JyFyMfPzmIPfgcZcgdVBN9rO7CXt0",
-  authDomain: "graphiql-f500a.firebaseapp.com",
-  projectId: "graphiql-f500a",
-  storageBucket: "graphiql-f500a.appspot.com",
-  messagingSenderId: "135378545545",
-  appId: "1:135378545545:web:521c1c189ed6944be7cf58",
-  measurementId: "G-7CZFZLT4CT",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
