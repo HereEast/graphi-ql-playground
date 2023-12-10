@@ -1,16 +1,20 @@
 import { ReactElement } from "react";
-import { TEAM } from "../../../utils";
+import { useAppContext } from "../../../hooks";
+import { HOME } from "../../../constants/dictionary";
+import { TEAM } from "../../../constants/dictionary";
 
 import styles from "./teamSection.module.scss";
 
 function TeamSection(): ReactElement {
+  const { lang } = useAppContext();
+
   return (
     <>
       <section className={styles.team}>
         <div className={styles.team__container}>
-          <span className={styles.team__title}>Team</span>
+          <span className={styles.team__title}>{HOME[lang].teamTitle}</span>
           <ul className={styles.team__items}>
-            {TEAM.map((person) => (
+            {TEAM[lang].map((person) => (
               <li className={styles.team__item} key={person.github}>
                 <p className={styles.team__description}>{person.description}</p>
                 <div className={styles.team__item_footer}>
