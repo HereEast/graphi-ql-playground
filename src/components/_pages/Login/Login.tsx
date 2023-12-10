@@ -1,20 +1,30 @@
 import Link from "next/link";
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppContext } from "../../../hooks";
 import { Input } from "../../Input";
 import { Button } from "../../Button";
+import { ErrorMessage } from "../../ErrorMessage";
 import { Page, ILoginFormData } from "../../../types";
 import { loginSchema } from "../../../utils";
-import { LOGIN } from "../../../constants/dictionary";
+import { LOGIN, FORM_ERROR } from "../../../constants/dictionary";
+
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../firebase";
 
 import styles from "./login.module.scss";
 
 function Login(): ReactElement {
   const router = useRouter();
+
   const { lang } = useAppContext();
+
+  // Handle loading and error
+  const [user] = useAuthState(auth);
+  const [authError, setAuthError] = useState("");
 
   const validationSchema = loginSchema[lang as keyof typeof loginSchema];
 
@@ -27,10 +37,27 @@ function Login(): ReactElement {
     resolver: yupResolver(validationSchema),
   });
 
-  function onSubmit(data: ILoginFormData): void {
-    console.log(data);
+  useEffect(() => {
+    if (user) {
+      router.replace(Page.PLAYGROUND);
+    }
+  }, [router, user]);
 
-    router.replace(Page.HOME);
+  async function onSubmit(data: ILoginFormData): Promise<void> {
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+
+      router.push(Page.PLAYGROUND);
+      setAuthError("");
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.message.includes("invalid-credential")) {
+          setAuthError(FORM_ERROR[lang].auth_invalid_credentials);
+        } else {
+          setAuthError(FORM_ERROR[lang].auth_something_wrong);
+        }
+      }
+    }
   }
 
   return (
@@ -52,6 +79,9 @@ function Login(): ReactElement {
             disabled={isSubmitting}
           />
         </form>
+
+        {/* Auth Error */}
+        {authError && <ErrorMessage message={authError} className={styles.login__error} />}
       </div>
       <div className={styles.login__footer}>
         <span>
