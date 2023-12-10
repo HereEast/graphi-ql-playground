@@ -1,19 +1,23 @@
 import { ReactElement } from "react";
 import Link from "next/link";
+import { useAppContext } from "../../../hooks";
 import { Page } from "../../../types";
-import { IS_AUTH } from "../../../utils";
+import { HOME } from "../../../constants/dictionary";
 
 import styles from "./heroSection.module.scss";
 
+const IS_AUTH = false;
+
 function HeroSection(): ReactElement {
+  const { lang } = useAppContext();
+
   return (
     <>
       <section className={styles.hero}>
         <div className={styles.hero__container}>
           <div className={styles.hero__title}>
             <h2 className={styles.hero__title_text}>
-              Hey there, welcome to the GraphiQL Playground! This is the go-to IDE for making
-              GraphQL requests to{" "}
+              {HOME[lang].heroTitle}{" "}
               <a href="" className={styles.hero__title_link}>
                 The Rick and Morty API
               </a>
@@ -21,17 +25,14 @@ function HeroSection(): ReactElement {
           </div>
           <div className={styles.hero__info}>
             <div className={styles.hero__info_text}>
-              <p>
-                Check out an extensive collection of characters, images, locations, and episodes -
-                you'll have access to all the good stuff from The Rick and Morty TV show!
-              </p>
+              <p>{HOME[lang].heroPar}</p>
               {IS_AUTH ? (
                 <Link href={Page.PLAYGROUND} className={styles.hero__info_button}>
-                  Try Playground
+                  {HOME[lang].heroButtonPlay}
                 </Link>
               ) : (
                 <Link href={Page.LOGIN} className={styles.hero__info_button}>
-                  Log In To Play
+                  {HOME[lang].heroButtonLogin}
                 </Link>
               )}
             </div>
