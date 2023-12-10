@@ -1,14 +1,6 @@
-type DictionaryType = {
-  [key: string]: {
-    LINK_LOGIN: string;
-    LINK_REGISTER: string;
-    LINK_PLAYGROUND: string;
-    LINK_SIGNOUT: string;
-    BUTTON_MENU: string;
-  };
-};
+import { HeaderDictionaryType } from "../../types";
 
-export const HEADER: DictionaryType = {
+export const HEADER: HeaderDictionaryType = {
   en: {
     LINK_LOGIN: "Login",
     LINK_REGISTER: "Register",

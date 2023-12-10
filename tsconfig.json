@@ -34,7 +34,7 @@
     "<path-to-your-source>.tsx",
     "next.config.js",
     "src/constants",
-    "src/firebase"
+    "src/services"
   ],
   "exclude": ["node_modules"]
 }

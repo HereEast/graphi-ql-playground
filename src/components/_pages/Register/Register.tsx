@@ -9,12 +9,12 @@ import { Button } from "../../Button";
 import { ErrorMessage } from "../../ErrorMessage";
 import { PasswordStrength } from "../../PasswordStrength";
 import { Page, IRegisterFormData } from "../../../types";
-import { registerSchema } from "../../../utils";
-import { REGISTER, FORM_ERROR } from "../../../constants/dictionary";
+import { registerSchema } from "../../../services";
+import { FORM, FORM_ERROR } from "../../../constants/locale";
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../../firebase";
+import { auth } from "../../../services";
 
 import styles from "./register.module.scss";
 
@@ -38,7 +38,7 @@ function Register(): ReactElement {
     resolver: yupResolver(validationSchema),
   });
 
-  const watchPassword = watch("password");
+  const passwordInputValue = watch("password");
 
   useEffect(() => {
     if (user) {
@@ -67,8 +67,8 @@ function Register(): ReactElement {
     <div className={styles.register}>
       <div className={styles.register__container}>
         <div className={styles.register__header}>
-          <h2 className={styles.register__header_title}>{REGISTER[lang].title}</h2>
-          <p className={styles.register__header_subtitle}>{REGISTER[lang].subtitle}</p>
+          <h2 className={styles.register__header_title}>{FORM[lang].registerTitle}</h2>
+          <p className={styles.register__header_subtitle}>{FORM[lang].registerSubtitle}</p>
         </div>
         <form className={styles.register__form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.register__form_inputs}>
@@ -77,10 +77,10 @@ function Register(): ReactElement {
             <Input inputName="password" type="password" errors={errors} {...register("password")} />
           </div>
 
-          <PasswordStrength inputValue={watchPassword} />
+          <PasswordStrength inputValue={passwordInputValue} />
 
           <Button
-            name={REGISTER[lang].button}
+            name={FORM[lang].registerButton}
             type="submit"
             className={styles.register__form_button}
             disabled={isSubmitting}
@@ -92,7 +92,7 @@ function Register(): ReactElement {
       </div>
       <div className={styles.register__footer}>
         <span>
-          {REGISTER[lang].note} <Link href={Page.LOGIN}>{REGISTER[lang].link}</Link>
+          {FORM[lang].registerNote} <Link href={Page.LOGIN}>{FORM[lang].registerLink}</Link>
         </span>
       </div>
     </div>

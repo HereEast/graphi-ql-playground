@@ -1,12 +1,4 @@
-type FooterDictionaryType = {
-  [key: string]: {
-    title: string;
-    subtitle: string;
-    copy: string;
-    linkSchool: string;
-    linkCourse: string;
-  };
-};
+import { FooterDictionaryType } from "../../types";
 
 export const FOOTER: FooterDictionaryType = {
   en: {

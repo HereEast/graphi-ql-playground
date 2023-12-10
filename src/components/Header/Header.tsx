@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useAppContext } from "../../hooks";
 import { Button } from "../Button";
 import { Page } from "../../types";
-import { LANGS } from "../../utils";
-import { HEADER } from "../../constants/dictionary";
+import { LANGS } from "../../constants";
+import { HEADER } from "../../constants/locale";
 
-import { auth, logout } from "../../firebase";
+import { auth, logout } from "../../services";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import classnames from "classnames";
@@ -18,8 +18,7 @@ function Header(): ReactElement {
 
   const { lang, setLang } = useAppContext();
 
-  // Handle loading and error
-  const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth); // Handle loading and error
 
   const [isScroll, setIsScroll] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -70,6 +69,8 @@ function Header(): ReactElement {
   }, [setLang]);
 
   useEffect(() => {
+    animateHeader();
+
     document.addEventListener("click", (e: MouseEvent) => {
       closeMenuOnDocumentClick(e);
     });

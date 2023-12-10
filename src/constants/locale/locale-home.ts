@@ -1,23 +1,4 @@
-type HomeDictionaryType = {
-  [key: string]: {
-    heroTitle: string;
-    heroLink: string;
-    heroPar: string;
-    heroButtonLogin: string;
-    heroButtonPlay: string;
-    courseTag: string;
-    courseTitle: string;
-    coursePar1: string;
-    coursePar2: string;
-    courseLink: string;
-    weekTitle: string;
-    teamTitle: string;
-  };
-};
-
-type CourseDictionaryType = {
-  [key: string]: string[];
-};
+import { HomeDictionaryType, CourseDictionaryType } from "../../types";
 
 export const HOME: HomeDictionaryType = {
   en: {
@@ -40,7 +21,7 @@ export const HOME: HomeDictionaryType = {
   },
   ru: {
     heroTitle:
-      "Привет! Добро пожаловать в песочницу GraphiQL! Это идеальное место для отправки запросов GraphQL к",
+      "Привет! Добро пожаловать в песочницу GraphiQL! Это идеальное место для отправки GraphQL запросов к",
     heroLink: "The Rick and Morty API.",
     heroPar:
       "Здесь вы найдете обширную коллекцию персонажей, изображений, локаций и эпизодов — у вас будет доступ ко всему самому интересному из телешоу «Рик и Морти»!",

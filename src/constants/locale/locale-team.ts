@@ -1,16 +1,6 @@
-export type TeamMember = {
-  name: string;
-  image: string;
-  github: string;
-  description: string;
-  position: string;
-};
+import { TeamDictionaryType } from "../../types";
 
-export type TeamType = {
-  [key: string]: TeamMember[];
-};
-
-export const TEAM: TeamType = {
+export const TEAM: TeamDictionaryType = {
   en: [
     {
       name: "Andrei Niasmachny",

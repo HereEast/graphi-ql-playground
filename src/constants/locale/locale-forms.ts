@@ -1,37 +1,4 @@
-type InputDictionaryType = {
-  [key: string]: {
-    name?: string;
-    email: string;
-    password: string;
-    passwordButtonShow?: string;
-    passwordButtonHide?: string;
-  };
-};
-
-type FormDictionaryType = {
-  [key: string]: {
-    title: string;
-    subtitle: string;
-    button: string;
-    note: string;
-    link: string;
-  };
-};
-
-type FormErrorDictionaryType = {
-  [key: string]: {
-    name_required: string;
-    email_required: string;
-    email_valid: string;
-    email_pattern: string;
-    password_required: string;
-    password_contain: string;
-    password__length: string;
-    auth_invalid_credentials: string;
-    auth_something_wrong: string;
-    auth_email_in_use: string;
-  };
-};
+import { InputDictionaryType, FormDictionaryType, FormErrorDictionaryType } from "../../types";
 
 export const FORM_ERROR: FormErrorDictionaryType = {
   en: {
@@ -79,36 +46,29 @@ export const INPUT: InputDictionaryType = {
   },
 };
 
-export const LOGIN: FormDictionaryType = {
+export const FORM: FormDictionaryType = {
   en: {
-    title: "Hello again 👋",
-    subtitle: "Please, log in to use GraphiQL Playground.",
-    button: "Log In",
-    note: "Don't have an account? Please,",
-    link: "register.",
+    loginTitle: "Hello again 👋",
+    loginSubtitle: "Please, log in to your account to use GraphiQL Playground.",
+    loginButton: "Log In",
+    loginNote: "Don't have an account? Please,",
+    loginLink: "register.",
+    registerTitle: "Register 🤓",
+    registerSubtitle: "Please, create account to use GraphiQL Playground.",
+    registerButton: "Create Account",
+    registerNote: "Already have an account? Please,",
+    registerLink: "log in.",
   },
   ru: {
-    title: "Привет 👋",
-    subtitle: "Войдите в свой аккаунт, чтобы использовать Песочницу GraphiQL.",
-    button: "Войти",
-    note: "Все еще нет аккаунта? Тогда",
-    link: "зарегистируйтесь.",
-  },
-};
-
-export const REGISTER: FormDictionaryType = {
-  en: {
-    title: "Register 🤓",
-    subtitle: "Please, create account to use GraphiQL Playground.",
-    button: "Create Account",
-    note: "Already have an account? Please,",
-    link: "log in.",
-  },
-  ru: {
-    title: "Регистрация 🤓",
-    subtitle: "Создайте аккаунт, чтобы использовать Песочницу GraphiQL.",
-    button: "Создать аккаунт",
-    note: "Уже есть аккаунт? Тогда",
-    link: "войдите.",
+    loginTitle: "Привет 👋",
+    loginSubtitle: "Войдите в свой аккаунт, чтобы использовать Песочницу GraphiQL.",
+    loginButton: "Войти",
+    loginNote: "Все еще нет аккаунта?",
+    loginLink: "Создать аккаунт.",
+    registerTitle: "Регистрация 🤓",
+    registerSubtitle: "Создайте аккаунт, чтобы использовать Песочницу GraphiQL.",
+    registerButton: "Создать аккаунт",
+    registerNote: "Уже есть аккаунт?",
+    registerLink: "Войти.",
   },
 };

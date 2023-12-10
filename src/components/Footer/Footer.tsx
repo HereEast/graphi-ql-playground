@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import Image from "next/image";
 import { useAppContext } from "../../hooks";
 import { LINK_SCHOOL, LINK_COURSE } from "../../utils";
-import { TEAM, FOOTER } from "../../constants/dictionary";
+import { TEAM, FOOTER } from "../../constants/locale";
 
 import styles from "./footer.module.scss";
 

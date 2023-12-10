@@ -1,10 +1,10 @@
 import { ReactElement } from "react";
 import Link from "next/link";
-import { useAppContext } from "../../../hooks";
-import { Page } from "../../../types";
-import { HOME } from "../../../constants/dictionary";
+import { useAppContext } from "../../hooks";
+import { Page } from "../../types";
+import { HOME } from "../../constants/locale";
 
-import { auth } from "../../../firebase";
+import { auth } from "../../services";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import styles from "./heroSection.module.scss";

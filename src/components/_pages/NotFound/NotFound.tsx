@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useAppContext } from "../../../hooks";
 import { Button } from "../../Button";
 import { Page } from "../../../types";
-import { NOT_FOUND } from "../../../constants/dictionary";
+import { NOT_FOUND } from "../../../constants/locale";
 
 import styles from "./notFound.module.scss";
 

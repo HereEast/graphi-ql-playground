@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { FORM_ERROR } from "../../constants/dictionary";
+import { FORM_ERROR } from "../constants/locale";
 
 type LoginSchemaType = yup.ObjectSchema<{
   email: string;

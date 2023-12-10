@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { ReactElement } from "react";
-import { useAppContext } from "../../../hooks";
-import { LINK_COURSE } from "../../../utils";
-import { HOME, COURSE } from "../../../constants/dictionary";
+import { useAppContext } from "../../hooks";
+import { LINK_COURSE } from "../../utils";
+import { HOME, COURSE } from "../../constants/locale";
 
 import styles from "./courseSection.module.scss";
 

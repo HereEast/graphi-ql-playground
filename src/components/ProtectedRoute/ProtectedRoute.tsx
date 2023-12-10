@@ -2,7 +2,7 @@ import { ReactElement, ReactNode, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Page } from "../../types";
 
-import { auth } from "../../firebase";
+import { auth } from "../../services";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export interface ProtectedRouteProps {

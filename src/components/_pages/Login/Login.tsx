@@ -8,12 +8,12 @@ import { Input } from "../../Input";
 import { Button } from "../../Button";
 import { ErrorMessage } from "../../ErrorMessage";
 import { Page, ILoginFormData } from "../../../types";
-import { loginSchema } from "../../../utils";
-import { LOGIN, FORM_ERROR } from "../../../constants/dictionary";
+import { loginSchema } from "../../../services";
+import { FORM, FORM_ERROR } from "../../../constants/locale";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../../firebase";
+import { auth } from "../../../services";
 
 import styles from "./login.module.scss";
 
@@ -64,8 +64,8 @@ function Login(): ReactElement {
     <div className={styles.login}>
       <div className={styles.login__container}>
         <div className={styles.login__header}>
-          <h2 className={styles.login__header_title}>{LOGIN[lang].title}</h2>
-          <p className={styles.login__header_subtitle}>{LOGIN[lang].subtitle}</p>
+          <h2 className={styles.login__header_title}>{FORM[lang].loginTitle}</h2>
+          <p className={styles.login__header_subtitle}>{FORM[lang].loginSubtitle}</p>
         </div>
         <form className={styles.login__form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.login__form_inputs}>
@@ -73,7 +73,7 @@ function Login(): ReactElement {
             <Input inputName="password" type="password" errors={errors} {...register("password")} />
           </div>
           <Button
-            name={LOGIN[lang].button}
+            name={FORM[lang].loginButton}
             type="submit"
             className={styles.login__form_button}
             disabled={isSubmitting}
@@ -85,7 +85,7 @@ function Login(): ReactElement {
       </div>
       <div className={styles.login__footer}>
         <span>
-          {LOGIN[lang].note} <Link href={Page.REGISTER}>{LOGIN[lang].link}</Link>
+          {FORM[lang].loginNote} <Link href={Page.REGISTER}>{FORM[lang].loginLink}</Link>
         </span>
       </div>
     </div>

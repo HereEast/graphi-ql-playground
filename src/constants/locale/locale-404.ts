@@ -1,9 +1,4 @@
-type NotFoundDictionaryType = {
-  [key: string]: {
-    title: string;
-    button: string;
-  };
-};
+import { NotFoundDictionaryType } from "../../types";
 
 export const NOT_FOUND: NotFoundDictionaryType = {
   en: {

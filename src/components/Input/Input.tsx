@@ -3,14 +3,17 @@ import { useAppContext } from "../../hooks";
 import { FieldErrors } from "react-hook-form";
 import { ErrorMessage } from "../ErrorMessage";
 import { Button } from "../Button";
-import { INPUT } from "../../constants/dictionary";
+import { INPUT } from "../../constants/locale";
 
 import classnames from "classnames";
 import styles from "./input.module.scss";
 
+export type InputNames = "name" | "email" | "password";
+export type InputTypes = "text" | "email" | "password";
+
 export interface InputProps {
-  inputName: "email" | "password" | "name";
-  type?: "text" | "email" | "password";
+  inputName: InputNames;
+  type?: InputTypes;
   placeholder?: string;
   className?: string;
   errors: FieldErrors;
