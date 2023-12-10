@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { INPUT_ERROR } from "../../constants/dictionary";
+import { FORM_ERROR } from "../../constants/dictionary";
 
 type LoginSchemaType = yup.ObjectSchema<{
   email: string;
@@ -16,30 +16,30 @@ function generateLoginSchema(lang: string): LoginSchemaType {
   return yup.object({
     email: yup
       .string()
-      .required(INPUT_ERROR[lang].email_required)
-      .matches(/^[\w]+@([\w]+\.)+[\w]{2,}$/, INPUT_ERROR[lang].email_pattern)
-      .email(INPUT_ERROR[lang].email_valid),
+      .required(FORM_ERROR[lang].email_required)
+      .matches(/^[\w]+@([\w]+\.)+[\w]{2,}$/, FORM_ERROR[lang].email_pattern)
+      .email(FORM_ERROR[lang].email_valid),
     password: yup
       .string()
-      .required(INPUT_ERROR[lang].password_required)
-      .matches(/^(?=.*\d)(?=.*[A-Za-z])(?=.*\W).+$/, INPUT_ERROR[lang].password_contain)
-      .min(8, INPUT_ERROR[lang].password__length),
+      .required(FORM_ERROR[lang].password_required)
+      .matches(/^(?=.*\d)(?=.*[A-Za-z])(?=.*\W).+$/, FORM_ERROR[lang].password_contain)
+      .min(8, FORM_ERROR[lang].password__length),
   });
 }
 
 function generateRegisterSchema(lang: string): RegisterSchemaType {
   return yup.object({
-    name: yup.string().required(INPUT_ERROR[lang].name_required),
+    name: yup.string().required(FORM_ERROR[lang].name_required),
     email: yup
       .string()
-      .required(INPUT_ERROR[lang].email_required)
-      .matches(/^[\w]+@([\w]+\.)+[\w]{2,}$/, INPUT_ERROR[lang].email_pattern)
-      .email(INPUT_ERROR[lang].email_valid),
+      .required(FORM_ERROR[lang].email_required)
+      .matches(/^[\w]+@([\w]+\.)+[\w]{2,}$/, FORM_ERROR[lang].email_pattern)
+      .email(FORM_ERROR[lang].email_valid),
     password: yup
       .string()
-      .required(INPUT_ERROR[lang].password_required)
-      .matches(/^(?=.*\d)(?=.*[A-Za-z])(?=.*\W).+$/, INPUT_ERROR[lang].password_contain)
-      .min(8, INPUT_ERROR[lang].password__length),
+      .required(FORM_ERROR[lang].password_required)
+      .matches(/^(?=.*\d)(?=.*[A-Za-z])(?=.*\W).+$/, FORM_ERROR[lang].password_contain)
+      .min(8, FORM_ERROR[lang].password__length),
   });
 }
 

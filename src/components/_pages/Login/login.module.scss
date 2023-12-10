@@ -45,7 +45,7 @@
     }
   }
 
-  &__form {
+  &__form {    
     &_inputs {
       display: flex;
       flex-direction: column;
@@ -58,6 +58,10 @@
       height: 6rem;
       font-size: 2rem;
     }
+  }
+
+  &__error {
+    margin-top: 2rem;
   }
 
   &__footer {

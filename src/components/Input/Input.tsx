@@ -37,7 +37,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             className={styles.field__input}
-            type={hidden ? "password" : "text"}
+            type={hidden && type === "password" ? "password" : "text"}
             placeholder={placeholder || (inputName && INPUT[lang][inputName])}
             {...restProps}
           />
