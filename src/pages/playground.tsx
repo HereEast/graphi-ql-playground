@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import Head from "next/head";
-import { Playground } from "../components/_pages/Playground";
-import { ProtectedRoute } from "../components/ProtectedRoute";
+
+import { ProtectedRoute, Playground } from "../components";
 
 export default function PlaygroundPage(): ReactElement {
   return (
