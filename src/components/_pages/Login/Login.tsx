@@ -4,9 +4,7 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useAppContext } from "../../../hooks";
-import { Input } from "../../Input";
-import { Button } from "../../Button";
-import { ErrorMessage } from "../../ErrorMessage";
+import { Button, Input, ErrorMessage } from "../../";
 import { Page, ILoginFormData } from "../../../types";
 import { loginSchema } from "../../../services";
 import { FORM, FORM_ERROR } from "../../../constants/locale";
@@ -15,7 +13,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../services";
 
-import styles from "./login.module.scss";
+import styles from "./Login.module.scss";
 
 function Login(): ReactElement {
   const router = useRouter();

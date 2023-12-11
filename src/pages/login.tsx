@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Head from "next/head";
-import { Login } from "../components/_pages/Login";
+import { Login } from "../components";
 
 export default function LoginPage(): ReactElement {
   return (

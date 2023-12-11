@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Head from "next/head";
-import { Register } from "../components/_pages/Register";
+import { Register } from "../components";
 
 export default function RegisterPage(): ReactElement {
   return (

@@ -1,11 +1,11 @@
 import { ReactElement } from "react";
 import { useRouter } from "next/router";
 import { useAppContext } from "../../../hooks";
-import { Button } from "../../Button";
+import { Button } from "../..";
 import { Page } from "../../../types";
 import { NOT_FOUND } from "../../../constants/locale";
 
-import styles from "./notFound.module.scss";
+import styles from "./NotFound.module.scss";
 
 function NotFound(): ReactElement {
   const router = useRouter();

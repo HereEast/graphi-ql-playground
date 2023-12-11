@@ -1,12 +1,11 @@
 import { ReactElement, useState, forwardRef } from "react";
 import { useAppContext } from "../../hooks";
 import { FieldErrors } from "react-hook-form";
-import { ErrorMessage } from "../ErrorMessage";
-import { Button } from "../Button";
+import { Button, ErrorMessage } from "../";
 import { INPUT } from "../../constants/locale";
 
-import classnames from "classnames";
-import styles from "./input.module.scss";
+import clsx from "clsx";
+import styles from "./Input.module.scss";
 
 export type InputNames = "name" | "email" | "password";
 export type InputTypes = "text" | "email" | "password";
@@ -30,11 +29,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div
-        className={classnames(
-          styles.field,
-          type === "password" && styles.field__password,
-          className || "",
-        )}
+        className={clsx(styles.field, { [styles.field__password]: type === "password" }, className)}
       >
         <label className={styles.field__label}>
           <input

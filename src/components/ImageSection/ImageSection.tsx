@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-import styles from "./imageSection.module.scss";
+import styles from "./ImageSection.module.scss";
 
 function ImageSection(): ReactElement {
   return (

@@ -1,6 +1,7 @@
 import { ReactElement, useEffect, useState, ChangeEvent } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useAppContext } from "../../hooks";
 import { Button } from "../";
 import { Page } from "../../types";
@@ -8,7 +9,6 @@ import { LANGS } from "../../constants";
 import { HEADER } from "../../constants/locale";
 
 import { auth, logout } from "../../services";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 import clsx from "clsx";
 import styles from "./Header.module.scss";

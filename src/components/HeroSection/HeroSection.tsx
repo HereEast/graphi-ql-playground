@@ -7,7 +7,7 @@ import { HOME } from "../../constants/locale";
 import { auth } from "../../services";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import styles from "./heroSection.module.scss";
+import styles from "./HeroSection.module.scss";
 
 function HeroSection(): ReactElement {
   const { lang } = useAppContext();

@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Head from "next/head";
-import { Home } from "../components/_pages/Home";
+import { Home } from "../components";
 
 export default function HomePage(): ReactElement {
   return (

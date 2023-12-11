@@ -3,20 +3,15 @@ import { ReactElement, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useAppContext } from "../../../hooks";
-import { Input } from "../../Input";
-import { Button } from "../../Button";
-import { ErrorMessage } from "../../ErrorMessage";
-import { PasswordStrength } from "../../PasswordStrength";
-import { Page, IRegisterFormData } from "../../../types";
-import { registerSchema } from "../../../services";
-import { FORM, FORM_ERROR } from "../../../constants/locale";
-
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../../services";
+import { useAppContext } from "../../../hooks";
+import { Button, Input, ErrorMessage, PasswordStrength } from "../../";
+import { Page, IRegisterFormData } from "../../../types";
+import { auth, registerSchema } from "../../../services";
+import { FORM, FORM_ERROR } from "../../../constants/locale";
 
-import styles from "./register.module.scss";
+import styles from "./Register.module.scss";
 
 function Register(): ReactElement {
   const router = useRouter();

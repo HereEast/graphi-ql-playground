@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { ReactElement } from "react";
 import { useAppContext } from "../../hooks";
-import { LINK_COURSE } from "../../utils";
+import { LINK_COURSE } from "../../constants";
 import { HOME, COURSE } from "../../constants/locale";
 
-import styles from "./courseSection.module.scss";
+import styles from "./CourseSection.module.scss";
 
 function CourseSection(): ReactElement {
   const { lang } = useAppContext();

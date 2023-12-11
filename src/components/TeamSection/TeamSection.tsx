@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useAppContext } from "../../hooks";
 import { HOME, TEAM } from "../../constants/locale";
 
-import styles from "./teamSection.module.scss";
+import styles from "./TeamSection.module.scss";
 
 function TeamSection(): ReactElement {
   const { lang } = useAppContext();

@@ -1,8 +1,5 @@
 import { ReactElement } from "react";
-import { HeroSection } from "../../HeroSection";
-import { ImageSection } from "../../ImageSection";
-import { TeamSection } from "../../TeamSection";
-import { CourseSection } from "../../CourseSection";
+import { HeroSection, ImageSection, CourseSection, TeamSection } from "../../";
 
 function Home(): ReactElement {
   return (
