@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useState, ChangeEvent } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useAppContext } from "../../hooks";
-import { Button } from "../Button";
+import { Button } from "../";
 import { Page } from "../../types";
 import { LANGS } from "../../constants";
 import { HEADER } from "../../constants/locale";
@@ -10,8 +10,8 @@ import { HEADER } from "../../constants/locale";
 import { auth, logout } from "../../services";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import classnames from "classnames";
-import styles from "./header.module.scss";
+import clsx from "clsx";
+import styles from "./Header.module.scss";
 
 function Header(): ReactElement {
   const router = useRouter();
@@ -30,18 +30,18 @@ function Header(): ReactElement {
     router.push(Page.HOME);
   }
 
-  function closeMenuOnResize(): void {
-    if (window.innerWidth > 480) {
-      setMenuOpen(false);
-    }
-  }
-
   function toggleMenu(): void {
     setMenuOpen(!menuOpen);
   }
 
   function closeMenu(): void {
     if (menuOpen) {
+      setMenuOpen(false);
+    }
+  }
+
+  function closeMenuOnResize(): void {
+    if (window.innerWidth > 480) {
       setMenuOpen(false);
     }
   }
@@ -55,11 +55,14 @@ function Header(): ReactElement {
   }
 
   function animateHeader(): void {
-    if (window.scrollY > 0) {
-      setIsScroll(true);
-    } else {
-      setIsScroll(false);
-    }
+    setIsScroll(window.scrollY > 0);
+  }
+
+  function handleSelectLang(e: ChangeEvent<HTMLSelectElement>): void {
+    const value = e.target.value;
+
+    setLang(value);
+    localStorage.setItem("lang", value);
   }
 
   useEffect(() => {
@@ -71,42 +74,29 @@ function Header(): ReactElement {
   useEffect(() => {
     animateHeader();
 
+    window.addEventListener("scroll", animateHeader);
+    window.addEventListener("resize", closeMenuOnResize);
+
     document.addEventListener("click", (e: MouseEvent) => {
       closeMenuOnDocumentClick(e);
     });
 
     return () => {
+      window.removeEventListener("scroll", animateHeader);
+      window.removeEventListener("resize", closeMenuOnResize);
+
       document.removeEventListener("click", (e: MouseEvent) => {
         closeMenuOnDocumentClick(e);
       });
     };
   }, []);
 
-  useEffect(() => {
-    animateHeader();
-
-    window.addEventListener("scroll", animateHeader);
-    window.addEventListener("resize", closeMenuOnResize);
-
-    return () => {
-      window.removeEventListener("scroll", animateHeader);
-      window.removeEventListener("resize", closeMenuOnResize);
-    };
-  }, []);
-
-  function handleSelectLang(e: ChangeEvent<HTMLSelectElement>): void {
-    const value = e.target.value;
-
-    setLang(value);
-    localStorage.setItem("lang", value);
-  }
-
   return (
     <header
-      className={classnames(
+      className={clsx(
         styles.header,
-        isScroll && styles.scroll,
-        menuOpen && styles.menu__open,
+        { [styles.scroll]: isScroll },
+        { [styles.menu__open]: menuOpen },
       )}
     >
       <nav className={styles.nav}>
@@ -152,7 +142,7 @@ function Header(): ReactElement {
             </ul>
           )}
 
-          <div className={styles.menu__lang}>
+          <div className={styles.menu__select}>
             <select className={styles.select} value={lang} onChange={handleSelectLang}>
               {LANGS.map((option) => (
                 <option key={option} value={option}>

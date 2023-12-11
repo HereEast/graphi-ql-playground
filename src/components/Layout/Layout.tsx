@@ -1,6 +1,5 @@
 import { ReactElement, ReactNode } from "react";
-import { Header } from "../Header";
-import { Footer } from "../";
+import { Header, Footer } from "../";
 
 export interface LayoutProps {
   children: ReactNode;

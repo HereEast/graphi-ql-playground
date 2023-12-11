@@ -68,30 +68,6 @@
       display: none;
     }
   }
-
-  .button__menu {
-    position: relative;
-    height: 3rem;
-    background-color: $white;
-    font-size: $text-size;
-    color: $blue;
-    z-index: 1000;
-    display: none;
-
-    cursor: pointer;
-    transition: all 0.2s ease-in;
-
-    @media (max-width: 480px) {
-      display: block;
-      flex-shrink: 0;
-    }
-
-    &:hover {
-      background-color: $white;
-      color: $blue;
-      opacity: 0.5;
-    }
-  }
 }
 
 .menu {
@@ -124,31 +100,9 @@
     }
   }
 
-  &__lang {
+  &__select {
     position: relative;
     margin-left: 2rem;
-
-    .select {
-      position: relative;
-      appearance: none;
-      width: 5.8rem;
-      height: 3rem;
-      padding-left: 1rem;
-      padding-bottom: 0.2rem;
-      font-size: 1.6rem;
-      color: $blue;
-      background-color: $white;
-      border: none;
-      border-radius: 0;
-      outline: none;
-
-      transition: all 0.1s ease-in;
-      cursor: pointer;
-
-      &:hover {
-        opacity: 0.5;
-      }
-    }
 
     &::after {
       content: "";
@@ -162,6 +116,52 @@
       pointer-events: none;
       transition: all 0.2s ease-in;
     }
+  }
+}
+
+.select {
+  position: relative;
+  appearance: none;
+  width: 5.8rem;
+  height: 3rem;
+  padding-left: 1rem;
+  padding-bottom: 0.2rem;
+  font-size: 1.6rem;
+  color: $blue;
+  background-color: $white;
+  border: none;
+  border-radius: 0;
+  outline: none;
+
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.button__menu {
+  position: relative;
+  height: 3rem;
+  background-color: $white;
+  font-size: $text-size;
+  color: $blue;
+  z-index: 1000;
+  display: none;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+
+  @media (max-width: 480px) {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background-color: $white;
+    color: $blue;
+    opacity: 0.5;
   }
 }
 
