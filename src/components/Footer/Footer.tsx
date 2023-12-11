@@ -18,7 +18,7 @@ function Footer(): ReactElement {
           </div>
           <ul className={styles.team__cards}>
             {team.map((person) => (
-              <FooterCard teamMember={person} />
+              <FooterCard teamMember={person} key={person.github} />
             ))}
           </ul>
         </div>

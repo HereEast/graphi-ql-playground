@@ -1,18 +1,18 @@
 import * as yup from "yup";
 import { DICTIONARY } from "../constants/dictionary";
 
-type LoginSchemaType = yup.ObjectSchema<{
+export type LoginSchemaType = yup.ObjectSchema<{
   email: string;
   password: string;
 }>;
 
-type RegisterSchemaType = yup.ObjectSchema<{
+export type RegisterSchemaType = yup.ObjectSchema<{
   name: string;
   email: string;
   password: string;
 }>;
 
-function generateLoginSchema(lang: string): LoginSchemaType {
+export function generateLoginSchema(lang: string): LoginSchemaType {
   const error = DICTIONARY[lang as keyof typeof DICTIONARY].formErrors;
 
   return yup.object({
@@ -29,7 +29,7 @@ function generateLoginSchema(lang: string): LoginSchemaType {
   });
 }
 
-function generateRegisterSchema(lang: string): RegisterSchemaType {
+export function generateRegisterSchema(lang: string): RegisterSchemaType {
   const error = DICTIONARY[lang as keyof typeof DICTIONARY].formErrors;
 
   return yup.object({

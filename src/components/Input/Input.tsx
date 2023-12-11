@@ -16,7 +16,7 @@ export interface InputProps {
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ inputName, type, placeholder, className, errors, ...restProps }, ref): ReactElement => {
-    const dictionary = useLocale();
+    const { input } = useLocale();
 
     const [hidden, setHidden] = useState(true);
 
@@ -35,14 +35,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               [styles.field__password_input]: type === "password",
             })}
             type={hidden && type === "password" ? "password" : "text"}
-            placeholder={placeholder || (inputName && dictionary.input[inputName])}
+            placeholder={placeholder || (inputName && input[inputName])}
             {...restProps}
           />
           {type === "password" && (
             <Button
-              name={
-                hidden ? dictionary.input.passwordButtonShow : dictionary.input.passwordButtonHide
-              }
+              name={hidden ? input.passwordButtonShow : input.passwordButtonHide}
               className={styles.field__password_button}
               onClick={handleClick}
             />

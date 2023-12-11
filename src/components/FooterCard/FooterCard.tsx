@@ -1,11 +1,12 @@
 import { ReactElement } from "react";
 import Image from "next/image";
-import { TeamMember } from "../../types";
+import { ITeamMember } from "../../types";
 
 import styles from "./FooterCard.module.scss";
 
 export interface FooterCardProps {
-  teamMember: TeamMember;
+  teamMember: ITeamMember;
+  key: string;
 }
 
 function FooterCard({ teamMember }: FooterCardProps): ReactElement {
