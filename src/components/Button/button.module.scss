@@ -6,14 +6,14 @@
   height: 6rem;
   padding: 0 1rem;
   padding-bottom: 1px;
-  background-color: $blue;
-  border: none;
   font-size: $text-size-button;
   color: $white;
   text-transform: uppercase;
+  background-color: $blue;
+  border: none;
 
-  cursor: pointer;
   transition: all 0.2s ease-in;
+  cursor: pointer;
 
   &:hover {
     background-color: $button-back-hover;

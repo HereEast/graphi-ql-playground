@@ -69,7 +69,7 @@
   &__footer {
     text-align: center;
 
-    a {
+    &_link {
       color: $blue;
 
       &::after {

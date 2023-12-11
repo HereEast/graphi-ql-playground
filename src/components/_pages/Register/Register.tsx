@@ -1,15 +1,17 @@
-import Link from "next/link";
 import { ReactElement, useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+
 import { useAppContext } from "../../../hooks";
-import { Button, Input, ErrorMessage, PasswordStrength } from "../../";
+import { handleAuthError } from "../../../utils";
 import { Page, IRegisterFormData } from "../../../types";
 import { auth, registerSchema } from "../../../services";
-import { FORM, FORM_ERROR } from "../../../constants/locale";
+import { FORM } from "../../../constants/locale";
+import { Button, Input, ErrorMessage, PasswordStrength } from "../..";
 
 import styles from "./Register.module.scss";
 
@@ -48,13 +50,7 @@ function Register(): ReactElement {
       router.replace(Page.PLAYGROUND);
       setAuthError("");
     } catch (error) {
-      if (error instanceof Error) {
-        if (error.message.includes("email-already-in-use")) {
-          setAuthError(FORM_ERROR[lang].auth_email_in_use);
-        } else {
-          setAuthError(FORM_ERROR[lang].auth_something_wrong);
-        }
-      }
+      handleAuthError({ error, setAuthError, lang });
     }
   }
 
@@ -87,7 +83,10 @@ function Register(): ReactElement {
       </div>
       <div className={styles.register__footer}>
         <span>
-          {FORM[lang].registerNote} <Link href={Page.LOGIN}>{FORM[lang].registerLink}</Link>
+          {FORM[lang].registerNote}{" "}
+          <Link href={Page.LOGIN} className={styles.register__footer_link}>
+            {FORM[lang].registerLink}
+          </Link>
         </span>
       </div>
     </div>

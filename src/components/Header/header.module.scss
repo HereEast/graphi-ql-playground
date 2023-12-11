@@ -1,19 +1,18 @@
 @import "../../styles/variables.scss";
 
 .header {
-  position: relative;
-  padding: 0 $padding-body;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
   width: 100%;
   height: $header-height;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: $blue;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
+  padding: 0 $padding-body;
 
   transition: all 0.1s ease-in;
 
@@ -38,14 +37,14 @@
   display: flex;
 
   &__logo {
-    color: $white;
+    position: relative;
+    z-index: 1000;
     display: flex;
     align-items: center;
     gap: 0.8rem;
+    color: $white;
     margin-right: auto;
     margin-bottom: 2px;
-    position: relative;
-    z-index: 1000;
 
     &:hover {
       opacity: 0.5;
@@ -68,6 +67,30 @@
       display: none;
     }
   }
+
+  &__button_menu {
+    position: relative;
+    height: 3rem;
+    display: none;
+    font-size: $text-size;
+    color: $blue;
+    background-color: $white;
+    z-index: 1000;
+
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+
+    @media (max-width: 480px) {
+      display: block;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      color: $blue;
+      background-color: $white;
+      opacity: 0.5;
+    }
+  }
 }
 
 .menu {
@@ -76,16 +99,16 @@
 
   @media (max-width: 480px) {
     position: absolute;
-    width: 22rem;
-    height: 24rem;
     right: 0;
     top: 0;
+    display: none;
+    width: 22rem;
+    height: 24rem;
     background-color: $blue;
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-end;
     padding: 1rem 1rem;
-    display: none;
   }
 
   &__links {
@@ -113,8 +136,8 @@
       height: 0.8rem;
       background-color: $blue;
       clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-      pointer-events: none;
       transition: all 0.2s ease-in;
+      pointer-events: none;
     }
   }
 }
@@ -124,43 +147,19 @@
   appearance: none;
   width: 5.8rem;
   height: 3rem;
-  padding-left: 1rem;
-  padding-bottom: 0.2rem;
   font-size: 1.6rem;
   color: $blue;
   background-color: $white;
   border: none;
   border-radius: 0;
   outline: none;
+  padding-left: 1rem;
+  padding-bottom: 0.2rem;
 
   transition: all 0.1s ease-in;
   cursor: pointer;
 
   &:hover {
-    opacity: 0.5;
-  }
-}
-
-.button__menu {
-  position: relative;
-  height: 3rem;
-  background-color: $white;
-  font-size: $text-size;
-  color: $blue;
-  z-index: 1000;
-  display: none;
-
-  cursor: pointer;
-  transition: all 0.2s ease-in;
-
-  @media (max-width: 480px) {
-    display: block;
-    flex-shrink: 0;
-  }
-
-  &:hover {
-    background-color: $white;
-    color: $blue;
     opacity: 0.5;
   }
 }

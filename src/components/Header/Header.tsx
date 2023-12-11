@@ -3,12 +3,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useAppContext } from "../../hooks";
-import { Button } from "../";
 import { Page } from "../../types";
 import { LANGS } from "../../constants";
 import { HEADER } from "../../constants/locale";
-
 import { auth, logout } from "../../services";
+import { Button } from "../";
 
 import clsx from "clsx";
 import styles from "./Header.module.scss";
@@ -107,7 +106,7 @@ function Header(): ReactElement {
 
         <Button
           name={HEADER[lang].BUTTON_MENU}
-          className={styles.button__menu}
+          className={styles.nav__button_menu}
           onClick={toggleMenu}
         />
 
