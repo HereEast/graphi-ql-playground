@@ -8,26 +8,30 @@ function TeamSection(): ReactElement {
   const { lang } = useAppContext();
 
   return (
-    <>
-      <section className={styles.team}>
-        <div className={styles.team__container}>
-          <span className={styles.team__title}>{HOME[lang].teamTitle}</span>
-          <ul className={styles.team__items}>
-            {TEAM[lang].map((person) => (
-              <li className={styles.team__item} key={person.github}>
-                <p className={styles.team__description}>{person.description}</p>
-                <div className={styles.team__item_footer}>
-                  <a href={person.github} className={styles.team__name} title="GitHub">
-                    {person.name}
-                  </a>
-                  <span className={styles.team__position}>{person.position.toUpperCase()}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-    </>
+    <section className={styles.team}>
+      <div className={styles.team__container}>
+        <span className={styles.team__title}>{HOME[lang].teamTitle}</span>
+        <ul className={styles.team__cards}>
+          {TEAM[lang].map((person) => (
+            <li className={styles.card} key={person.github}>
+              <p className={styles.card__description}>{person.description}</p>
+              <div className={styles.card__footer}>
+                <a
+                  href={person.github}
+                  className={styles.card__name}
+                  title="GitHub"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {person.name}
+                </a>
+                <span className={styles.card__position}>{person.position.toUpperCase()}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }
 
