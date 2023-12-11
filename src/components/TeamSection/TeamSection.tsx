@@ -1,18 +1,17 @@
 import { ReactElement } from "react";
-import { useAppContext } from "../../hooks";
-import { LOCALE_HOME, LOCALE_TEAM } from "../../constants/locale";
+import { useLocale } from "../../hooks";
 
 import styles from "./TeamSection.module.scss";
 
 function TeamSection(): ReactElement {
-  const { lang } = useAppContext();
+  const { home, team } = useLocale();
 
   return (
     <section className={styles.team}>
       <div className={styles.team__container}>
-        <span className={styles.team__title}>{LOCALE_HOME[lang].teamTitle}</span>
+        <span className={styles.team__title}>{home.teamTitle}</span>
         <ul className={styles.team__cards}>
-          {LOCALE_TEAM[lang].map((person) => (
+          {team.map((person) => (
             <li className={styles.card} key={person.github}>
               <p className={styles.card__description}>{person.description}</p>
               <div className={styles.card__footer}>

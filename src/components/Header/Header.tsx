@@ -1,10 +1,9 @@
 import { ReactElement, useEffect, useState, ChangeEvent } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useAppContext, useAuthContext } from "../../hooks";
+import { useAppContext, useAuthContext, useLocale } from "../../hooks";
 import { Page } from "../../types";
-import { LANGS } from "../../constants";
-import { LOCALE_HEADER } from "../../constants/locale";
+import { LANGS } from "../../constants/constants";
 import { logout } from "../../services";
 import { Button } from "../";
 
@@ -14,6 +13,7 @@ import styles from "./Header.module.scss";
 function Header(): ReactElement {
   const router = useRouter();
 
+  const { header } = useLocale();
   const { lang, setLang } = useAppContext();
   const { user, loading } = useAuthContext();
 
@@ -102,23 +102,19 @@ function Header(): ReactElement {
           <span className={styles.nav__logo_icon}></span>
         </Link>
 
-        <Button
-          name={LOCALE_HEADER[lang].BUTTON_MENU}
-          className={styles.nav__button_menu}
-          onClick={toggleMenu}
-        />
+        <Button name={header.menuButton} className={styles.nav__button_menu} onClick={toggleMenu} />
 
         <div className={styles.menu}>
           {user && !loading && (
             <ul className={styles.menu__links}>
               <li>
                 <Link href={Page.PLAYGROUND} className={styles.link} onClick={closeMenu}>
-                  {LOCALE_HEADER[lang].LINK_PLAYGROUND}
+                  {header.productLink}
                 </Link>
               </li>
               <li>
                 <Link href="" className={styles.link} onClick={handleSignOut}>
-                  {LOCALE_HEADER[lang].LINK_SIGNOUT}
+                  {header.signOutLink}
                 </Link>
               </li>
             </ul>
@@ -128,12 +124,12 @@ function Header(): ReactElement {
             <ul className={styles.menu__links}>
               <li>
                 <Link href={Page.LOGIN} className={styles.link} onClick={closeMenu}>
-                  {LOCALE_HEADER[lang].LINK_LOGIN}
+                  {header.loginLink}
                 </Link>
               </li>
               <li>
                 <Link href={Page.REGISTER} className={styles.link} onClick={closeMenu}>
-                  {LOCALE_HEADER[lang].LINK_REGISTER}
+                  {header.registerLink}
                 </Link>
               </li>
             </ul>

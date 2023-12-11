@@ -1,25 +1,23 @@
 import { ReactElement } from "react";
-import { useAppContext } from "../../hooks";
-import { LINK_SCHOOL, LINK_COURSE } from "../../constants";
-import { LOCALE_TEAM, LOCALE_FOOTER } from "../../constants/locale";
-
+import { useLocale } from "../../hooks";
+import { LINK_SCHOOL, LINK_COURSE } from "../../constants/constants";
 import { FooterCard } from "../";
 
 import styles from "./Footer.module.scss";
 
 function Footer(): ReactElement {
-  const { lang } = useAppContext();
+  const { team, footer } = useLocale();
 
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__container}>
         <div className={styles.team}>
           <div className={styles.team__title}>
-            <span>{LOCALE_FOOTER[lang].title}</span>
-            <span>{LOCALE_FOOTER[lang].subtitle}</span>
+            <span>{footer.title}</span>
+            <span>{footer.subtitle}</span>
           </div>
           <ul className={styles.team__cards}>
-            {LOCALE_TEAM[lang].map((person) => (
+            {team.map((person) => (
               <FooterCard teamMember={person} />
             ))}
           </ul>
@@ -34,7 +32,7 @@ function Footer(): ReactElement {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {LOCALE_FOOTER[lang].linkSchool}
+                {footer.linkSchool}
               </a>
             </li>
             <li className={styles.course__links_item}>
@@ -44,13 +42,13 @@ function Footer(): ReactElement {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {LOCALE_FOOTER[lang].linkCourse}
+                {footer.linkCourse}
               </a>
               <span>(2023)</span>
             </li>
           </ul>
 
-          <span className={styles.course__copyright}>{LOCALE_FOOTER[lang].copy}</span>
+          <span className={styles.course__copyright}>{footer.copy}</span>
         </div>
       </div>
     </footer>

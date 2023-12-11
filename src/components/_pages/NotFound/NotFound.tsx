@@ -1,15 +1,15 @@
 import { ReactElement } from "react";
 import { useRouter } from "next/router";
-import { useAppContext } from "../../../hooks";
-import { Button } from "../..";
+import { useLocale } from "../../../hooks";
 import { Page } from "../../../types";
-import { LOCALE_NOT_FOUND } from "../../../constants/locale";
+import { Button } from "../..";
 
 import styles from "./NotFound.module.scss";
 
 function NotFound(): ReactElement {
   const router = useRouter();
-  const { lang } = useAppContext();
+
+  const { notFound } = useLocale();
 
   function navigateHome(): void {
     router.push(Page.HOME);
@@ -19,12 +19,8 @@ function NotFound(): ReactElement {
     <section className={styles.notFound}>
       <div className={styles.notFound__container}>
         <span className={styles.notFound__icons}>🙁🙁🙁</span>
-        <span className={styles.notFound__title}>{LOCALE_NOT_FOUND[lang].title}</span>
-        <Button
-          name={LOCALE_NOT_FOUND[lang].button}
-          className={styles.notFound__button}
-          onClick={navigateHome}
-        />
+        <span className={styles.notFound__title}>{notFound.title}</span>
+        <Button name={notFound.button} className={styles.notFound__button} onClick={navigateHome} />
       </div>
     </section>
   );

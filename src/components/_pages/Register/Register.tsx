@@ -5,11 +5,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-import { useAppContext, useAuthContext } from "../../../hooks";
+import { useAppContext, useAuthContext, useLocale } from "../../../hooks";
 import { handleAuthError } from "../../../utils";
-import { Page, IRegisterFormData } from "../../../types";
 import { auth, registerSchema } from "../../../services";
-import { LOCALE_FORM } from "../../../constants/locale";
+import { Page, IRegisterFormData } from "../../../types";
 import { Button, Input, ErrorMessage, PasswordStrength } from "../..";
 
 import styles from "./Register.module.scss";
@@ -17,6 +16,7 @@ import styles from "./Register.module.scss";
 function Register(): ReactElement {
   const router = useRouter();
 
+  const { register: registerPage } = useLocale();
   const { lang } = useAppContext();
   const { user } = useAuthContext();
 
@@ -49,7 +49,7 @@ function Register(): ReactElement {
       router.replace(Page.PLAYGROUND);
       setAuthError("");
     } catch (error) {
-      handleAuthError({ error, setAuthError, lang });
+      handleAuthError({ lang, error, setAuthError });
     }
   }
 
@@ -57,8 +57,8 @@ function Register(): ReactElement {
     <div className={styles.register}>
       <div className={styles.register__container}>
         <div className={styles.register__header}>
-          <h2 className={styles.register__header_title}>{LOCALE_FORM[lang].registerTitle}</h2>
-          <p className={styles.register__header_subtitle}>{LOCALE_FORM[lang].registerSubtitle}</p>
+          <h2 className={styles.register__header_title}>{registerPage.title}</h2>
+          <p className={styles.register__header_subtitle}>{registerPage.subtitle}</p>
         </div>
         <form className={styles.register__form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.register__form_inputs}>
@@ -70,7 +70,7 @@ function Register(): ReactElement {
           <PasswordStrength inputValue={passwordInputValue} />
 
           <Button
-            name={LOCALE_FORM[lang].registerButton}
+            name={registerPage.button}
             type="submit"
             className={styles.register__form_button}
             disabled={isSubmitting}
@@ -83,9 +83,9 @@ function Register(): ReactElement {
 
       <div className={styles.register__footer}>
         <span>
-          {LOCALE_FORM[lang].registerNote}{" "}
+          {registerPage.note}{" "}
           <Link href={Page.LOGIN} className={styles.register__footer_link}>
-            {LOCALE_FORM[lang].registerLink}
+            {registerPage.link}
           </Link>
         </span>
       </div>

@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { LOCALE_FORM_ERROR } from "../constants/locale";
+import { DICTIONARY } from "../constants/dictionary";
 
 type LoginSchemaType = yup.ObjectSchema<{
   email: string;
@@ -13,33 +13,37 @@ type RegisterSchemaType = yup.ObjectSchema<{
 }>;
 
 function generateLoginSchema(lang: string): LoginSchemaType {
+  const error = DICTIONARY[lang as keyof typeof DICTIONARY].formErrors;
+
   return yup.object({
     email: yup
       .string()
-      .required(LOCALE_FORM_ERROR[lang].email_required)
-      .matches(/^[\w]+@([\w]+\.)+[\w]{2,}$/, LOCALE_FORM_ERROR[lang].email_pattern)
-      .email(LOCALE_FORM_ERROR[lang].email_valid),
+      .required(error.email_required)
+      .matches(/^[\w]+@([\w]+\.)+[\w]{2,}$/, error.email_pattern)
+      .email(error.email_valid),
     password: yup
       .string()
-      .required(LOCALE_FORM_ERROR[lang].password_required)
-      .matches(/^(?=.*\d)(?=.*[A-Za-z])(?=.*\W).+$/, LOCALE_FORM_ERROR[lang].password_contain)
-      .min(8, LOCALE_FORM_ERROR[lang].password__length),
+      .required(error.password_required)
+      .matches(/^(?=.*\d)(?=.*[A-Za-z])(?=.*\W).+$/, error.password_contain)
+      .min(8, error.password__length),
   });
 }
 
 function generateRegisterSchema(lang: string): RegisterSchemaType {
+  const error = DICTIONARY[lang as keyof typeof DICTIONARY].formErrors;
+
   return yup.object({
-    name: yup.string().required(LOCALE_FORM_ERROR[lang].name_required),
+    name: yup.string().required(error.name_required),
     email: yup
       .string()
-      .required(LOCALE_FORM_ERROR[lang].email_required)
-      .matches(/^[\w]+@([\w]+\.)+[\w]{2,}$/, LOCALE_FORM_ERROR[lang].email_pattern)
-      .email(LOCALE_FORM_ERROR[lang].email_valid),
+      .required(error.email_required)
+      .matches(/^[\w]+@([\w]+\.)+[\w]{2,}$/, error.email_pattern)
+      .email(error.email_valid),
     password: yup
       .string()
-      .required(LOCALE_FORM_ERROR[lang].password_required)
-      .matches(/^(?=.*\d)(?=.*[A-Za-z])(?=.*\W).+$/, LOCALE_FORM_ERROR[lang].password_contain)
-      .min(8, LOCALE_FORM_ERROR[lang].password__length),
+      .required(error.password_required)
+      .matches(/^(?=.*\d)(?=.*[A-Za-z])(?=.*\W).+$/, error.password_contain)
+      .min(8, error.password__length),
   });
 }
 

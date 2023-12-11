@@ -5,11 +5,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
-import { useAppContext, useAuthContext } from "../../../hooks";
+import { useAppContext, useAuthContext, useLocale } from "../../../hooks";
 import { handleAuthError } from "../../../utils";
-import { Page, ILoginFormData } from "../../../types";
 import { auth, loginSchema } from "../../../services";
-import { LOCALE_FORM } from "../../../constants/locale";
+import { Page, ILoginFormData } from "../../../types";
 import { Button, Input, ErrorMessage } from "../../";
 
 import styles from "./Login.module.scss";
@@ -17,6 +16,7 @@ import styles from "./Login.module.scss";
 function Login(): ReactElement {
   const router = useRouter();
 
+  const { login } = useLocale();
   const { lang } = useAppContext();
   const { user } = useAuthContext();
 
@@ -54,8 +54,8 @@ function Login(): ReactElement {
     <div className={styles.login}>
       <div className={styles.login__container}>
         <div className={styles.login__header}>
-          <h2 className={styles.login__header_title}>{LOCALE_FORM[lang].loginTitle}</h2>
-          <p className={styles.login__header_subtitle}>{LOCALE_FORM[lang].loginSubtitle}</p>
+          <h2 className={styles.login__header_title}>{login.title}</h2>
+          <p className={styles.login__header_subtitle}>{login.subtitle}</p>
         </div>
         <form className={styles.login__form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.login__form_inputs}>
@@ -63,7 +63,7 @@ function Login(): ReactElement {
             <Input inputName="password" type="password" errors={errors} {...register("password")} />
           </div>
           <Button
-            name={LOCALE_FORM[lang].loginButton}
+            name={login.button}
             type="submit"
             className={styles.login__form_button}
             disabled={isSubmitting}
@@ -76,9 +76,9 @@ function Login(): ReactElement {
 
       <div className={styles.login__footer}>
         <span>
-          {LOCALE_FORM[lang].loginNote}{" "}
+          {login.note}{" "}
           <Link href={Page.REGISTER} className={styles.login__footer_link}>
-            {LOCALE_FORM[lang].loginLink}
+            {login.link}
           </Link>
         </span>
       </div>

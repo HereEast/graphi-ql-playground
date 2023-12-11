@@ -1,13 +1,12 @@
 import { ReactElement } from "react";
 import Link from "next/link";
-import { useAppContext, useAuthContext } from "../../hooks";
+import { useAuthContext, useLocale } from "../../hooks";
 import { Page } from "../../types";
-import { LOCALE_HOME } from "../../constants/locale";
 
 import styles from "./HeroSection.module.scss";
 
 function HeroSection(): ReactElement {
-  const { lang } = useAppContext();
+  const { home } = useLocale();
   const { user } = useAuthContext();
 
   return (
@@ -15,7 +14,7 @@ function HeroSection(): ReactElement {
       <div className={styles.hero__container}>
         <div className={styles.hero__title}>
           <h2 className={styles.hero__title_text}>
-            {LOCALE_HOME[lang].heroTitle}{" "}
+            {home.heroTitle}{" "}
             <a href="" className={styles.hero__title_link}>
               The Rick and Morty API
             </a>
@@ -24,14 +23,14 @@ function HeroSection(): ReactElement {
 
         <div className={styles.hero__description}>
           <div className={styles.hero__description_text}>
-            <p>{LOCALE_HOME[lang].heroPar}</p>
+            <p>{home.heroPar}</p>
             {user ? (
               <Link href={Page.PLAYGROUND} className={styles.hero__description_button}>
-                {LOCALE_HOME[lang].heroButtonPlay}
+                {home.heroButtonPlay}
               </Link>
             ) : (
               <Link href={Page.LOGIN} className={styles.hero__description_button}>
-                {LOCALE_HOME[lang].heroButtonLogin}
+                {home.heroButtonLogin}
               </Link>
             )}
           </div>

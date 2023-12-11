@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { FORM_ERROR } from "../constants/locale";
+import { DICTIONARY } from "../constants";
 
 export interface Props {
   lang: string;
@@ -10,11 +10,13 @@ export interface Props {
 export function handleAuthError({ error, setAuthError, lang }: Props): void {
   if (!(error instanceof Error)) return;
 
+  const errors = DICTIONARY[lang as keyof typeof DICTIONARY].formErrors;
+
   if (error.message.includes("invalid-credential")) {
-    setAuthError(FORM_ERROR[lang].auth_invalid_credentials);
+    setAuthError(errors.auth_invalid_credentials);
   } else if (error.message.includes("email-already-in-use")) {
-    setAuthError(FORM_ERROR[lang].auth_email_in_use);
+    setAuthError(errors.auth_email_in_use);
   } else {
-    setAuthError(FORM_ERROR[lang].auth_something_wrong);
+    setAuthError(errors.auth_something_wrong);
   }
 }
