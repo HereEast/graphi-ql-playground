@@ -1,7 +1,7 @@
 import { ReactElement, MouseEvent } from "react";
 
-import classnames from "classnames";
-import styles from "./button.module.scss";
+import clsx from "clsx";
+import styles from "./Button.module.scss";
 
 interface ButtonProps {
   type?: "submit" | "reset" | "button";
@@ -21,7 +21,7 @@ function Button({
   return (
     <button
       type={type}
-      className={classnames(styles.button, className || "")}
+      className={clsx(styles.button, className || "")}
       onClick={(event): void => onClick(event)}
       disabled={disabled}
     >
