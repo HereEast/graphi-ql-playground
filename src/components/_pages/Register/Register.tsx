@@ -10,7 +10,7 @@ import { useAppContext } from "../../../hooks";
 import { handleAuthError } from "../../../utils";
 import { Page, IRegisterFormData } from "../../../types";
 import { auth, registerSchema } from "../../../services";
-import { FORM } from "../../../constants/locale";
+import { LOCALE_FORM } from "../../../constants/locale";
 import { Button, Input, ErrorMessage, PasswordStrength } from "../..";
 
 import styles from "./Register.module.scss";
@@ -58,8 +58,8 @@ function Register(): ReactElement {
     <div className={styles.register}>
       <div className={styles.register__container}>
         <div className={styles.register__header}>
-          <h2 className={styles.register__header_title}>{FORM[lang].registerTitle}</h2>
-          <p className={styles.register__header_subtitle}>{FORM[lang].registerSubtitle}</p>
+          <h2 className={styles.register__header_title}>{LOCALE_FORM[lang].registerTitle}</h2>
+          <p className={styles.register__header_subtitle}>{LOCALE_FORM[lang].registerSubtitle}</p>
         </div>
         <form className={styles.register__form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.register__form_inputs}>
@@ -71,7 +71,7 @@ function Register(): ReactElement {
           <PasswordStrength inputValue={passwordInputValue} />
 
           <Button
-            name={FORM[lang].registerButton}
+            name={LOCALE_FORM[lang].registerButton}
             type="submit"
             className={styles.register__form_button}
             disabled={isSubmitting}
@@ -83,9 +83,9 @@ function Register(): ReactElement {
       </div>
       <div className={styles.register__footer}>
         <span>
-          {FORM[lang].registerNote}{" "}
+          {LOCALE_FORM[lang].registerNote}{" "}
           <Link href={Page.LOGIN} className={styles.register__footer_link}>
-            {FORM[lang].registerLink}
+            {LOCALE_FORM[lang].registerLink}
           </Link>
         </span>
       </div>

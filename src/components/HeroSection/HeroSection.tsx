@@ -4,7 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useAppContext } from "../../hooks";
 import { Page } from "../../types";
 import { auth } from "../../services";
-import { HOME } from "../../constants/locale";
+import { LOCALE_HOME } from "../../constants/locale";
 
 import styles from "./HeroSection.module.scss";
 
@@ -17,7 +17,7 @@ function HeroSection(): ReactElement {
       <div className={styles.hero__container}>
         <div className={styles.hero__title}>
           <h2 className={styles.hero__title_text}>
-            {HOME[lang].heroTitle}{" "}
+            {LOCALE_HOME[lang].heroTitle}{" "}
             <a href="" className={styles.hero__title_link}>
               The Rick and Morty API
             </a>
@@ -25,14 +25,14 @@ function HeroSection(): ReactElement {
         </div>
         <div className={styles.hero__description}>
           <div className={styles.hero__description_text}>
-            <p>{HOME[lang].heroPar}</p>
+            <p>{LOCALE_HOME[lang].heroPar}</p>
             {user ? (
               <Link href={Page.PLAYGROUND} className={styles.hero__description_button}>
-                {HOME[lang].heroButtonPlay}
+                {LOCALE_HOME[lang].heroButtonPlay}
               </Link>
             ) : (
               <Link href={Page.LOGIN} className={styles.hero__description_button}>
-                {HOME[lang].heroButtonLogin}
+                {LOCALE_HOME[lang].heroButtonLogin}
               </Link>
             )}
           </div>

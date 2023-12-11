@@ -1,6 +1,6 @@
 import { FooterDictionaryType } from "../../types";
 
-export const FOOTER: FooterDictionaryType = {
+export const LOCALE_FOOTER: FooterDictionaryType = {
   en: {
     title: "Hi👋👋👋",
     subtitle: "Here's the team:",

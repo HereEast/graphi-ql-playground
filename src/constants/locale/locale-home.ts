@@ -1,6 +1,6 @@
 import { HomeDictionaryType, CourseDictionaryType } from "../../types";
 
-export const HOME: HomeDictionaryType = {
+export const LOCALE_HOME: HomeDictionaryType = {
   en: {
     heroTitle:
       "Hey there, welcome to the GraphiQL Playground! This is the go-to IDE for making GraphQL requests to",
@@ -39,7 +39,7 @@ export const HOME: HomeDictionaryType = {
   },
 };
 
-export const COURSE: CourseDictionaryType = {
+export const LOCALE_HOME_COURSE: CourseDictionaryType = {
   en: [
     "Components",
     "Routing",

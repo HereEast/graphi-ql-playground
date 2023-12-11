@@ -10,7 +10,7 @@ import { useAppContext } from "../../../hooks";
 import { handleAuthError } from "../../../utils";
 import { Page, ILoginFormData } from "../../../types";
 import { auth, loginSchema } from "../../../services";
-import { FORM } from "../../../constants/locale";
+import { LOCALE_FORM } from "../../../constants/locale";
 import { Button, Input, ErrorMessage } from "../../";
 
 import styles from "./Login.module.scss";
@@ -54,8 +54,8 @@ function Login(): ReactElement {
     <div className={styles.login}>
       <div className={styles.login__container}>
         <div className={styles.login__header}>
-          <h2 className={styles.login__header_title}>{FORM[lang].loginTitle}</h2>
-          <p className={styles.login__header_subtitle}>{FORM[lang].loginSubtitle}</p>
+          <h2 className={styles.login__header_title}>{LOCALE_FORM[lang].loginTitle}</h2>
+          <p className={styles.login__header_subtitle}>{LOCALE_FORM[lang].loginSubtitle}</p>
         </div>
         <form className={styles.login__form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.login__form_inputs}>
@@ -63,7 +63,7 @@ function Login(): ReactElement {
             <Input inputName="password" type="password" errors={errors} {...register("password")} />
           </div>
           <Button
-            name={FORM[lang].loginButton}
+            name={LOCALE_FORM[lang].loginButton}
             type="submit"
             className={styles.login__form_button}
             disabled={isSubmitting}
@@ -75,9 +75,9 @@ function Login(): ReactElement {
       </div>
       <div className={styles.login__footer}>
         <span>
-          {FORM[lang].loginNote}{" "}
+          {LOCALE_FORM[lang].loginNote}{" "}
           <Link href={Page.REGISTER} className={styles.login__footer_link}>
-            {FORM[lang].loginLink}
+            {LOCALE_FORM[lang].loginLink}
           </Link>
         </span>
       </div>

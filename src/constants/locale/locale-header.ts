@@ -1,6 +1,6 @@
 import { HeaderDictionaryType } from "../../types";
 
-export const HEADER: HeaderDictionaryType = {
+export const LOCALE_HEADER: HeaderDictionaryType = {
   en: {
     LINK_LOGIN: "Login",
     LINK_REGISTER: "Register",

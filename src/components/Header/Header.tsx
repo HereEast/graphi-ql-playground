@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useAppContext } from "../../hooks";
 import { Page } from "../../types";
 import { LANGS } from "../../constants";
-import { HEADER } from "../../constants/locale";
+import { LOCALE_HEADER } from "../../constants/locale";
 import { auth, logout } from "../../services";
 import { Button } from "../";
 
@@ -105,7 +105,7 @@ function Header(): ReactElement {
         </Link>
 
         <Button
-          name={HEADER[lang].BUTTON_MENU}
+          name={LOCALE_HEADER[lang].BUTTON_MENU}
           className={styles.nav__button_menu}
           onClick={toggleMenu}
         />
@@ -115,12 +115,12 @@ function Header(): ReactElement {
             <ul className={styles.menu__links}>
               <li>
                 <Link href={Page.PLAYGROUND} className={styles.link} onClick={closeMenu}>
-                  {HEADER[lang].LINK_PLAYGROUND}
+                  {LOCALE_HEADER[lang].LINK_PLAYGROUND}
                 </Link>
               </li>
               <li>
                 <Link href="" className={styles.link} onClick={handleSignOut}>
-                  {HEADER[lang].LINK_SIGNOUT}
+                  {LOCALE_HEADER[lang].LINK_SIGNOUT}
                 </Link>
               </li>
             </ul>
@@ -130,12 +130,12 @@ function Header(): ReactElement {
             <ul className={styles.menu__links}>
               <li>
                 <Link href={Page.LOGIN} className={styles.link} onClick={closeMenu}>
-                  {HEADER[lang].LINK_LOGIN}
+                  {LOCALE_HEADER[lang].LINK_LOGIN}
                 </Link>
               </li>
               <li>
                 <Link href={Page.REGISTER} className={styles.link} onClick={closeMenu}>
-                  {HEADER[lang].LINK_REGISTER}
+                  {LOCALE_HEADER[lang].LINK_REGISTER}
                 </Link>
               </li>
             </ul>

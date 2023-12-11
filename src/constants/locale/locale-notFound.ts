@@ -1,6 +1,6 @@
 import { NotFoundDictionaryType } from "../../types";
 
-export const NOT_FOUND: NotFoundDictionaryType = {
+export const LOCALE_NOT_FOUND: NotFoundDictionaryType = {
   en: {
     title: "Sorry, page was not found",
     button: "Back to Home",

@@ -1,6 +1,6 @@
 import { TeamDictionaryType } from "../../types";
 
-export const TEAM: TeamDictionaryType = {
+export const LOCALE_TEAM: TeamDictionaryType = {
   en: [
     {
       name: "Andrei Niasmachny",

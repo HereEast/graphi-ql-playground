@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useAppContext } from "../../hooks";
 import { LINK_SCHOOL, LINK_COURSE } from "../../constants";
-import { TEAM, FOOTER } from "../../constants/locale";
+import { LOCALE_TEAM, LOCALE_FOOTER } from "../../constants/locale";
 
 import { FooterCard } from "../";
 
@@ -15,11 +15,11 @@ function Footer(): ReactElement {
       <div className={styles.footer__container}>
         <div className={styles.team}>
           <div className={styles.team__title}>
-            <span>{FOOTER[lang].title}</span>
-            <span>{FOOTER[lang].subtitle}</span>
+            <span>{LOCALE_FOOTER[lang].title}</span>
+            <span>{LOCALE_FOOTER[lang].subtitle}</span>
           </div>
           <ul className={styles.team__cards}>
-            {TEAM[lang].map((person) => (
+            {LOCALE_TEAM[lang].map((person) => (
               <FooterCard teamMember={person} />
             ))}
           </ul>
@@ -34,7 +34,7 @@ function Footer(): ReactElement {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {FOOTER[lang].linkSchool}
+                {LOCALE_FOOTER[lang].linkSchool}
               </a>
             </li>
             <li className={styles.course__links_item}>
@@ -44,13 +44,13 @@ function Footer(): ReactElement {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {FOOTER[lang].linkCourse}
+                {LOCALE_FOOTER[lang].linkCourse}
               </a>
               <span>(2023)</span>
             </li>
           </ul>
 
-          <span className={styles.course__copyright}>{FOOTER[lang].copy}</span>
+          <span className={styles.course__copyright}>{LOCALE_FOOTER[lang].copy}</span>
         </div>
       </div>
     </footer>

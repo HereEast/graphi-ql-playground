@@ -2,7 +2,7 @@ import { ReactElement, useState, forwardRef } from "react";
 import { FieldErrors } from "react-hook-form";
 import { useAppContext } from "../../hooks";
 import { Button, ErrorMessage } from "../";
-import { INPUT } from "../../constants/locale";
+import { LOCALE_INPUT } from "../../constants/locale";
 
 import clsx from "clsx";
 import styles from "./Input.module.scss";
@@ -39,12 +39,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               [styles.field__password_input]: type === "password",
             })}
             type={hidden && type === "password" ? "password" : "text"}
-            placeholder={placeholder || (inputName && INPUT[lang][inputName])}
+            placeholder={placeholder || (inputName && LOCALE_INPUT[lang][inputName])}
             {...restProps}
           />
           {type === "password" && (
             <Button
-              name={hidden ? INPUT[lang].passwordButtonShow : INPUT[lang].passwordButtonHide}
+              name={
+                hidden
+                  ? LOCALE_INPUT[lang].passwordButtonShow
+                  : LOCALE_INPUT[lang].passwordButtonHide
+              }
               className={styles.field__password_button}
               onClick={handleClick}
             />
