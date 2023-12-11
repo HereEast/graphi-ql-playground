@@ -1,16 +1,14 @@
 import { ReactElement } from "react";
 import Link from "next/link";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useAppContext } from "../../hooks";
+import { useAppContext, useAuthContext } from "../../hooks";
 import { Page } from "../../types";
-import { auth } from "../../services";
 import { LOCALE_HOME } from "../../constants/locale";
 
 import styles from "./HeroSection.module.scss";
 
 function HeroSection(): ReactElement {
   const { lang } = useAppContext();
-  const [user] = useAuthState(auth);
+  const { user } = useAuthContext();
 
   return (
     <section className={styles.hero}>
@@ -23,6 +21,7 @@ function HeroSection(): ReactElement {
             </a>
           </h2>
         </div>
+
         <div className={styles.hero__description}>
           <div className={styles.hero__description_text}>
             <p>{LOCALE_HOME[lang].heroPar}</p>

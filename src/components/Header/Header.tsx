@@ -1,12 +1,11 @@
 import { ReactElement, useEffect, useState, ChangeEvent } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useAppContext } from "../../hooks";
+import { useAppContext, useAuthContext } from "../../hooks";
 import { Page } from "../../types";
 import { LANGS } from "../../constants";
 import { LOCALE_HEADER } from "../../constants/locale";
-import { auth, logout } from "../../services";
+import { logout } from "../../services";
 import { Button } from "../";
 
 import clsx from "clsx";
@@ -16,8 +15,7 @@ function Header(): ReactElement {
   const router = useRouter();
 
   const { lang, setLang } = useAppContext();
-
-  const [user] = useAuthState(auth); // Handle loading and error
+  const { user, loading } = useAuthContext();
 
   const [isScroll, setIsScroll] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -111,7 +109,7 @@ function Header(): ReactElement {
         />
 
         <div className={styles.menu}>
-          {user && (
+          {user && !loading && (
             <ul className={styles.menu__links}>
               <li>
                 <Link href={Page.PLAYGROUND} className={styles.link} onClick={closeMenu}>
@@ -126,7 +124,7 @@ function Header(): ReactElement {
             </ul>
           )}
 
-          {!user && (
+          {!user && !loading && (
             <ul className={styles.menu__links}>
               <li>
                 <Link href={Page.LOGIN} className={styles.link} onClick={closeMenu}>
@@ -141,15 +139,17 @@ function Header(): ReactElement {
             </ul>
           )}
 
-          <div className={styles.menu__select}>
-            <select className={styles.select} value={lang} onChange={handleSelectLang}>
-              {LANGS.map((option) => (
-                <option key={option} value={option}>
-                  {option.toUpperCase()}
-                </option>
-              ))}
-            </select>
-          </div>
+          {!loading && (
+            <div className={styles.menu__select}>
+              <select className={styles.select} value={lang} onChange={handleSelectLang}>
+                {LANGS.map((option) => (
+                  <option key={option} value={option}>
+                    {option.toUpperCase()}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
         </div>
       </nav>
     </header>

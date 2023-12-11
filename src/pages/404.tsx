@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import Head from "next/head";
-import { NotFound } from "../components/";
+import { NotFound } from "../components";
 
 export default function NoFoundPage(): ReactElement {
   return (

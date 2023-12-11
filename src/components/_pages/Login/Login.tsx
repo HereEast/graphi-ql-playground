@@ -4,9 +4,8 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
 
-import { useAppContext } from "../../../hooks";
+import { useAppContext, useAuthContext } from "../../../hooks";
 import { handleAuthError } from "../../../utils";
 import { Page, ILoginFormData } from "../../../types";
 import { auth, loginSchema } from "../../../services";
@@ -17,9 +16,10 @@ import styles from "./Login.module.scss";
 
 function Login(): ReactElement {
   const router = useRouter();
-  const { lang } = useAppContext();
 
-  const [user] = useAuthState(auth); // Handle loading and error
+  const { lang } = useAppContext();
+  const { user } = useAuthContext();
+
   const [authError, setAuthError] = useState("");
 
   const validationSchema = loginSchema[lang as keyof typeof loginSchema];
@@ -73,6 +73,7 @@ function Login(): ReactElement {
         {/* Auth Error */}
         {authError && <ErrorMessage message={authError} className={styles.login__error} />}
       </div>
+
       <div className={styles.login__footer}>
         <span>
           {LOCALE_FORM[lang].loginNote}{" "}

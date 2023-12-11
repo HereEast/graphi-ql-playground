@@ -1,0 +1,15 @@
+@import "../../styles/variables.scss";
+
+.main__loading {
+  min-height: calc(100vh - $header-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: block;
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 auto;
+}

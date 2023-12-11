@@ -4,9 +4,8 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
 
-import { useAppContext } from "../../../hooks";
+import { useAppContext, useAuthContext } from "../../../hooks";
 import { handleAuthError } from "../../../utils";
 import { Page, IRegisterFormData } from "../../../types";
 import { auth, registerSchema } from "../../../services";
@@ -19,8 +18,8 @@ function Register(): ReactElement {
   const router = useRouter();
 
   const { lang } = useAppContext();
+  const { user } = useAuthContext();
 
-  const [user] = useAuthState(auth);
   const [authError, setAuthError] = useState("");
 
   const validationSchema = registerSchema[lang as keyof typeof registerSchema];
@@ -81,6 +80,7 @@ function Register(): ReactElement {
         {/* Auth Error */}
         {authError && <ErrorMessage message={authError} className={styles.register__error} />}
       </div>
+
       <div className={styles.register__footer}>
         <span>
           {LOCALE_FORM[lang].registerNote}{" "}
