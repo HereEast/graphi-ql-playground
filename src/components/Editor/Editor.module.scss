@@ -1,0 +1,65 @@
+@import "../../styles/variables.scss";
+
+.editor {
+  width: 100%;
+  height: 100%;
+
+  &__container {
+    height: 100%;
+  }
+
+  &__main{
+    position: relative;
+    height: 100%;
+    display: flex;
+  }
+
+  &__linesCount {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    color: rgba(12, 12, 12, 0.3);
+    background-color: $white;
+  }
+
+  &__textArea {
+    padding: $padding-body;
+    padding-right: 8rem;
+    width: 100%;
+    font-size: $text-size;
+    line-height: 1.33;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    resize: none;
+  }
+
+  &__buttons {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &_request,
+    &_prettify {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    &_prettify {
+      color: $blue;
+      background-color: $button-back-secondary;
+
+      &:hover {
+        color: $white;
+        background-color: $button-back-hover;
+      }
+    }
+  }
+
+  &__options {}
+}

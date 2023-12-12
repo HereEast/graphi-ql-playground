@@ -12,6 +12,9 @@ export { default as CourseSection } from "./CourseSection/CourseSection";
 export { default as ImageSection } from "./ImageSection/ImageSection";
 export { default as TeamSection } from "./TeamSection/TeamSection";
 
+export { default as Editor } from "./Editor/Editor";
+export { default as RequestView } from "./RequestView/RequestView";
+
 export { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 export { default as Home } from "./_pages/Home/Home";
 export { default as Login } from "./_pages/Login/Login";
