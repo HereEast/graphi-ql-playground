@@ -7,10 +7,6 @@
 
   &__container {
     height: 100%;
-  }
-
-  &__main {
-    height: 100%;
     display: flex;
     overflow: hidden;
   }
@@ -44,6 +40,10 @@
     border: none;
     outline: none;
     resize: none;
+
+    &::placeholder {
+      color: rgba(12, 12, 12, 0.3);
+    }
   }
 }
 
