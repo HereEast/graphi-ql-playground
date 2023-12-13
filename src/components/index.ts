@@ -14,6 +14,7 @@ export { default as TeamSection } from "./TeamSection/TeamSection";
 
 export { default as Editor } from "./Editor/Editor";
 export { default as RequestView } from "./RequestView/RequestView";
+export { default as ResponseView } from "./ResponseView/ResponseView";
 
 export { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 export { default as Home } from "./_pages/Home/Home";

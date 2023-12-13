@@ -1,0 +1,70 @@
+@import "../../styles/variables.scss";
+
+.requestView {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__buttons {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &_request,
+    &_prettify {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    &_prettify {
+      color: $blue;
+      background-color: $button-back-secondary;
+
+      &:hover {
+        color: $white;
+        background-color: $button-back-hover;
+      }
+    }
+  }
+}
+
+.panel {
+  // position: absolute;
+  // left: 0;
+  // bottom: 0;
+  // width: 100%;
+  background-color: $white;
+  border-top: 1px solid $blue;
+
+  &__header {
+    padding: 1rem;
+    padding-right: $padding-body;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .button {
+    height: 3rem;
+    font-size: $text-size;
+    color: $blue;
+    background-color: $button-back-secondary;
+    // background-color: transparent;
+
+    &:hover {
+      color: $white;
+      background-color: $blue;
+    }
+  }
+}
