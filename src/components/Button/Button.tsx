@@ -7,6 +7,7 @@ interface ButtonProps {
   type?: "submit" | "reset" | "button";
   name?: string | undefined;
   className?: string;
+  id?: string;
   disabled?: boolean;
   children?: ReactNode;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
@@ -16,6 +17,7 @@ function Button({
   name,
   type = "button",
   className,
+  id,
   disabled,
   children,
   onClick = (): void => {},
@@ -24,6 +26,7 @@ function Button({
     <button
       type={type}
       className={clsx(styles.button, className || "")}
+      id={id}
       onClick={(event): void => onClick(event)}
       disabled={disabled}
     >

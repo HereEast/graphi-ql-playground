@@ -12,7 +12,6 @@ export interface AppContextProviderProps {
 export const AppContext = createContext<AppContextProps | undefined>(undefined);
 
 export function AppContextProvider({ children }: AppContextProviderProps): ReactElement {
-  // const savedLang = localStorage.getItem("lang");
   const [lang, setLang] = useState("en");
 
   return <AppContext.Provider value={{ lang, setLang }}>{children}</AppContext.Provider>;
