@@ -80,7 +80,7 @@ function OptionsPanel(props: OptionsPanelProps): ReactElement {
             mode="edit"
             code={codeVariables}
             setCode={setCodeVariables}
-            placeholder="Variables here..."
+            placeholder="Request variables..."
           />
         )}
         {headersActive && (
@@ -88,7 +88,7 @@ function OptionsPanel(props: OptionsPanelProps): ReactElement {
             mode="edit"
             code={codeHeaders}
             setCode={setCodeHeaders}
-            placeholder="Headers here..."
+            placeholder="Request headers..."
           />
         )}
       </div>

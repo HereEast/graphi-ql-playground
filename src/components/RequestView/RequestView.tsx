@@ -20,7 +20,7 @@ function RequestView(): ReactElement {
 
   return (
     <div className={styles.requestView}>
-      <Editor mode="edit" code={code} setCode={setCode} placeholder="Query here..." />
+      <Editor mode="edit" code={code} setCode={setCode} placeholder="GraphQL request..." />
       {/*Buttons*/}
       <div className={styles.requestView__buttons}>
         <Button className={styles.requestView__buttons_request} onClick={handleRequest}>

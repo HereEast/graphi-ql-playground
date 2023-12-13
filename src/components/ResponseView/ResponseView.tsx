@@ -8,12 +8,7 @@ function ResponseView(): ReactElement {
 
   return (
     <div className={styles.requestView}>
-      <Editor
-        mode="read"
-        code={code}
-        placeholder="Response placeholder..."
-        className="editor__response"
-      />
+      <Editor mode="read" code={code} placeholder="JSON response..." className="editor__response" />
     </div>
   );
 }
