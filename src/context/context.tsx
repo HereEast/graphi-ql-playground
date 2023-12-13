@@ -1,4 +1,11 @@
-import React, { createContext, Dispatch, ReactElement, ReactNode, useState } from "react";
+import React, {
+  createContext,
+  Dispatch,
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useState,
+} from "react";
 
 export interface AppContextProps {
   lang: string;
@@ -9,10 +16,15 @@ export interface AppContextProviderProps {
   children: ReactNode;
 }
 
-export const AppContext = createContext<AppContextProps | undefined>(undefined);
-
 export function AppContextProvider({ children }: AppContextProviderProps): ReactElement {
   const [lang, setLang] = useState("en");
 
+  useEffect(() => {
+    const savedLang = localStorage.getItem("lang") || "en";
+    setLang(savedLang);
+  }, []);
+
   return <AppContext.Provider value={{ lang, setLang }}>{children}</AppContext.Provider>;
 }
+
+export const AppContext = createContext<AppContextProps | undefined>(undefined);
