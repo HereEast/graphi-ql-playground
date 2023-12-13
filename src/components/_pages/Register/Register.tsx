@@ -3,11 +3,10 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import { useAppContext, useAuthContext, useLocale } from "../../../hooks";
 import { handleAuthError } from "../../../utils";
-import { auth, registerSchema } from "../../../services";
+import { registerUser, registerSchema } from "../../../services";
 import { Page, IRegisterFormData } from "../../../types";
 import { Button, Input, ErrorMessage, PasswordStrength } from "../..";
 
@@ -44,7 +43,7 @@ function Register(): ReactElement {
 
   async function onSubmit(data: IRegisterFormData): Promise<void> {
     try {
-      await createUserWithEmailAndPassword(auth, data.email, data.password);
+      await registerUser(data.name, data.email, data.password);
 
       router.replace(Page.PLAYGROUND);
       setAuthError("");

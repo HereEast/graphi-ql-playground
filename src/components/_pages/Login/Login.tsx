@@ -3,11 +3,10 @@ import { ReactElement, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signInWithEmailAndPassword } from "firebase/auth";
 
 import { useAppContext, useAuthContext, useLocale } from "../../../hooks";
 import { handleAuthError } from "../../../utils";
-import { auth, loginSchema } from "../../../services";
+import { loginUser, loginSchema } from "../../../services";
 import { Page, ILoginFormData } from "../../../types";
 import { Button, Input, ErrorMessage } from "../../";
 
@@ -41,7 +40,7 @@ function Login(): ReactElement {
 
   async function onSubmit(data: ILoginFormData): Promise<void> {
     try {
-      await signInWithEmailAndPassword(auth, data.email, data.password);
+      await loginUser(data.email, data.password);
 
       router.push(Page.PLAYGROUND);
       setAuthError("");

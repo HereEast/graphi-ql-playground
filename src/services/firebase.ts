@@ -1,5 +1,12 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signOut } from "firebase/auth";
+import {
+  getAuth,
+  signOut,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -13,7 +20,24 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db = getFirestore(app);
 
-export async function logout(): Promise<void> {
+export async function registerUser(name: string, email: string, password: string): Promise<void> {
+  const result = await createUserWithEmailAndPassword(auth, email, password);
+  const user = result.user;
+
+  await addDoc(collection(db, "users"), {
+    authProvider: "local",
+    uid: user.uid,
+    name,
+    email,
+  });
+}
+
+export async function loginUser(email: string, password: string): Promise<void> {
+  await signInWithEmailAndPassword(auth, email, password);
+}
+
+export async function logoutUser(): Promise<void> {
   signOut(auth);
 }
