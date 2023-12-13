@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useAppContext, useAuthContext, useLocale } from "../../hooks";
 import { Page } from "../../types";
 import { LANGS } from "../../constants/constants";
-import { logout } from "../../services";
+import { logoutUser } from "../../services";
 import { Button } from "../";
 
 import clsx from "clsx";
@@ -21,10 +21,10 @@ function Header(): ReactElement {
   const [menuOpen, setMenuOpen] = useState(false);
 
   async function handleSignOut(): Promise<void> {
-    await logout();
-    closeMenu();
+    await logoutUser();
 
-    router.push(Page.HOME);
+    router.push(Page.LOGIN);
+    closeMenu();
   }
 
   function toggleMenu(): void {
