@@ -1,0 +1,16 @@
+@import "../../../styles/variables.scss";
+
+.playground {
+  padding: $padding-body;
+  height: calc(100vh - 5rem);
+  // margin-bottom: 6rem;
+
+  &__views {
+    padding: $padding-body;
+    width: 100%;
+    height: calc(100% - 3rem);
+    // height: calc(100vh - 10rem);
+    display: flex;
+    background-color: $blue;
+  }
+}
