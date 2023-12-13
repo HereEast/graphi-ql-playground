@@ -2,7 +2,6 @@
   "name": "graphi-ql-playground",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -40,6 +39,7 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
+    "babel-jest": "^29.7.0",
     "clsx": "^2.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
@@ -59,7 +59,21 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "jest-environment-jsdom",
+    "testEnvironment": "jsdom",
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx",
+      "json"
+    ],
+    "testMatch": [
+      "**/*.test.ts",
+      "**/*.test.tsx"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
     "moduleNameMapper": {
       "^.+\\module\\.(css|less|scss)$": "identity-obj-proxy"
     }
