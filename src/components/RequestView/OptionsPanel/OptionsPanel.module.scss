@@ -1,0 +1,48 @@
+@import "../../../styles/variables.scss";
+
+.panel {
+  background-color: $white;
+  border-top: 1px solid $blue;
+
+  &__header {
+    padding: 1rem;
+    padding-right: $padding-body;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .button {
+    height: 3rem;
+    font-size: $text-size;
+    color: $blue;
+    background-color: $button-back-secondary;
+    transition: none;
+
+    &:hover {
+      color: $white;
+      background-color: $blue;
+    }
+  }
+
+  .button.active {
+    color: $white;
+    background-color: $blue;
+  }
+
+  &__editors {
+    height: 0;
+    overflow: hidden;
+  }
+
+  &__editors_open {
+    height: 16rem;
+  }
+}
+
