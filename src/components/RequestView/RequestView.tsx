@@ -1,5 +1,6 @@
 import { ReactElement, useState } from "react";
 import { Button, Editor, OptionsPanel } from "..";
+import { prettifyCode } from "../../utils";
 
 import styles from "./RequestView.module.scss";
 
@@ -9,13 +10,15 @@ function RequestView(): ReactElement {
   const [codeHeaders, setCodeHeaders] = useState("");
 
   function handlePrettify(): void {
-    console.log(code);
+    console.log(prettifyCode(code));
+
+    setCode(prettifyCode(code));
   }
 
   function handleRequest(): void {
-    console.log("Code:", code);
-    console.log("Variables:", codeVariables);
-    console.log("Headers:", codeHeaders);
+    // console.log("Code:", code);
+    // console.log("Variables:", codeVariables);
+    // console.log("Headers:", codeHeaders);
   }
 
   return (
