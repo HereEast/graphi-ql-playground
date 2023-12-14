@@ -33,7 +33,7 @@ export function formatCode(string: string): string {
 
       result += currentChar;
 
-      if (nextChar) {
+      if (nextChar && nextChar === "}") {
         result += newLine;
       }
 

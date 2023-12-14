@@ -1,10 +1,27 @@
 import { ReactElement, useState } from "react";
-import { Button, Editor, OptionsPanel } from "..";
+import { useAppContext } from "../../hooks";
 import { prettifyCode } from "../../utils";
+import { Button, Editor, OptionsPanel } from "..";
 
 import styles from "./RequestView.module.scss";
 
+const URL = "https://rickandmortyapi.com/graphql";
+
+export async function makeRequest(query: string): Promise<Response> {
+  const res = await fetch(URL, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ query: query }),
+  });
+
+  return res;
+}
+
 function RequestView(): ReactElement {
+  const { setApiResponse } = useAppContext();
+
   const [code, setCode] = useState("");
   const [codeVariables, setCodeVariables] = useState("");
   const [codeHeaders, setCodeHeaders] = useState("");
@@ -15,7 +32,13 @@ function RequestView(): ReactElement {
     setCode(prettifyCode(code));
   }
 
-  function handleRequest(): void {
+  async function handleRequest(): Promise<void> {
+    const res = await makeRequest(code);
+    const data = await res.json();
+
+    const apiResponse = JSON.stringify(data, null, "  ");
+    setApiResponse(apiResponse);
+
     // console.log("Code:", code);
     // console.log("Variables:", codeVariables);
     // console.log("Headers:", codeHeaders);
