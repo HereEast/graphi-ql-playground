@@ -40,7 +40,8 @@
     "<path-to-your-source>.tsx",
     "next.config.js",
     "src/constants",
-    "src/services"
+    "src/services",
+    "jest.config.js"
   ],
   "exclude": [
     "node_modules"
