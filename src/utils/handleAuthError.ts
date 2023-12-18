@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { DICTIONARY } from "../constants";
+import { IDictionary } from "../types";
 
 export interface Props {
   lang: string;
@@ -10,7 +11,7 @@ export interface Props {
 export function handleAuthError({ error, setAuthError, lang }: Props): void {
   if (!(error instanceof Error)) return;
 
-  const errors = DICTIONARY[lang as keyof typeof DICTIONARY].formErrors;
+  const errors = DICTIONARY[lang as keyof IDictionary].formErrors;
 
   if (error.message.includes("invalid-credential")) {
     setAuthError(errors.auth_invalid_credentials);

@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useAppContext, useAuthContext, useLocale } from "../../../hooks";
 import { handleAuthError } from "../../../utils";
-import { registerUser, registerSchema } from "../../../services";
+import { registerUser, generateRegisterSchema } from "../../../services";
 import { Page, IRegisterFormData } from "../../../types";
 import { Button, Input, ErrorMessage, PasswordStrength } from "../..";
 
@@ -21,7 +21,7 @@ function Register(): ReactElement {
 
   const [authError, setAuthError] = useState("");
 
-  const validationSchema = registerSchema[lang as keyof typeof registerSchema];
+  const validationSchema = generateRegisterSchema(lang);
 
   const {
     register,

@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useAppContext, useAuthContext, useLocale } from "../../../hooks";
 import { handleAuthError } from "../../../utils";
-import { loginUser, loginSchema } from "../../../services";
+import { loginUser, generateLoginSchema } from "../../../services";
 import { Page, ILoginFormData } from "../../../types";
 import { Button, Input, ErrorMessage } from "../../";
 
@@ -21,7 +21,7 @@ function Login(): ReactElement {
 
   const [authError, setAuthError] = useState("");
 
-  const validationSchema = loginSchema[lang as keyof typeof loginSchema];
+  const validationSchema = generateLoginSchema(lang);
 
   const {
     register,

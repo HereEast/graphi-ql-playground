@@ -1,5 +1,6 @@
 import * as yup from "yup";
 import { DICTIONARY } from "../constants/dictionary";
+import { IDictionary } from "../types";
 
 export type LoginSchemaType = yup.ObjectSchema<{
   email: string;
@@ -13,7 +14,7 @@ export type RegisterSchemaType = yup.ObjectSchema<{
 }>;
 
 export function generateLoginSchema(lang: string): LoginSchemaType {
-  const error = DICTIONARY[lang as keyof typeof DICTIONARY].formErrors;
+  const error = DICTIONARY[lang as keyof IDictionary].formErrors;
 
   return yup.object({
     email: yup
@@ -30,7 +31,7 @@ export function generateLoginSchema(lang: string): LoginSchemaType {
 }
 
 export function generateRegisterSchema(lang: string): RegisterSchemaType {
-  const error = DICTIONARY[lang as keyof typeof DICTIONARY].formErrors;
+  const error = DICTIONARY[lang as keyof IDictionary].formErrors;
 
   return yup.object({
     name: yup.string().required(error.name_required),
@@ -46,13 +47,3 @@ export function generateRegisterSchema(lang: string): RegisterSchemaType {
       .min(8, error.password__length),
   });
 }
-
-export const loginSchema = {
-  en: generateLoginSchema("en"),
-  ru: generateLoginSchema("ru"),
-};
-
-export const registerSchema = {
-  en: generateRegisterSchema("en"),
-  ru: generateRegisterSchema("ru"),
-};
