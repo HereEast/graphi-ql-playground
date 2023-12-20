@@ -3,16 +3,19 @@
 .image {
   &__container {
     padding: $padding-body;
+    display: flex;
 
     @media (max-width: 768px) {
-      padding: $padding-body 1rem;
+      padding: 2rem 1rem;
+      flex-direction: column;
+      gap: 2rem;
     }
   }
 
   &__img {
     width: 100%;
     height: auto;
-    aspect-ratio: 5/3;
-    background-color: grey;
+    aspect-ratio: 3/4;
+    object-fit: cover;
   }
 }
