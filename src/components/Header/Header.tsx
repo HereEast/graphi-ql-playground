@@ -139,7 +139,7 @@ function Header(): ReactElement {
           {!loading && (
             <div className={styles.menu__select}>
               <select className={styles.select} value={lang} onChange={handleSelectLang}>
-                {LANGS.map((option) => (
+                {Object.values(LANGS).map((option) => (
                   <option key={option} value={option}>
                     {option.toUpperCase()}
                   </option>

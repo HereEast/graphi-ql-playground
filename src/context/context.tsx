@@ -7,6 +7,8 @@ import React, {
   useState,
 } from "react";
 
+import { DEFAULT_LANG } from "../constants";
+
 export interface AppContextProps {
   lang: string;
   setLang: Dispatch<React.SetStateAction<string>>;
@@ -23,7 +25,7 @@ export function AppContextProvider({ children }: AppContextProviderProps): React
   const [apiResponse, setApiResponse] = useState("");
 
   useEffect(() => {
-    const savedLang = localStorage.getItem("lang") || "en";
+    const savedLang = localStorage.getItem("lang") || DEFAULT_LANG;
     setLang(savedLang);
   }, []);
 
