@@ -1,6 +1,6 @@
 import { useAppContext } from "./";
-import { ICollection, IDictionary } from "../types";
 import { DICTIONARY } from "../constants/dictionary";
+import { ICollection, IDictionary } from "../types";
 
 export function useLocale(): ICollection {
   const { lang } = useAppContext();

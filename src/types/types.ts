@@ -70,7 +70,6 @@ export interface ITeamMember {
 
 export interface IHome {
   heroTitle: string;
-  heroLink: string;
   heroPar: string;
   heroButtonLogin: string;
   heroButtonPlay: string;

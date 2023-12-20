@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import Link from "next/link";
+
 import { useAuthContext, useLocale } from "../../hooks";
 import { Page } from "../../types";
 
@@ -13,12 +14,7 @@ function HeroSection(): ReactElement {
     <section className={styles.hero}>
       <div className={styles.hero__container}>
         <div className={styles.hero__title}>
-          <h2 className={styles.hero__title_text}>
-            {home.heroTitle}{" "}
-            <a href="" className={styles.hero__title_link}>
-              The Rick and Morty API
-            </a>
-          </h2>
+          <h2 className={styles.hero__title_text}>{home.heroTitle}</h2>
         </div>
 
         <div className={styles.hero__description}>

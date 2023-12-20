@@ -76,8 +76,7 @@ export const DICTIONARY: IDictionary = {
     ],
     home: {
       heroTitle:
-        "Hey there, welcome to the GraphiQL Playground! This is the go-to IDE for making GraphQL requests to",
-      heroLink: "The Rick and Morty API.",
+        "Hey there, welcome to the GraphiQL Playground! This is the go-to IDE for making GraphQL requests to various APIs.",
       heroPar:
         "Check out an extensive collection of characters, images, locations, and episodes - you'll have access to all the good stuff from The Rick and Morty TV show!",
       heroButtonLogin: "Log in to play",
@@ -184,8 +183,7 @@ export const DICTIONARY: IDictionary = {
     ],
     home: {
       heroTitle:
-        "Привет! Добро пожаловать в песочницу GraphiQL! Это идеальное место для отправки GraphQL запросов к",
-      heroLink: "The Rick and Morty API.",
+        "Привет! Добро пожаловать в песочницу GraphiQL! Это идеальное место для отправки GraphQL запросов к разным API.",
       heroPar:
         "Здесь вы найдете обширную коллекцию персонажей, изображений, локаций и эпизодов — у вас будет доступ ко всему самому интересному из телешоу «Рик и Морти»!",
       heroButtonLogin: "Войти в аккаунт",
