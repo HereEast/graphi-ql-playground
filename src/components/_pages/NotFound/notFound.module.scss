@@ -20,8 +20,26 @@
     font-size: 4rem;
   }
 
-  &__button {
+  &__link {
     max-width: 32rem;
     width: 100%;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $blue;
+    font-size: $text-size-button;
+    color: $white;
+    text-transform: uppercase;
+
+    transition: all 0.2s ease-in;
+
+    &:hover {
+      background-color: $black;
+    }
+
+    &::after {
+      display: none;
+    }
   }
 }
