@@ -9,7 +9,7 @@ jest.mock("../../services/firebase", () => ({
   },
 }));
 
-describe("Button component", () => {
+describe("ErrorMessage component", () => {
   test("should be rendered with correct props", () => {
     const props = {
       message: "Error message",
