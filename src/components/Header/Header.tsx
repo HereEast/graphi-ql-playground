@@ -1,10 +1,11 @@
 import { ReactElement, useEffect, useState, ChangeEvent } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+
 import { useAppContext, useAuthContext, useLocale } from "../../hooks";
-import { Page } from "../../types";
-import { LANGS } from "../../constants/constants";
 import { logoutUser } from "../../services";
+import { LANGS } from "../../constants/constants";
+import { Page } from "../../types";
 import { Button } from "../";
 
 import clsx from "clsx";
