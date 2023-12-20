@@ -20,6 +20,7 @@ function NotFound(): ReactElement {
       <div className={styles.notFound__container}>
         <span className={styles.notFound__icons}>🙁🙁🙁</span>
         <span className={styles.notFound__title}>{notFound.title}</span>
+
         <Button name={notFound.button} className={styles.notFound__button} onClick={navigateHome} />
       </div>
     </section>
