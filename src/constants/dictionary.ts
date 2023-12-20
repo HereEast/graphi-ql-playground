@@ -54,7 +54,7 @@ export const DICTIONARY: IDictionary = {
         image: "/images/Andrei.jpg",
         github: "https://github.com/Andrew-Nes",
         description:
-          "The course runs for a total of 10 weeks, with 6 weeks dedicated to studying React and an additional 4 weeks for the final task implementation.",
+          "Spell checking isn’t a bad thing; it’s just unhelpful in this situation. Is something marked incorrect because it is incorrectly spelled or because the code is invalid? It’s tough to tell.",
         position: "Frontend Developer",
       },
       {
@@ -62,7 +62,7 @@ export const DICTIONARY: IDictionary = {
         image: "/images/Nikita.jpg",
         github: "https://github.com/razumaumikita",
         description:
-          "The course runs for a total of 10 weeks, with 6 weeks dedicated to studying React and an additional 4 weeks for the final task implementation.",
+          "Here’s another thing: the highlighted code cannot scroll while the editing is taking place. And when the textarea is scrolled, the highlighted code does not scroll with it.",
         position: "Frontend Developer",
       },
       {
@@ -70,7 +70,7 @@ export const DICTIONARY: IDictionary = {
         image: "/images/Nastia.jpg",
         github: "https://github.com/HereEast",
         description:
-          "The course runs for a total of 10 weeks, with 6 weeks dedicated to studying React and an additional 4 weeks for the final task implementation.",
+          "One of the trickier things to adjust is how to handle line indentations in the result. The way the editor is currently set up, indenting lines with spaces works fine.",
         position: "Frontend Developer",
       },
     ],
