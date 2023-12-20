@@ -10,14 +10,14 @@ function ImageSection(): ReactElement {
         <Image
           className={styles.image__img}
           src="/images/course.jpg"
-          alt="Image of the Playground"
+          alt="Image of the Playground (Request)"
           width={260}
           height={120}
         />
         <Image
           className={styles.image__img}
           src="/images/course.jpg"
-          alt="Image of the Playground"
+          alt="Image of the Playground (Response)"
           width={260}
           height={120}
         />
