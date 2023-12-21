@@ -2,16 +2,16 @@ import { Dispatch, MouseEvent, ReactElement, SetStateAction, useState } from "re
 import { Button, Editor } from "../..";
 
 import clsx from "clsx";
-import styles from "./OptionsPanel.module.scss";
+import styles from "./EditorPanel.module.scss";
 
-export interface OptionsPanelProps {
+export interface EditorPanelProps {
   codeVariables: string;
   codeHeaders: string;
   setCodeVariables: Dispatch<SetStateAction<string>>;
   setCodeHeaders: Dispatch<SetStateAction<string>>;
 }
 
-function OptionsPanel(props: OptionsPanelProps): ReactElement {
+function EditorPanel(props: EditorPanelProps): ReactElement {
   const { codeVariables, codeHeaders, setCodeVariables, setCodeHeaders } = props;
 
   const [panelOpened, setPanelOpened] = useState(false);
@@ -96,4 +96,4 @@ function OptionsPanel(props: OptionsPanelProps): ReactElement {
   );
 }
 
-export default OptionsPanel;
+export default EditorPanel;
