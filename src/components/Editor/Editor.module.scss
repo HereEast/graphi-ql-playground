@@ -38,11 +38,11 @@
 
 .editor__response {
   .editor__textArea {
-    padding-left: 3rem;
     color: $white;
     background-color: $blue;
 
-    overflow: hidden;
+    white-space: pre;
+    overflow-x: auto;
 
     &::placeholder {
       color: $editor-read-lines;

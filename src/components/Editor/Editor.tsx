@@ -40,14 +40,12 @@ function Editor({
   return (
     <div className={clsx(styles.editor, styles[className])}>
       <div className={styles.editor__container}>
-        {mode === "edit" && (
-          <LinesNumber
-            code={code}
-            linesNumberRef={linesNumberRef}
-            handleScroll={handleScroll}
-            className={className}
-          />
-        )}
+        <LinesNumber
+          code={code}
+          linesNumberRef={linesNumberRef}
+          handleScroll={handleScroll}
+          className={className}
+        />
 
         <textarea
           ref={textAreaRef}
