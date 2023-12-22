@@ -14,9 +14,9 @@ export { default as TeamSection } from "./TeamSection/TeamSection";
 
 export { default as Editor } from "./Editor/Editor";
 export { default as LinesNumber } from "./Editor/LinesNumber/LinesNumber";
-export { default as RequestView } from "./RequestView/RequestView";
-export { default as ResponseView } from "./ResponseView/ResponseView";
-export { default as EditorPanel } from "./RequestView/EditorPanel/EditorPanel";
+export { default as RequestEditor } from "./RequestEditor/RequestEditor";
+export { default as ResponseEditor } from "./ResponseEditor/ResponseEditor";
+export { default as EditorPanel } from "./RequestEditor/EditorPanel/EditorPanel";
 
 export { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 export { default as Home } from "./_pages/Home/Home";

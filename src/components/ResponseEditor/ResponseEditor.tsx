@@ -2,9 +2,9 @@ import { ReactElement } from "react";
 import { useAppContext } from "../../hooks";
 import { Editor } from "..";
 
-import styles from "./ResponseView.module.scss";
+import styles from "./ResponseEditor.module.scss";
 
-function ResponseView(): ReactElement {
+function ResponseEditor(): ReactElement {
   const { apiResponse } = useAppContext();
 
   return (
@@ -19,4 +19,4 @@ function ResponseView(): ReactElement {
   );
 }
 
-export default ResponseView;
+export default ResponseEditor;

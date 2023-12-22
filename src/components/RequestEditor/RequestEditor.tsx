@@ -3,7 +3,7 @@ import { useAppContext } from "../../hooks";
 import { prettifyCode } from "../../utils";
 import { Button, Editor, EditorPanel } from "..";
 
-import styles from "./RequestView.module.scss";
+import styles from "./RequestEditor.module.scss";
 
 const URL = "https://rickandmortyapi.com/graphql";
 
@@ -19,7 +19,7 @@ export async function makeRequest(query: string): Promise<Response> {
   return res;
 }
 
-function RequestView(): ReactElement {
+function RequestEditor(): ReactElement {
   const { setApiResponse } = useAppContext();
 
   const [code, setCode] = useState("");
@@ -67,4 +67,4 @@ function RequestView(): ReactElement {
   );
 }
 
-export default RequestView;
+export default RequestEditor;

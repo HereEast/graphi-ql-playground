@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { RequestView, ResponseView } from "../..";
+import { RequestEditor, ResponseEditor } from "../..";
 
 import styles from "./Playground.module.scss";
 
@@ -8,8 +8,8 @@ function Playground(): ReactElement {
     <section className={styles.playground}>
       <h1>Playground</h1>
       <div className={styles.playground__views}>
-        <RequestView />
-        <ResponseView />
+        <RequestEditor />
+        <ResponseEditor />
       </div>
     </section>
   );
