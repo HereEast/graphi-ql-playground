@@ -13,6 +13,7 @@ export { default as ImageSection } from "./ImageSection/ImageSection";
 export { default as TeamSection } from "./TeamSection/TeamSection";
 
 export { default as Editor } from "./Editor/Editor";
+export { default as LinesNumber } from "./Editor/LinesNumber/LinesNumber";
 export { default as RequestView } from "./RequestView/RequestView";
 export { default as ResponseView } from "./ResponseView/ResponseView";
 export { default as EditorPanel } from "./RequestView/EditorPanel/EditorPanel";
