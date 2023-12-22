@@ -42,7 +42,7 @@ function Login(): ReactElement {
     try {
       await loginUser(data.email, data.password);
 
-      router.push(Page.PLAYGROUND);
+      router.replace(Page.PLAYGROUND);
       setAuthError("");
     } catch (error) {
       handleAuthError({ error, setAuthError, lang });
