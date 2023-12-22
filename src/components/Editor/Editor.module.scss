@@ -24,23 +24,18 @@
     resize: none;
 
     &::placeholder {
-      color: rgba(12, 12, 12, 0.3);
+      color: $placeholder-color;
     }
   }
 }
 
 .editor__response {
-  .editor__linesCount {
-    color: rgba(255, 255, 255, 0.5);
-    background-color: $blue;
-  }
-
   .editor__textArea {
     color: $white;
     background-color: $blue;
 
     &::placeholder {
-      color: rgba(255, 255, 255, 0.5);
+      color: $editor-read-lines;
     }
   }
 }

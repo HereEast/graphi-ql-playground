@@ -4,21 +4,21 @@ import clsx from "clsx";
 import styles from "./LinesNumber.module.scss";
 
 export interface LinesNumberProps {
-  mode?: "edit" | "read";
+  className?: string;
   code: string;
   handleScroll: (e: UIEvent<HTMLUListElement | HTMLTextAreaElement>) => void;
   linesNumberRef: RefObject<HTMLUListElement>;
 }
 
 function LinesNumber({
-  mode = "edit",
+  className = "",
   code,
   handleScroll,
   linesNumberRef,
 }: LinesNumberProps): ReactElement {
   return (
     <ul
-      className={clsx(styles.linesNumber, { [styles.readMode]: mode === "read" })}
+      className={clsx(styles.linesNumber, className && styles[`${className}_linesNumber`])}
       ref={linesNumberRef}
       onScroll={handleScroll}
     >

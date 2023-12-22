@@ -38,13 +38,13 @@ function Editor({
   }
 
   return (
-    <div className={clsx(styles.editor, className && styles[className])}>
+    <div className={clsx(styles.editor, styles[className])}>
       <div className={styles.editor__container}>
         <LinesNumber
-          mode={mode}
           code={code}
           linesNumberRef={linesNumberRef}
           handleScroll={handleScroll}
+          className={className}
         />
 
         <textarea

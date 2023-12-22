@@ -16,8 +16,10 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
 
-  &.readMode {
+.editor__response {
+  &_linesNumber {
     background-color: $blue;
     color: $editor-read-lines;
   }

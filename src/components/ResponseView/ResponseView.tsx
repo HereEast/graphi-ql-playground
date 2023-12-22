@@ -8,7 +8,7 @@ function ResponseView(): ReactElement {
   const { apiResponse } = useAppContext();
 
   return (
-    <div className={styles.requestView}>
+    <div className={styles.responseView}>
       <Editor
         mode="read"
         code={apiResponse}
