@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import { useAppContext } from "../../hooks";
 import { prettifyCode } from "../../utils";
-import { Button, Editor, OptionsPanel } from "..";
+import { Button, Editor, EditorPanel } from "..";
 
 import styles from "./RequestView.module.scss";
 
@@ -57,7 +57,7 @@ function RequestView(): ReactElement {
         </Button>
       </div>
       {/*Options*/}
-      <OptionsPanel
+      <EditorPanel
         codeVariables={codeVariables}
         codeHeaders={codeHeaders}
         setCodeVariables={setCodeVariables}
