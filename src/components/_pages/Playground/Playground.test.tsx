@@ -6,8 +6,11 @@ import { ReactElement } from "react";
 import { AppContextProvider } from "../../../context";
 import { Playground } from "../..";
 
-jest.mock("../../RequestView/RequestView", () => (): ReactElement => <div>Request View</div>);
-jest.mock("../../ResponseView/ResponseView", () => (): ReactElement => <div>Response View</div>);
+jest.mock("../../RequestEditor/RequestEditor", () => (): ReactElement => <div>Request Editor</div>);
+jest.mock(
+  "../../ResponseEditor/ResponseEditor",
+  () => (): ReactElement => <div>Response Editor</div>,
+);
 
 jest.mock("../../../services/firebase", () => ({
   auth: {
@@ -16,7 +19,7 @@ jest.mock("../../../services/firebase", () => ({
 }));
 
 describe("Playground component", () => {
-  test("should render RequestView and ResponseView components", () => {
+  test("should render RequestEditor and ResponseEditor components", () => {
     render(
       <AppContextProvider>
         <Playground />
