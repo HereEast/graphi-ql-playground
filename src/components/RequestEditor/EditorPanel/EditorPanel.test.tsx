@@ -14,10 +14,10 @@ jest.mock("../../../services/firebase", () => ({
 }));
 
 const props: EditorPanelProps = {
-  codeVariables: "vars",
-  codeHeaders: "headers",
-  setCodeVariables: jest.fn(),
-  setCodeHeaders: jest.fn(),
+  variablesCode: "vars",
+  headersCode: "headers",
+  setVariablesCode: jest.fn(),
+  setHeadersCode: jest.fn(),
 };
 
 function renderComponent(): void {
@@ -64,12 +64,12 @@ describe("EditorPanel component", () => {
   test("should toggle the panel on click on Show/Hide button.", async () => {
     renderComponent();
 
-    const toggleButton = screen.getByRole("button", { name: /show/i });
+    const toggleButton = screen.getByRole("button", { name: /toggle/i });
 
     await userEvent.click(toggleButton);
-    expect(toggleButton).toHaveTextContent("Hide");
+    expect(toggleButton).toHaveClass("button__toggle_opened");
 
     await userEvent.click(toggleButton);
-    expect(toggleButton).toHaveTextContent("Show");
+    expect(toggleButton).not.toHaveClass("button__toggle_opened");
   });
 });
