@@ -8,7 +8,7 @@
   height: 6rem;
   padding: 0 1rem;
   padding-bottom: 1px;
-  font-size: $text-size-button;
+  font-size: $text-size;
   color: $white;
   text-transform: uppercase;
   background-color: $blue;
@@ -26,7 +26,7 @@
     cursor: default;
 
     &:hover {
-      background-color: initial;
+      background-color: $blue;
     }
   }
 }
