@@ -23,8 +23,8 @@ function RequestEditor(): ReactElement {
   const { setApiResponse } = useAppContext();
 
   const [code, setCode] = useState("");
-  const [codeVariables, setCodeVariables] = useState("");
-  const [codeHeaders, setCodeHeaders] = useState("");
+  const [variablesCode, setVariablesCode] = useState("");
+  const [headersCode, setHeadersCode] = useState("");
 
   function handlePrettify(): void {
     console.log(prettifyCode(code));
@@ -47,7 +47,7 @@ function RequestEditor(): ReactElement {
   return (
     <div className={styles.requestView}>
       <Editor mode="edit" code={code} setCode={setCode} placeholder="GraphQL request..." />
-      {/*Buttons*/}
+
       <div className={styles.requestView__buttons}>
         <Button className={styles.requestView__buttons_request} onClick={handleRequest}>
           <span>R</span>
@@ -56,12 +56,12 @@ function RequestEditor(): ReactElement {
           <span>P</span>
         </Button>
       </div>
-      {/*Options*/}
+
       <EditorPanel
-        codeVariables={codeVariables}
-        codeHeaders={codeHeaders}
-        setCodeVariables={setCodeVariables}
-        setCodeHeaders={setCodeHeaders}
+        variablesCode={variablesCode}
+        headersCode={headersCode}
+        setVariablesCode={setVariablesCode}
+        setHeadersCode={setHeadersCode}
       />
     </div>
   );

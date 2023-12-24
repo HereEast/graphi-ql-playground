@@ -1,14 +1,25 @@
 @import "../../../styles/variables.scss";
 
 .playground {
-  padding: $padding-body;
   height: calc(100vh - 5rem);
+  padding: $padding-body;
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: $padding-body 1rem 6rem;
+  }
 
   &__views {
-    padding: $padding-body;
+    display: flex;
     width: 100%;
     height: calc(100% - 3rem);
-    display: flex;
+    padding: $padding-body;
     background-color: $blue;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 2rem;
+      padding: 1rem;
+    }
   }
 }

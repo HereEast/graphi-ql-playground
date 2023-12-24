@@ -1,7 +1,9 @@
 @import "../../styles/variables.scss";
 
 .button {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: fit-content;
   height: 6rem;
   padding: 0 1rem;

@@ -5,14 +5,14 @@ import clsx from "clsx";
 import styles from "./EditorPanel.module.scss";
 
 export interface EditorPanelProps {
-  codeVariables: string;
-  codeHeaders: string;
-  setCodeVariables: Dispatch<SetStateAction<string>>;
-  setCodeHeaders: Dispatch<SetStateAction<string>>;
+  variablesCode: string;
+  headersCode: string;
+  setVariablesCode: Dispatch<SetStateAction<string>>;
+  setHeadersCode: Dispatch<SetStateAction<string>>;
 }
 
 function EditorPanel(props: EditorPanelProps): ReactElement {
-  const { codeVariables, codeHeaders, setCodeVariables, setCodeHeaders } = props;
+  const { variablesCode, headersCode, setVariablesCode, setHeadersCode } = props;
 
   const [panelOpened, setPanelOpened] = useState(false);
   const [variablesActive, setVariablesActive] = useState(false);
@@ -21,9 +21,7 @@ function EditorPanel(props: EditorPanelProps): ReactElement {
   function openTab(e: MouseEvent<HTMLButtonElement>): void {
     if (!(e.target instanceof HTMLButtonElement)) return;
 
-    if (!panelOpened) {
-      setPanelOpened(true);
-    }
+    setPanelOpened(true);
 
     if (e.target.id === "variables") {
       setVariablesActive(true);
@@ -37,57 +35,61 @@ function EditorPanel(props: EditorPanelProps): ReactElement {
   }
 
   function togglePanel(): void {
-    if (panelOpened) {
-      setPanelOpened(false);
-      setVariablesActive(false);
-      setHeadersActive(false);
-      return;
-    }
-
-    setPanelOpened(true);
-    setVariablesActive(true);
+    setPanelOpened(!panelOpened);
     setHeadersActive(false);
+
+    if (panelOpened) {
+      setVariablesActive(false);
+    } else {
+      setVariablesActive(true);
+    }
   }
 
   return (
     <div className={styles.panel}>
-      {/*Header*/}
       <div className={styles.panel__header}>
-        <div className={styles.panel__buttons}>
-          <Button
-            name="Variables"
-            className={clsx(styles.button, panelOpened && variablesActive && styles.active)}
-            id="variables"
-            onClick={openTab}
-          />
-          <Button
-            name="Headers"
-            className={clsx(styles.button, panelOpened && headersActive && styles.active)}
-            id="headers"
-            onClick={openTab}
-          />
-        </div>
         <Button
-          name={panelOpened ? "Hide" : "Show"}
+          name="Variables"
+          className={clsx(styles.button, {
+            [styles.active]: panelOpened && variablesActive,
+          })}
+          id="variables"
+          onClick={openTab}
+        />
+        <Button
+          name="Headers"
+          className={clsx(styles.button, {
+            [styles.active]: panelOpened && headersActive,
+          })}
+          id="headers"
+          onClick={openTab}
+        />
+        <Button
           onClick={togglePanel}
-          className={clsx(styles.button, styles.button__toggle)}
+          className={clsx(styles.button, styles.button__toggle, {
+            [styles.button__toggle_opened]: panelOpened,
+          })}
         />
       </div>
-      {/*Editors*/}
-      <div className={clsx(styles.panel__editors, panelOpened && styles.panel__editors_open)}>
+
+      <div
+        className={clsx(styles.panel__editors, {
+          [styles.panel__editors_open]: panelOpened,
+        })}
+      >
         {variablesActive && (
           <Editor
             mode="edit"
-            code={codeVariables}
-            setCode={setCodeVariables}
+            code={variablesCode}
+            setCode={setVariablesCode}
             placeholder="Request variables..."
           />
         )}
         {headersActive && (
           <Editor
             mode="edit"
-            code={codeHeaders}
-            setCode={setCodeHeaders}
+            code={headersCode}
+            setCode={setHeadersCode}
             placeholder="Request headers..."
           />
         )}

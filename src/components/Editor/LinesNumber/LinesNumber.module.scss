@@ -16,6 +16,10 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+  }
 }
 
 .editor__response {
