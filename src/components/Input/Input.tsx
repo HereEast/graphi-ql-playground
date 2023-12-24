@@ -11,7 +11,7 @@ export interface InputProps {
   type?: "text" | "email" | "password";
   placeholder?: string;
   className?: string;
-  errors?: FieldErrors;
+  errors: FieldErrors;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref): ReactElement => {
@@ -47,7 +47,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref): ReactElemen
         )}
       </label>
 
-      {errors?.[inputName] && <ErrorMessage message={errors[inputName]?.message as string} />}
+      {errors[inputName] && <ErrorMessage message={errors[inputName]?.message as string} />}
     </div>
   );
 });

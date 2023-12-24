@@ -1,7 +1,6 @@
 @import "../../../styles/variables.scss";
 
 .playground {
-  height: calc(100vh - 5rem);
   padding: $padding-body;
 
   @media (max-width: 768px) {
@@ -9,10 +8,48 @@
     padding: $padding-body 1rem 6rem;
   }
 
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+
+    &_button {
+      height: 3rem;
+      padding: 0 2rem 2px;
+      font-size: $text-size;
+    }
+  }
+
+  &__form {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+
+    &_input {
+      height: 3rem;
+      width: 100%;
+      outline: none;
+      border: 1px solid $input-border;
+      padding: 0 2rem;
+
+      font-size: $text-size;
+
+      &::placeholder {
+        color: $placeholder-color;
+        font-weight: 400;
+      }
+
+      &:focus {
+        border: 1px solid $blue;
+      }
+    }
+  }
+
   &__views {
     display: flex;
     width: 100%;
-    height: calc(100% - 3rem);
+    height: calc(100vh - 3rem);
     padding: $padding-body;
     background-color: $blue;
 
