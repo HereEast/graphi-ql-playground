@@ -7,50 +7,49 @@ import clsx from "clsx";
 import styles from "./Input.module.scss";
 
 export interface InputProps {
-  inputName: "name" | "email" | "password";
+  inputName: string;
   type?: "text" | "email" | "password";
   placeholder?: string;
   className?: string;
-  errors: FieldErrors;
+  errors?: FieldErrors;
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ inputName, type, placeholder, className, errors, ...restProps }, ref): ReactElement => {
-    const { input } = useLocale();
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref): ReactElement => {
+  const { inputName, type, placeholder, className, errors, ...restProps } = props;
+  const { input } = useLocale();
 
-    const [hidden, setHidden] = useState(true);
+  const [hidden, setHidden] = useState(true);
 
-    function handleClick(): void {
-      setHidden(!hidden);
-    }
+  function handleClick(): void {
+    setHidden(!hidden);
+  }
 
-    return (
-      <div
-        className={clsx(styles.field, { [styles.field__password]: type === "password" }, className)}
-      >
-        <label className={styles.field__label}>
-          <input
-            ref={ref}
-            className={clsx(styles.field__input, {
-              [styles.field__password_input]: type === "password",
-            })}
-            type={hidden && type === "password" ? "password" : "text"}
-            placeholder={placeholder || (inputName && input[inputName])}
-            {...restProps}
+  return (
+    <div
+      className={clsx(styles.field, { [styles.field__password]: type === "password" }, className)}
+    >
+      <label className={styles.field__label}>
+        <input
+          ref={ref}
+          className={clsx(styles.field__input, {
+            [styles.field__password_input]: type === "password",
+          })}
+          type={hidden && type === "password" ? "password" : "text"}
+          placeholder={placeholder || inputName[0].toUpperCase() + inputName.slice(1)}
+          {...restProps}
+        />
+        {type === "password" && (
+          <Button
+            name={hidden ? input.passwordButtonShow : input.passwordButtonHide}
+            className={styles.field__password_button}
+            onClick={handleClick}
           />
-          {type === "password" && (
-            <Button
-              name={hidden ? input.passwordButtonShow : input.passwordButtonHide}
-              className={styles.field__password_button}
-              onClick={handleClick}
-            />
-          )}
-        </label>
+        )}
+      </label>
 
-        {errors[inputName] && <ErrorMessage message={errors[inputName]?.message as string} />}
-      </div>
-    );
-  },
-);
+      {errors?.[inputName] && <ErrorMessage message={errors[inputName]?.message as string} />}
+    </div>
+  );
+});
 
 export default Input;
