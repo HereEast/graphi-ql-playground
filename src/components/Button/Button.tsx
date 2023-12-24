@@ -29,6 +29,7 @@ function Button({
       id={id}
       onClick={(event): void => onClick(event)}
       disabled={disabled}
+      data-testid={id}
     >
       {name && name}
       {children && children}

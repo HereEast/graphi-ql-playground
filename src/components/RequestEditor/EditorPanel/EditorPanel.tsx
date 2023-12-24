@@ -69,7 +69,7 @@ function EditorPanel(props: EditorPanelProps): ReactElement {
           className={clsx(styles.button, styles.button__toggle, {
             [styles.button__toggle_opened]: panelOpened,
           })}
-          aria-label="toggle"
+          id="button-toggle"
         />
       </div>
 
