@@ -5,9 +5,7 @@ import { Button, Editor, EditorPanel } from "..";
 
 import styles from "./RequestEditor.module.scss";
 
-const URL = "https://rickandmortyapi.com/graphql";
-
-export async function makeRequest(query: string): Promise<Response> {
+export async function makeRequest(URL: string, query: string): Promise<Response> {
   const res = await fetch(URL, {
     method: "POST",
     headers: {
@@ -20,7 +18,7 @@ export async function makeRequest(query: string): Promise<Response> {
 }
 
 function RequestEditor(): ReactElement {
-  const { setApiResponse } = useAppContext();
+  const { setApiResponse, apiEndpoint } = useAppContext();
 
   const [code, setCode] = useState("");
   const [variablesCode, setVariablesCode] = useState("");
@@ -33,7 +31,7 @@ function RequestEditor(): ReactElement {
   }
 
   async function handleRequest(): Promise<void> {
-    const res = await makeRequest(code);
+    const res = await makeRequest(apiEndpoint, code);
     const data = await res.json();
 
     const apiResponse = JSON.stringify(data, null, "  ");

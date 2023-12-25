@@ -1,16 +1,24 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import { Button, RequestEditor, ResponseEditor } from "../..";
-import { DEFAULT_API } from "../../../constants";
 
 import styles from "./Playground.module.scss";
+import { useAppContext } from "../../../hooks";
 
 function Playground(): ReactElement {
   const docsDisabled = true;
 
-  const [value, setValue] = useState(DEFAULT_API);
+  const { apiEndpoint, setApiEndpoint } = useAppContext();
+
+  const [value, setValue] = useState(apiEndpoint);
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>): void {
     setValue(e.target.value);
+  }
+
+  function saveEndpoint(): void {
+    if (apiEndpoint !== value) {
+      setApiEndpoint(value);
+    }
   }
 
   return (
@@ -24,6 +32,7 @@ function Playground(): ReactElement {
           />
           <Button
             name="Save"
+            onClick={saveEndpoint}
             className={(styles.playground__form_button, styles.playground__header_button)}
             type="button"
           />
