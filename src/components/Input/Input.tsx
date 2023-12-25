@@ -20,6 +20,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref): ReactElemen
 
   const [hidden, setHidden] = useState(true);
 
+  const inputPlaceholder = placeholder || inputName[0].toUpperCase() + inputName.slice(1);
+  const inputType = hidden && type === "password" ? "password" : "text";
+
   function handleClick(): void {
     setHidden(!hidden);
   }
@@ -30,12 +33,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref): ReactElemen
     >
       <label className={styles.field__label}>
         <input
+          type={inputType}
+          placeholder={inputPlaceholder}
           ref={ref}
           className={clsx(styles.field__input, {
             [styles.field__password_input]: type === "password",
           })}
-          type={hidden && type === "password" ? "password" : "text"}
-          placeholder={placeholder || inputName[0].toUpperCase() + inputName.slice(1)}
           {...restProps}
         />
         {type === "password" && (

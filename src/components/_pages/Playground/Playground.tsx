@@ -1,8 +1,8 @@
 import { ChangeEvent, ReactElement, useState } from "react";
+import { useAppContext } from "../../../hooks";
 import { Button, RequestEditor, ResponseEditor } from "../..";
 
 import styles from "./Playground.module.scss";
-import { useAppContext } from "../../../hooks";
 
 function Playground(): ReactElement {
   const docsDisabled = true;
@@ -13,6 +13,7 @@ function Playground(): ReactElement {
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>): void {
     setValue(e.target.value);
+    // localStorage.setItem("endpoint", e.target.value);
   }
 
   function saveEndpoint(): void {
