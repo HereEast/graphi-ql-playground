@@ -47,3 +47,22 @@ a {
     }
   }
 }
+
+input {
+  height: 6rem;
+  width: 100%;
+  outline: none;
+  border: 1px solid $input-border;
+  padding: 0 2rem;
+
+  font-size: $text-size;
+
+  &::placeholder {
+    color: $placeholder-color;
+    font-weight: 400;
+  }
+
+  &:focus {
+    border: 1px solid $blue;
+  }
+}
