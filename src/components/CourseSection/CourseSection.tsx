@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import Image from "next/image";
+
 import { useLocale } from "../../hooks";
 import { LINK_COURSE } from "../../constants/constants";
 

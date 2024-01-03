@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+
 import { useLocale } from "../../hooks";
 
 import styles from "./TeamSection.module.scss";

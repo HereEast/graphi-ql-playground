@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+
 import { HeroSection, ImageSection, CourseSection, TeamSection } from "../../";
 
 function Home(): ReactElement {

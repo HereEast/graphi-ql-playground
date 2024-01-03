@@ -1,6 +1,7 @@
 import { ReactElement, useState, forwardRef } from "react";
 import { FieldErrors } from "react-hook-form";
 import clsx from "clsx";
+
 import { useLocale } from "../../hooks";
 import { Button, ErrorMessage } from "../";
 
@@ -15,7 +16,7 @@ interface InputProps {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref): ReactElement => {
-  const { inputName, type, placeholder, className, errors, ...restProps } = props;
+  const { inputName, type = "text", placeholder, className, errors, ...restProps } = props;
   const { input } = useLocale();
 
   const [hidden, setHidden] = useState(true);
@@ -41,6 +42,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref): ReactElemen
           })}
           {...restProps}
         />
+
         {type === "password" && (
           <Button
             name={hidden ? input.passwordButtonShow : input.passwordButtonHide}

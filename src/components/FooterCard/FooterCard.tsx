@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import Image from "next/image";
+
 import { ITeamMember } from "../../types";
 
 import styles from "./FooterCard.module.scss";

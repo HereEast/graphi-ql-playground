@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode } from "react";
 import clsx from "clsx";
+
 import { useAuthContext } from "../../hooks";
 import { Header, Footer } from "../";
 

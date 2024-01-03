@@ -18,7 +18,7 @@ export interface AppContextProps {
   setApiEndpoint: Dispatch<React.SetStateAction<string>>;
 }
 
-export interface AppContextProviderProps {
+interface AppContextProviderProps {
   children: ReactNode;
 }
 

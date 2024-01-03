@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+
 import { useLocale } from "../../hooks";
 import { LINK_SCHOOL, LINK_COURSE } from "../../constants/constants";
 import { FooterCard } from "../";

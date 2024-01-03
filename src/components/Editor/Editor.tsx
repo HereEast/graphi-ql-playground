@@ -1,7 +1,7 @@
 import { ReactElement, ChangeEvent, Dispatch, SetStateAction, useRef, UIEvent } from "react";
 import clsx from "clsx";
 
-import { READ_MODE } from "../../constants";
+import { EDIT_MODE, READ_MODE } from "../../constants";
 import { LinesNumber } from "..";
 
 import styles from "./Editor.module.scss";
@@ -15,7 +15,7 @@ interface EditorProps {
 }
 
 function Editor({
-  mode,
+  mode = EDIT_MODE,
   code,
   setCode,
   className,

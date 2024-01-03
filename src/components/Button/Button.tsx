@@ -26,9 +26,9 @@ function Button({
     <button
       type={type}
       className={clsx(styles.button, className || "")}
-      id={id}
       onClick={(event): void => onClick(event)}
       disabled={disabled}
+      id={id}
       data-testid={id}
     >
       {name && name}

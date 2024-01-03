@@ -1,4 +1,5 @@
 import { ChangeEvent, ReactElement, useState } from "react";
+
 import { useAppContext } from "../../../hooks";
 import { Button, RequestEditor, ResponseEditor } from "../..";
 
@@ -39,7 +40,12 @@ function Playground(): ReactElement {
           />
         </form>
 
-        <Button name="Doc" className={styles.playground__header_button} disabled={docsDisabled} />
+        <Button
+          name="Doc"
+          className={styles.playground__header_button}
+          disabled={docsDisabled}
+          onClick={() => {}}
+        />
       </header>
 
       <div className={styles.playground__views}>
