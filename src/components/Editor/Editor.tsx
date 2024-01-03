@@ -1,14 +1,16 @@
 import { ReactElement, ChangeEvent, Dispatch, SetStateAction, useRef, UIEvent } from "react";
+import clsx from "clsx";
+
+import { READ_MODE } from "../../constants";
 import { LinesNumber } from "..";
 
-import clsx from "clsx";
 import styles from "./Editor.module.scss";
 
-export interface EditorProps {
+interface EditorProps {
   mode?: "edit" | "read";
   code: string;
   setCode?: Dispatch<SetStateAction<string>>;
-  className?: string;
+  className: string;
   placeholder?: string;
 }
 
@@ -16,8 +18,8 @@ function Editor({
   mode,
   code,
   setCode,
-  className = "",
-  placeholder = "Placeholder...",
+  className,
+  placeholder = "Type here...",
 }: EditorProps): ReactElement {
   const linesNumberRef = useRef<HTMLUListElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -50,9 +52,9 @@ function Editor({
         <textarea
           ref={textAreaRef}
           value={code}
-          className={styles.editor__textArea}
+          className={clsx(styles.editor__textArea, styles[`${className}__textArea`])}
           placeholder={placeholder}
-          disabled={mode === "read"}
+          disabled={mode === READ_MODE}
           onChange={handleInput}
           onScroll={handleScroll}
         />

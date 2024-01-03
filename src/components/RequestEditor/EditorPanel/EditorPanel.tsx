@@ -1,10 +1,10 @@
 import { Dispatch, MouseEvent, ReactElement, SetStateAction, useState } from "react";
+import clsx from "clsx";
 import { Button, Editor } from "../..";
 
-import clsx from "clsx";
 import styles from "./EditorPanel.module.scss";
 
-export interface EditorPanelProps {
+interface EditorPanelProps {
   variablesCode: string;
   headersCode: string;
   setVariablesCode: Dispatch<SetStateAction<string>>;
@@ -84,6 +84,7 @@ function EditorPanel(props: EditorPanelProps): ReactElement {
             code={variablesCode}
             setCode={setVariablesCode}
             placeholder="Request variables..."
+            className="editor__variables"
           />
         )}
         {headersActive && (
@@ -92,6 +93,7 @@ function EditorPanel(props: EditorPanelProps): ReactElement {
             code={headersCode}
             setCode={setHeadersCode}
             placeholder="Request headers..."
+            className="editor__headers"
           />
         )}
       </div>

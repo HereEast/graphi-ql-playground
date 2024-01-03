@@ -1,12 +1,12 @@
 import { ReactElement, useState, forwardRef } from "react";
 import { FieldErrors } from "react-hook-form";
+import clsx from "clsx";
 import { useLocale } from "../../hooks";
 import { Button, ErrorMessage } from "../";
 
-import clsx from "clsx";
 import styles from "./Input.module.scss";
 
-export interface InputProps {
+interface InputProps {
   inputName: string;
   type?: "text" | "email" | "password";
   placeholder?: string;

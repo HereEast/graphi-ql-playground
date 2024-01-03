@@ -1,6 +1,7 @@
 import { ReactElement, useEffect, useState, ChangeEvent } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import clsx from "clsx";
 
 import { useAppContext, useAuthContext, useLocale } from "../../hooks";
 import { logoutUser } from "../../services";
@@ -8,7 +9,6 @@ import { LANGS } from "../../constants/constants";
 import { Page } from "../../types";
 import { Button } from "../";
 
-import clsx from "clsx";
 import styles from "./Header.module.scss";
 
 function Header(): ReactElement {

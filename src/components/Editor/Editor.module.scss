@@ -31,14 +31,14 @@
 }
 
 .editor__request {
-  .editor__textArea {
+  &__textArea {
     white-space: pre;
     overflow-x: auto;
   }
 }
 
 .editor__response {
-  .editor__textArea {
+  &__textArea {
     color: $white;
     background-color: $blue;
 

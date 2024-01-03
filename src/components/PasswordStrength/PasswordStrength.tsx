@@ -1,7 +1,7 @@
 import { ReactElement, useState, useEffect } from "react";
 import { passwordStrength } from "check-password-strength";
-
 import clsx from "clsx";
+
 import styles from "./PasswordStrength.module.scss";
 
 interface PasswordStrengthProps {

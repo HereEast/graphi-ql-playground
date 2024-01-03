@@ -4,7 +4,7 @@ import { ITeamMember } from "../../types";
 
 import styles from "./FooterCard.module.scss";
 
-export interface FooterCardProps {
+interface FooterCardProps {
   teamMember: ITeamMember;
   key: string;
 }

@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { DICTIONARY } from "../constants";
 import { IDictionary } from "../types";
 
-export interface Props {
+interface Props {
   lang: string;
   error: unknown;
   setAuthError: Dispatch<SetStateAction<string>>;

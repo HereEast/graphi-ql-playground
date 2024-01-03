@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
-
 import clsx from "clsx";
+
 import styles from "./ErrorMessage.module.scss";
 
 interface MessageProps {

@@ -1,11 +1,11 @@
 import { ReactElement, ReactNode } from "react";
+import clsx from "clsx";
 import { useAuthContext } from "../../hooks";
 import { Header, Footer } from "../";
 
-import clsx from "clsx";
 import styles from "./Layout.module.scss";
 
-export interface LayoutProps {
+interface LayoutProps {
   children: ReactNode;
 }
 

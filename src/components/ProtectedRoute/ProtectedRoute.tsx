@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useAuthContext } from "../../hooks";
 import { Page } from "../../types";
 
-export interface ProtectedRouteProps {
+interface ProtectedRouteProps {
   children: ReactNode;
 }
 

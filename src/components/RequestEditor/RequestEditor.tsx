@@ -44,7 +44,13 @@ function RequestEditor(): ReactElement {
 
   return (
     <div className={styles.requestView}>
-      <Editor mode="edit" code={code} setCode={setCode} placeholder="GraphQL request..." />
+      <Editor
+        mode="edit"
+        code={code}
+        setCode={setCode}
+        placeholder="GraphQL request..."
+        className="editor__request"
+      />
 
       <div className={styles.requestView__buttons}>
         <Button className={styles.requestView__buttons_request} onClick={handleRequest}>
