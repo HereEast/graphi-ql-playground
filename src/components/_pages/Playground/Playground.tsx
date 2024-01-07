@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 
-import { useAppContext } from "../../../hooks";
+import { useAppContext, useLocale } from "../../../hooks";
 import { Button, RequestEditor, ResponseEditor } from "../..";
 
 import styles from "./Playground.module.scss";
@@ -9,6 +9,7 @@ function Playground(): ReactElement {
   const docsDisabled = true;
 
   const { apiEndpoint, setApiEndpoint } = useAppContext();
+  const { tooltips, playground } = useLocale();
 
   const [value, setValue] = useState(apiEndpoint);
 
@@ -41,10 +42,10 @@ function Playground(): ReactElement {
         </form>
 
         <Button
-          name="Doc"
+          name={playground.docButton}
           className={styles.playground__header_button}
           disabled={docsDisabled}
-          onClick={() => {}}
+          tooltip={tooltips.docs}
         />
       </header>
 

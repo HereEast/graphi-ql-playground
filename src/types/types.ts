@@ -96,6 +96,10 @@ export interface ITooltips {
   docs: string;
 }
 
+export interface IPlayground {
+  docButton: string;
+}
+
 export interface ICollection {
   header: IHeader;
   notFound: INotFound;
@@ -108,6 +112,7 @@ export interface ICollection {
   course: string[];
   footer: IFooter;
   tooltips: ITooltips;
+  playground: IPlayground;
 }
 
 export interface IDictionary {

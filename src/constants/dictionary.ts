@@ -112,6 +112,9 @@ export const DICTIONARY: IDictionary = {
       prettify: "Prettify query",
       docs: "Documentation",
     },
+    playground: {
+      docButton: "Doc",
+    },
   },
   // RU
   ru: {
@@ -223,6 +226,9 @@ export const DICTIONARY: IDictionary = {
       request: "Отправить запрос",
       prettify: "Форматировать запрос",
       docs: "Документация",
+    },
+    playground: {
+      docButton: "Док",
     },
   },
 };
