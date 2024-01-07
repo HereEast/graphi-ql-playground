@@ -10,6 +10,7 @@ interface ButtonProps {
   id?: string;
   disabled?: boolean;
   children?: ReactNode;
+  tooltip?: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -20,6 +21,7 @@ function Button({
   id,
   disabled,
   children,
+  tooltip = "",
   onClick = (): void => {},
 }: ButtonProps): ReactElement {
   return (
@@ -29,6 +31,7 @@ function Button({
       onClick={(event): void => onClick(event)}
       disabled={disabled}
       id={id}
+      title={tooltip && tooltip}
       data-testid={id}
     >
       {name && name}
