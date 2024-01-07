@@ -1,13 +1,16 @@
 import { ReactElement, useState } from "react";
+import clsx from "clsx";
 
-import { useAppContext } from "../../hooks";
+import { useAppContext, useLocale } from "../../hooks";
 import { prettifyCode, makeRequest } from "../../utils";
+import { PLACEHOLDER_REQ } from "../../constants";
 import { Button, Editor, EditorPanel } from "..";
 
 import styles from "./RequestEditor.module.scss";
 
 function RequestEditor(): ReactElement {
   const { setApiResponse, apiEndpoint } = useAppContext();
+  const { tooltips } = useLocale();
 
   const [code, setCode] = useState("");
   const [variablesCode, setVariablesCode] = useState("");
@@ -20,6 +23,7 @@ function RequestEditor(): ReactElement {
   }
 
   async function handleRequest(): Promise<void> {
+    // try catch
     const res = await makeRequest(apiEndpoint, code);
     const data = await res.json();
 
@@ -37,16 +41,24 @@ function RequestEditor(): ReactElement {
         mode="edit"
         code={code}
         setCode={setCode}
-        placeholder="GraphQL request..."
+        placeholder={PLACEHOLDER_REQ}
         className="editor__request"
       />
 
       <div className={styles.requestView__buttons}>
-        <Button className={styles.requestView__buttons_request} onClick={handleRequest}>
-          <span>R</span>
+        <Button
+          className={styles.requestView__buttons_request}
+          tooltip={tooltips.request}
+          onClick={handleRequest}
+        >
+          <span className={clsx(styles.button__icon, styles.button__icon_request)} />
         </Button>
-        <Button className={styles.requestView__buttons_prettify} onClick={handlePrettify}>
-          <span>P</span>
+        <Button
+          className={styles.requestView__buttons_prettify}
+          tooltip={tooltips.prettify}
+          onClick={handlePrettify}
+        >
+          <span className={clsx(styles.button__icon, styles.button__icon_prettify)} />
         </Button>
       </div>
 

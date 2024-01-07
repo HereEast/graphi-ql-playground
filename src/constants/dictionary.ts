@@ -107,6 +107,11 @@ export const DICTIONARY: IDictionary = {
       linkSchool: "RS SCHOOL",
       linkCourse: "React Course",
     },
+    tooltips: {
+      request: "Execute request",
+      prettify: "Prettify query",
+      docs: "Documentation",
+    },
   },
   // RU
   ru: {
@@ -213,6 +218,11 @@ export const DICTIONARY: IDictionary = {
       copy: "(с) Все права очень сильно защищены.",
       linkSchool: "Школа",
       linkCourse: "Курс по React",
+    },
+    tooltips: {
+      request: "Отправить запрос",
+      prettify: "Форматировать запрос",
+      docs: "Документация",
     },
   },
 };

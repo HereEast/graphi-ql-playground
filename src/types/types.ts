@@ -90,6 +90,12 @@ export interface IFooter {
   linkCourse: string;
 }
 
+export interface ITooltips {
+  request: string;
+  prettify: string;
+  docs: string;
+}
+
 export interface ICollection {
   header: IHeader;
   notFound: INotFound;
@@ -101,6 +107,7 @@ export interface ICollection {
   home: IHome;
   course: string[];
   footer: IFooter;
+  tooltips: ITooltips;
 }
 
 export interface IDictionary {
