@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 
 import { useAppContext } from "../../hooks";
+import { PLACEHOLDER_RES } from "../../constants";
 import { Editor } from "..";
 
 import styles from "./ResponseEditor.module.scss";
@@ -13,7 +14,7 @@ function ResponseEditor(): ReactElement {
       <Editor
         mode="read"
         code={apiResponse}
-        placeholder="JSON response..."
+        placeholder={PLACEHOLDER_RES}
         className="editor__response"
       />
     </div>
