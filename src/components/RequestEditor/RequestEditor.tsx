@@ -49,13 +49,16 @@ function RequestEditor(): ReactElement {
         <Button
           className={styles.requestView__buttons_request}
           tooltip={tooltips.request}
+          id="button__request"
           onClick={handleRequest}
         >
           <span className={clsx(styles.button__icon, styles.button__icon_request)} />
         </Button>
+
         <Button
           className={styles.requestView__buttons_prettify}
           tooltip={tooltips.prettify}
+          id="button__prettify"
           onClick={handlePrettify}
         >
           <span className={clsx(styles.button__icon, styles.button__icon_prettify)} />

@@ -5,7 +5,7 @@ import { Button, Editor } from "../..";
 
 import styles from "./EditorPanel.module.scss";
 
-interface EditorPanelProps {
+export interface EditorPanelProps {
   variablesCode: string;
   headersCode: string;
   setVariablesCode: Dispatch<SetStateAction<string>>;

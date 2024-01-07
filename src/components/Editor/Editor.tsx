@@ -6,7 +6,7 @@ import { LinesNumber } from "..";
 
 import styles from "./Editor.module.scss";
 
-interface EditorProps {
+export interface EditorProps {
   mode?: "edit" | "read";
   code: string;
   setCode?: Dispatch<SetStateAction<string>>;
