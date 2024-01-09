@@ -46,9 +46,19 @@ export function formatCode(string: string): string {
       prevChar &&
       prevChar.match(/[a-z]/i) &&
       nextChar &&
-      nextChar.match(/[a-z]/i)
+      nextChar.match(/[a-z]/)
     ) {
       result += "\n";
+      continue;
+    }
+
+    if ((currentChar === ":" || currentChar === ",") && nextChar !== space) {
+      result += currentChar + space;
+      continue;
+    }
+
+    if (currentChar === space && nextChar && nextChar === "(") {
+      result += "";
       continue;
     }
 
