@@ -113,6 +113,7 @@ export interface ICollection {
   footer: IFooter;
   tooltips: ITooltips;
   playground: IPlayground;
+  loader: string;
 }
 
 export interface IDictionary {

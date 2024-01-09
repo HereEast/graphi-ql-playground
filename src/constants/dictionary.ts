@@ -115,6 +115,7 @@ export const DICTIONARY: IDictionary = {
     playground: {
       docButton: "Doc",
     },
+    loader: "Loading...",
   },
   // RU
   ru: {
@@ -230,5 +231,6 @@ export const DICTIONARY: IDictionary = {
     playground: {
       docButton: "Док",
     },
+    loader: "Загрузка...",
   },
 };
