@@ -114,6 +114,7 @@ export const DICTIONARY: IDictionary = {
     },
     playground: {
       docButton: "Doc",
+      saveButton: "Save",
     },
     loader: "Loading...",
   },
@@ -230,6 +231,7 @@ export const DICTIONARY: IDictionary = {
     },
     playground: {
       docButton: "Док",
+      saveButton: "Сохранить",
     },
     loader: "Загрузка...",
   },

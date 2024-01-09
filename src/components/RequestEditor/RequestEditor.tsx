@@ -2,8 +2,8 @@ import { ReactElement, useState } from "react";
 import clsx from "clsx";
 
 import { useAppContext, useLocale } from "../../hooks";
-import { prettifyCode, makeRequest } from "../../utils";
-import { PLACEHOLDER_REQ } from "../../constants";
+import { prettifyCode, makeRequest, isValidJson } from "../../utils";
+import { PLACEHOLDER_REQ, QUERY_ERRORS } from "../../constants";
 import { Button, Editor, EditorPanel } from "..";
 
 import styles from "./RequestEditor.module.scss";
@@ -16,23 +16,49 @@ function RequestEditor(): ReactElement {
   const [variablesCode, setVariablesCode] = useState("");
   const [headersCode, setHeadersCode] = useState("");
 
+  // Prettify
   function handlePrettify(): void {
-    console.log(prettifyCode(code));
-
     setCode(prettifyCode(code));
+
+    if (isValidJson(variablesCode)) {
+      setVariablesCode(JSON.stringify(JSON.parse(variablesCode), null, "  "));
+    }
+
+    if (isValidJson(headersCode)) {
+      setHeadersCode(JSON.stringify(JSON.parse(headersCode), null, "  "));
+    }
   }
 
+  // Request
   async function handleRequest(): Promise<void> {
-    // try catch
-    const res = await makeRequest(apiEndpoint, code);
-    const data = await res.json();
+    if (!code.trim()) return;
 
-    const apiResponse = JSON.stringify(data, null, "  ");
-    setApiResponse(apiResponse);
+    if (variablesCode && !isValidJson(variablesCode)) {
+      setApiResponse(QUERY_ERRORS.variables);
+      return;
+    }
 
-    // console.log("Code:", code);
-    // console.log("Variables:", codeVariables);
-    // console.log("Headers:", codeHeaders);
+    if (headersCode && !isValidJson(headersCode)) {
+      setApiResponse(QUERY_ERRORS.headers);
+      return;
+    }
+
+    try {
+      const res = await makeRequest(apiEndpoint, code, variablesCode, headersCode);
+      const data = await res.json();
+
+      if (!res.ok) {
+        setApiResponse(QUERY_ERRORS.request + data.errors[0].message);
+        return;
+      }
+
+      const apiResponse = JSON.stringify(data, null, "  ");
+      setApiResponse(apiResponse);
+    } catch (error) {
+      if (error instanceof Error) {
+        setApiResponse(QUERY_ERRORS.api);
+      }
+    }
   }
 
   return (
@@ -47,7 +73,7 @@ function RequestEditor(): ReactElement {
 
       <div className={styles.requestView__buttons}>
         <Button
-          className={styles.requestView__buttons_request}
+          className={styles.requestView__buttons_button}
           tooltip={tooltips.request}
           id="button__request"
           onClick={handleRequest}
@@ -56,7 +82,7 @@ function RequestEditor(): ReactElement {
         </Button>
 
         <Button
-          className={styles.requestView__buttons_prettify}
+          className={styles.requestView__buttons_button}
           tooltip={tooltips.prettify}
           id="button__prettify"
           onClick={handlePrettify}

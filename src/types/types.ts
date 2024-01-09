@@ -98,6 +98,7 @@ export interface ITooltips {
 
 export interface IPlayground {
   docButton: string;
+  saveButton: string;
 }
 
 export interface ICollection {
