@@ -1,0 +1,22 @@
+@import "../../styles/variables.scss";
+
+.doc {
+  position: absolute;
+  top: 7rem;
+  right: 0;
+  z-index: 10;
+  width: 40rem;
+  height: calc(100% - 9rem);
+  padding: 2rem;
+  background-color: $white;
+  border: 1px solid $blue;
+  border-right: none;
+  overflow: scroll;
+
+  transform: translateX(100%);
+  transition: all 0.5s ease-in;
+
+  &__opened {
+    transform: translateX(0);
+  }
+}
