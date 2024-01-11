@@ -1,6 +1,7 @@
 @import "../../../styles/variables.scss";
 
 .playground {
+  position: relative;
   padding: $padding-body;
 
   @media (max-width: 768px) {

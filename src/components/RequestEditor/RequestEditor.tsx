@@ -48,12 +48,14 @@ function RequestEditor(): ReactElement {
       const data = await res.json();
 
       if (!res.ok) {
+        // throw error
         setApiResponse(QUERY_ERRORS.request + data.errors[0].message);
         return;
       }
 
       const apiResponse = JSON.stringify(data, null, "  ");
       setApiResponse(apiResponse);
+      // catch error
     } catch (error) {
       if (error instanceof Error) {
         setApiResponse(QUERY_ERRORS.api);

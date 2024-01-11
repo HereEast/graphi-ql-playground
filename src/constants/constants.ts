@@ -15,6 +15,7 @@ export const LINK_COURSE = "https://rs.school/react/";
 
 export const PLACEHOLDER_REQ = "GraphQL request...";
 export const PLACEHOLDER_RES = "JSON response...";
+export const PLACEHOLDER_API = "https://rickandmortyapi.com/graphql";
 
 export const QUERY_ERRORS = {
   request: "Ooops!..Error happened 🙁🙁🙁\n\nTry to fix it: \n",
