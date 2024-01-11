@@ -2,7 +2,8 @@ import { ReactElement, useState } from "react";
 import { IntrospectionObjectType, IntrospectionSchema } from "graphql";
 import clsx from "clsx";
 
-import { Arguments, Button, Type } from "../..";
+import { getTypeName } from "../../../utils";
+import { Arguments, Button } from "../..";
 
 import styles from "./QueryDoc.module.scss";
 
@@ -40,7 +41,7 @@ function QueryDoc({ schema }: IQueryDoc): ReactElement {
                 <span className={styles.field__name}>{field.name}</span>
                 <Arguments field={field} />
                 {": "}
-                <Type field={field} />
+                <span className={styles.field__type}>{getTypeName(field.type)}</span>
               </span>
             </div>
           ))}
