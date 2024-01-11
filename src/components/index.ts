@@ -17,6 +17,11 @@ export { default as LinesNumber } from "./Editor/LinesNumber/LinesNumber";
 export { default as RequestEditor } from "./RequestEditor/RequestEditor";
 export { default as ResponseEditor } from "./ResponseEditor/ResponseEditor";
 export { default as EditorPanel } from "./RequestEditor/EditorPanel/EditorPanel";
+export { default as Doc } from "./Doc/Doc";
+export { default as QueryDoc } from "./Doc/QueryDoc/QueryDoc";
+export { default as TypesDoc } from "./Doc/TypesDoc/TypesDoc";
+export { default as Arguments } from "./Doc/Arguments/Arguments";
+export { default as Type } from "./Doc/Type/Type";
 
 export { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 export { default as Home } from "./_pages/Home/Home";
