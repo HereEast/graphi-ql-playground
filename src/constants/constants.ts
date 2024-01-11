@@ -24,4 +24,6 @@ export const QUERY_ERRORS = {
   headers:
     "Ooops!..Error happened 🙁🙁🙁\n\nCheck that your headers\nis a valid JSON and try again.",
   api: "Ooops!..Error happened 🙁🙁🙁 \n\nCheck if the entered API endpoint is valid\nand supports GraphQL requests.",
+  schema:
+    "Ooops!..Error happened 🙁🙁🙁 \n\nCheck if the entered API endpoint is valid\nand supports GraphQL requests.",
 };
