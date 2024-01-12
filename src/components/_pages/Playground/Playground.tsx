@@ -2,7 +2,7 @@ import { ChangeEvent, ReactElement, useState } from "react";
 
 import { useAppContext, useLocale } from "../../../hooks";
 import { PLACEHOLDER_API } from "../../../constants";
-import { Button, RequestEditor, ResponseEditor, Doc } from "../..";
+import { Button, RequestEditor, ResponseEditor, Documentation } from "../..";
 
 import styles from "./Playground.module.scss";
 
@@ -51,7 +51,7 @@ function Playground(): ReactElement {
         />
       </header>
 
-      <Doc docOpened={docOpened} />
+      <Documentation docOpened={docOpened} />
 
       <div className={styles.playground__views}>
         <RequestEditor />

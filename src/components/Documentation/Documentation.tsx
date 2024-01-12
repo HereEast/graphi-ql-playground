@@ -7,13 +7,13 @@ import { fetchSchema } from "../../utils";
 import { QUERY_ERRORS } from "../../constants";
 import { ErrorMessage, QueryDoc, TypesDoc } from "..";
 
-import styles from "./Doc.module.scss";
+import styles from "./Documentation.module.scss";
 
 interface IDoc {
   docOpened: boolean;
 }
 
-function Doc({ docOpened }: IDoc): ReactElement {
+function Documentation({ docOpened }: IDoc): ReactElement {
   const { apiEndpoint } = useAppContext();
 
   const [schema, setSchema] = useState<IntrospectionSchema | null>(null);
@@ -56,4 +56,4 @@ function Doc({ docOpened }: IDoc): ReactElement {
   );
 }
 
-export default Doc;
+export default Documentation;
