@@ -9,15 +9,15 @@ import clsx from "clsx";
 
 import { Button, FieldList } from "../..";
 
-import styles from "./TypesDoc.module.scss";
+import styles from "./TypeList.module.scss";
 
-interface IQueryDoc {
+interface TypeListProps {
   schema: IntrospectionSchema | null;
 }
 
 type SchemaObject = IntrospectionObjectType | IntrospectionInputObjectType;
 
-function TypesDoc({ schema }: IQueryDoc): ReactElement {
+function TypeList({ schema }: TypeListProps): ReactElement {
   const schemaTypes = schema?.types.filter(
     (item) => item.name !== "Query" && !item.name.startsWith("__"),
   ) as SchemaObject[];
@@ -80,4 +80,4 @@ function TypesDoc({ schema }: IQueryDoc): ReactElement {
   );
 }
 
-export default TypesDoc;
+export default TypeList;

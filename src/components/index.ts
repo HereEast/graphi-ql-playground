@@ -18,8 +18,8 @@ export { default as RequestEditor } from "./RequestEditor/RequestEditor";
 export { default as ResponseEditor } from "./ResponseEditor/ResponseEditor";
 export { default as EditorPanel } from "./RequestEditor/EditorPanel/EditorPanel";
 export { default as Documentation } from "./Documentation/Documentation";
-export { default as QueryDoc } from "./Documentation/QueryDoc/QueryDoc";
-export { default as TypesDoc } from "./Documentation/TypesDoc/TypesDoc";
+export { default as QueryList } from "./Documentation/QueryList/QueryList";
+export { default as TypeList } from "./Documentation/TypeList/TypeList";
 export { default as Arguments } from "./Documentation/Arguments/Arguments";
 export { default as FieldList } from "./Documentation/FieldList/FieldList";
 

@@ -4,11 +4,11 @@ import { getTypeName } from "../../../utils";
 
 import styles from "./Arguments.module.scss";
 
-interface IArguments {
+interface ArgumentsProps {
   field: IntrospectionField;
 }
 
-function Arguments({ field }: IArguments): ReactElement | null {
+function Arguments({ field }: ArgumentsProps): ReactElement | null {
   const args = field.args;
 
   return args.length > 0 ? (

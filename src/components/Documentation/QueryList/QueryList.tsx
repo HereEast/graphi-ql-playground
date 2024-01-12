@@ -5,13 +5,13 @@ import clsx from "clsx";
 import { getTypeName } from "../../../utils";
 import { Arguments, Button } from "../..";
 
-import styles from "./QueryDoc.module.scss";
+import styles from "./QueryList.module.scss";
 
-interface IQueryDoc {
+interface QueryListProps {
   schema: IntrospectionSchema | null;
 }
 
-function QueryDoc({ schema }: IQueryDoc): ReactElement {
+function QueryList({ schema }: QueryListProps): ReactElement {
   const [queryOpened, setQueryOpened] = useState(false);
 
   const querySchema = schema?.types.filter(
@@ -50,4 +50,4 @@ function QueryDoc({ schema }: IQueryDoc): ReactElement {
   );
 }
 
-export default QueryDoc;
+export default QueryList;

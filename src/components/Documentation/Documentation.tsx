@@ -5,15 +5,15 @@ import clsx from "clsx";
 import { useAppContext } from "../../hooks";
 import { fetchSchema } from "../../utils";
 import { QUERY_ERRORS } from "../../constants";
-import { ErrorMessage, QueryDoc, TypesDoc } from "..";
+import { ErrorMessage, QueryList, TypeList } from "..";
 
 import styles from "./Documentation.module.scss";
 
-interface IDoc {
+interface DocumentationProps {
   docOpened: boolean;
 }
 
-function Documentation({ docOpened }: IDoc): ReactElement {
+function Documentation({ docOpened }: DocumentationProps): ReactElement {
   const { apiEndpoint } = useAppContext();
 
   const [schema, setSchema] = useState<IntrospectionSchema | null>(null);
@@ -48,8 +48,8 @@ function Documentation({ docOpened }: IDoc): ReactElement {
       {schemaError && <ErrorMessage message={schemaError} className={styles.doc__error} />}
       {!schemaLoading && !schemaError && (
         <>
-          <QueryDoc schema={schema} />
-          <TypesDoc schema={schema} />
+          <QueryList schema={schema} />
+          <TypeList schema={schema} />
         </>
       )}
     </div>

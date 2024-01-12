@@ -5,7 +5,7 @@ import { getTypeName } from "../../../utils";
 
 import styles from "./FieldList.module.scss";
 
-interface IFieldList {
+interface FieldListProps {
   field: IntrospectionObjectType | IntrospectionInputObjectType;
 }
 
@@ -21,7 +21,7 @@ function isObjectInputType(
   return (field as IntrospectionInputObjectType).inputFields !== undefined;
 }
 
-function FieldList({ field }: IFieldList): ReactElement {
+function FieldList({ field }: FieldListProps): ReactElement {
   return (
     <>
       {isObjectType(field) && field.fields && (
