@@ -11,7 +11,7 @@ interface MessageProps {
 function ErrorMessage({ message, className }: MessageProps): ReactElement {
   return (
     <div className={clsx(styles.message__error, className)}>
-      <span>{message}</span>
+      <span className={styles.message__error_text}>{message}</span>
     </div>
   );
 }
