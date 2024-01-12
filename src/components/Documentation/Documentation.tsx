@@ -43,7 +43,7 @@ function Documentation({ docOpened }: DocumentationProps): ReactElement {
   }, [docOpened, apiEndpoint]);
 
   return (
-    <div className={clsx(styles.doc, { [styles.doc__opened]: docOpened })}>
+    <div className={clsx(styles.doc, { [styles.doc__open]: docOpened })}>
       {schemaLoading && <span className={styles.doc__loading}>Loading...</span>}
       {schemaError && <ErrorMessage message={schemaError} className={styles.doc__error} />}
       {!schemaLoading && !schemaError && (

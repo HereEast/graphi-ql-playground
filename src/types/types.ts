@@ -1,3 +1,7 @@
+import { IntrospectionObjectType, IntrospectionInputObjectType } from "graphql";
+
+export type SchemaObjectType = IntrospectionObjectType | IntrospectionInputObjectType;
+
 export interface ILoginFormData {
   email: string;
   password: string;

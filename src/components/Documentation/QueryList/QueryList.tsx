@@ -12,37 +12,38 @@ interface QueryListProps {
 }
 
 function QueryList({ schema }: QueryListProps): ReactElement {
-  const [queryOpened, setQueryOpened] = useState(false);
+  const [queryListOpened, setQueryListOpened] = useState(false);
 
   const querySchema = schema?.types.filter(
     (item) => item.name === "Query",
   )[0] as IntrospectionObjectType;
 
-  function handleOpenQueryDoc(): void {
-    setQueryOpened(!queryOpened);
+  function toggleQueryList(): void {
+    setQueryListOpened(!queryListOpened);
   }
 
   return (
-    <div className={styles.queryDoc}>
+    <div className={styles.queryList}>
       <Button
         name="Query"
-        className={styles.queryDoc__button}
+        className={styles.queryList__button}
         id="button-toggleQuery"
-        onClick={handleOpenQueryDoc}
+        tooltip={queryListOpened ? "Hide" : "Show"}
+        onClick={toggleQueryList}
       />
 
       <div
-        className={clsx(styles.queryDoc__fields, { [styles.queryDoc__fields_open]: queryOpened })}
+        className={clsx(styles.queryList__fields, {
+          [styles.queryList__fields_open]: queryListOpened,
+        })}
       >
         {querySchema &&
           querySchema.fields.map((field) => (
-            <div key={field.name} className={styles.field}>
-              <span className={styles.field__box}>
-                <span className={styles.field__name}>{field.name}</span>
-                <Arguments field={field} />
-                {": "}
-                <span className={styles.field__type}>{getTypeName(field.type)}</span>
-              </span>
+            <div key={field.name} className={styles.queryList__field}>
+              <span className={styles.name}>{field.name}</span>
+              <Arguments field={field} />
+              {": "}
+              <span className={styles.type}>{getTypeName(field.type)}</span>
             </div>
           ))}
       </div>

@@ -13,10 +13,10 @@ function Arguments({ field }: ArgumentsProps): ReactElement | null {
 
   return args.length > 0 ? (
     <span className={styles.args}>
-      <span>(</span>
+      <span> (</span>
 
       {args.map((arg, index) => (
-        <span key={index}>
+        <span key={index} className={styles.args__container}>
           <span className={styles.args__name}>{arg.name}</span>:{" "}
           <span className={styles.args__type}>{getTypeName(arg.type)}</span>
           {index < args.length - 1 && <span>, </span>}

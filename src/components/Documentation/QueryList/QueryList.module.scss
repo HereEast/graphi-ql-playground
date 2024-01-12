@@ -1,6 +1,6 @@
 @import "../../../styles/variables.scss";
 
-.queryDoc {
+.queryList {
   &__title {
     display: block;
     margin-bottom: 1rem;
@@ -15,28 +15,20 @@
 
     &_open {
       height: auto;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       padding-bottom: 6rem;
     }
   }
 
-  .field {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-
-    &__box {
-      color: $blue;
-      margin-bottom: 0.2rem;
-    }
-
-    &__name {
+  &__field {
+    .name {
       font-weight: 500;
+      color: $blue;
     }
 
-    &__description {
-      font-size: 1.4rem;
-      color: $grey-text-color;
+    .type {
+      color: $blue;
+      opacity: 0.35;
     }
   }
 
