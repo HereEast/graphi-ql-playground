@@ -4,7 +4,6 @@ import {
   IntrospectionObjectType,
   IntrospectionSchema,
 } from "graphql";
-
 import clsx from "clsx";
 
 import { SchemaObjectType } from "../../../types";

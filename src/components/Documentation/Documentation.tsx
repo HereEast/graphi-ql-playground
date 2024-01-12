@@ -30,6 +30,7 @@ function Documentation({ docOpened }: DocumentationProps): ReactElement {
 
       try {
         const fetchedSchema = await fetchSchema(apiEndpoint);
+
         setSchema(fetchedSchema);
       } catch (err) {
         if (err instanceof Error) {
@@ -47,7 +48,7 @@ function Documentation({ docOpened }: DocumentationProps): ReactElement {
     <div className={clsx(styles.doc, { [styles.doc__open]: docOpened })}>
       {schemaLoading && <span className={styles.doc__loading}>{loader}</span>}
       {schemaError && <ErrorMessage message={schemaError} className={styles.doc__error} />}
-      {!schemaLoading && !schemaError && (
+      {!schemaLoading && !schemaError && schema && (
         <>
           <QueryList schema={schema} />
           <TypeList schema={schema} />
