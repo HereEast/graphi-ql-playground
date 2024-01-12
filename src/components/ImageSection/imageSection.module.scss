@@ -1,21 +1,47 @@
 @import "../../styles/variables.scss";
 
 .image {
+  padding: $padding-body;
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+  }
+
   &__container {
-    padding: $padding-body;
     display: flex;
+    width: 100%;
+    background-color: $blue;
 
     @media (max-width: 768px) {
-      padding: 2rem 1rem;
       flex-direction: column;
-      gap: 2rem;
     }
   }
 
+  // &__img {
+  //   width: 100%;
+  //   height: auto;
+  //   // aspect-ratio: 3/4;
+  //   object-fit: contain;
+  // }
+
   &__img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3/4;
-    object-fit: cover;
+    width: 50%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 4.25/5;
+
+    &:first-child {
+      background-image: url("/images/playground-01.svg");
+    }
+
+    &:last-child {
+      background-image: url("/images/playground-02.svg");
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 }

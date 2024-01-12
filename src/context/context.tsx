@@ -25,12 +25,14 @@ interface AppContextProviderProps {
 export function AppContextProvider({ children }: AppContextProviderProps): ReactElement {
   const [lang, setLang] = useState(DEFAULT_LANG);
   const [apiResponse, setApiResponse] = useState("");
-  const [apiEndpoint, setApiEndpoint] = useState(localStorage.getItem("endpoint") || DEFAULT_API);
+  const [apiEndpoint, setApiEndpoint] = useState(DEFAULT_API);
 
   useEffect(() => {
     const savedLang = localStorage.getItem("lang") || DEFAULT_LANG;
+    const savedApiEndpoint = localStorage.getItem("endpoint") || DEFAULT_API;
 
     setLang(savedLang);
+    setApiEndpoint(savedApiEndpoint);
   }, []);
 
   return (

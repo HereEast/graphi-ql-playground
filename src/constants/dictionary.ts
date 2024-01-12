@@ -54,7 +54,7 @@ export const DICTIONARY: IDictionary = {
         image: "/images/Andrei.jpg",
         github: "https://github.com/Andrew-Nes",
         description:
-          "Spell checking isn’t a bad thing; it’s just unhelpful in this situation. Is something marked incorrect because it is incorrectly spelled or because the code is invalid? It’s tough to tell.",
+          "Hi, my name is Andrew, I’m 33 years old and I line in Minsk. For the past years I’ve been working as a political analyst but one day I’ve decided to change my job and lifestyle so now I’m on my way to becoming a frontend developer.",
         position: "Frontend Developer",
       },
       {
@@ -62,7 +62,7 @@ export const DICTIONARY: IDictionary = {
         image: "/images/Nikita.jpg",
         github: "https://github.com/razumaumikita",
         description:
-          "Here’s another thing: the highlighted code cannot scroll while the editing is taking place. And when the textarea is scrolled, the highlighted code does not scroll with it.",
+          "My name is Mikita. I'm 30 years old. I'm have finished Vitebsk State Technological University as light industry engineer also as engineer - programmer by attending at additional course from my university. At very start of 2023 I have joined and successfully finished the Front-End/JS course. And now I'm finishing React course.",
         position: "Frontend Developer",
       },
       {
@@ -70,7 +70,7 @@ export const DICTIONARY: IDictionary = {
         image: "/images/Nastia.jpg",
         github: "https://github.com/HereEast",
         description:
-          "One of the trickier things to adjust is how to handle line indentations in the result. The way the editor is currently set up, indenting lines with spaces works fine.",
+          "For many years I have been a designer in tech, until recently I decided that the logical development of my career would be to become a FE developer with massive experience in UI/UX. The journey haven't been easy for me, but I enjoy this daily course of pain it very much.",
         position: "Frontend Developer",
       },
     ],
@@ -78,7 +78,7 @@ export const DICTIONARY: IDictionary = {
       heroTitle:
         "Hey there, welcome to the GraphiQL Playground! This is the go-to IDE for making GraphQL requests to various APIs.",
       heroPar:
-        "Check out an extensive collection of characters, images, locations, and episodes - you'll have access to all the good stuff from The Rick and Morty TV show!",
+        "You can try our default The Rick and Morty API where you'll find extensive collection of characters, images, locations, and episodes. Or just type in any other API endpoint that supports GraphQL requests.",
       heroButtonLogin: "Log in to play",
       heroButtonPlay: "Try Playground",
       courseTag: "RS School",
@@ -173,7 +173,7 @@ export const DICTIONARY: IDictionary = {
         image: "/images/Andrei.jpg",
         github: "https://github.com/Andrew-Nes",
         description:
-          "Pantone объявил главный цвет 2024 года — персиковый Peach Fuzz. Как говорят в институте, это «теплый и уютный оттенок, подчеркивающий наше стремление к единению с окружающим миром». Вспоминаем, как цвет года влияет на нашу жизнь.",
+          "Привет, меня зовут Андрей, мне 33 года, живу в Минске. В последние годы я работал политическим аналитиком, но однажды решил изменить свою жизнь и сейчас я близок к тому, чтобы стать фронтенд разработчиком.",
         position: "Фронтенд Девелопер",
       },
       {
@@ -181,7 +181,7 @@ export const DICTIONARY: IDictionary = {
         image: "/images/Nikita.jpg",
         github: "https://github.com/razumaumikita",
         description:
-          "Pantone объявил главный цвет 2024 года — персиковый Peach Fuzz. Как говорят в институте, это «теплый и уютный оттенок, подчеркивающий наше стремление к единению с окружающим миром». Вспоминаем, как цвет года влияет на нашу жизнь.",
+          "Меня зовут Никита. Мне 30 лет. Я закончил Витебский государственный технологический университет по специальности инженер легкой промышленности, а также курс инженера-программиста по дополнительной программе в университете. В начале 2023 года я приступил и успешно закончил курс Front-End/JavaScript. И в настоящее время я завершаю курс по React.",
         position: "Фронтенд Девелопер",
       },
       {
@@ -189,7 +189,7 @@ export const DICTIONARY: IDictionary = {
         image: "/images/Nastia.jpg",
         github: "https://github.com/HereEast",
         description:
-          "Pantone объявил главный цвет 2024 года — персиковый Peach Fuzz. Как говорят в институте, это «теплый и уютный оттенок, подчеркивающий наше стремление к единению с окружающим миром». Вспоминаем, как цвет года влияет на нашу жизнь.",
+          "Много лет я была дизайнером в IT, пока недавно не решила, что логическим продолжением моей карьеры будет стать фронт-енд разработчиком с огромным опытом в UI/UX дизайне. Для меня это было нелегко и больно, но мне очень нравится эта боль.",
         position: "Фронтенд Девелопер",
       },
     ],
@@ -197,7 +197,7 @@ export const DICTIONARY: IDictionary = {
       heroTitle:
         "Привет! Добро пожаловать в песочницу GraphiQL! Это идеальное место для отправки GraphQL запросов к разным API.",
       heroPar:
-        "Здесь вы найдете обширную коллекцию персонажей, изображений, локаций и эпизодов — у вас будет доступ ко всему самому интересному из телешоу «Рик и Морти»!",
+        "Вы можете попробовать наше стандартное, где вы найдете обширную коллекцию персонажей, изображений, локаций и эпизодов. Или просто введите адрес другой конечной точки API, поддерживающей GraphQL запросы.",
       heroButtonLogin: "Войти в аккаунт",
       heroButtonPlay: "Песочнница",
       courseTag: "Школа",
