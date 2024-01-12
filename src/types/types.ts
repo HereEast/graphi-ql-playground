@@ -98,6 +98,8 @@ export interface ITooltips {
   request: string;
   prettify: string;
   docs: string;
+  hide: string;
+  show: string;
 }
 
 export interface IPlayground {

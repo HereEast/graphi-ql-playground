@@ -111,6 +111,8 @@ export const DICTIONARY: IDictionary = {
       request: "Execute request",
       prettify: "Prettify query",
       docs: "Documentation",
+      hide: "Hide",
+      show: "Show",
     },
     playground: {
       docButton: "Doc",
@@ -228,6 +230,8 @@ export const DICTIONARY: IDictionary = {
       request: "Отправить запрос",
       prettify: "Форматировать запрос",
       docs: "Документация",
+      hide: "Скрыть",
+      show: "Показать",
     },
     playground: {
       docButton: "Док",

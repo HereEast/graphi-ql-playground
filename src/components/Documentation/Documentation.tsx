@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useState } from "react";
 import { IntrospectionSchema } from "graphql";
 import clsx from "clsx";
 
-import { useAppContext } from "../../hooks";
+import { useAppContext, useLocale } from "../../hooks";
 import { fetchSchema } from "../../utils";
 import { QUERY_ERRORS } from "../../constants";
 import { ErrorMessage, QueryList, TypeList } from "..";
@@ -15,6 +15,7 @@ interface DocumentationProps {
 
 function Documentation({ docOpened }: DocumentationProps): ReactElement {
   const { apiEndpoint } = useAppContext();
+  const { loader } = useLocale();
 
   const [schema, setSchema] = useState<IntrospectionSchema | null>(null);
   const [schemaLoading, setSchemaLoading] = useState(false);
@@ -44,7 +45,7 @@ function Documentation({ docOpened }: DocumentationProps): ReactElement {
 
   return (
     <div className={clsx(styles.doc, { [styles.doc__open]: docOpened })}>
-      {schemaLoading && <span className={styles.doc__loading}>Loading...</span>}
+      {schemaLoading && <span className={styles.doc__loading}>{loader}</span>}
       {schemaError && <ErrorMessage message={schemaError} className={styles.doc__error} />}
       {!schemaLoading && !schemaError && (
         <>

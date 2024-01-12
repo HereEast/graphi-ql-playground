@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import { IntrospectionObjectType, IntrospectionSchema } from "graphql";
 import clsx from "clsx";
 
+import { useLocale } from "../../../hooks";
 import { getTypeName } from "../../../utils";
 import { Arguments, Button } from "../..";
 
@@ -12,6 +13,8 @@ interface QueryListProps {
 }
 
 function QueryList({ schema }: QueryListProps): ReactElement {
+  const { tooltips } = useLocale();
+
   const [queryListOpened, setQueryListOpened] = useState(false);
 
   const querySchema = schema?.types.filter(
@@ -28,7 +31,7 @@ function QueryList({ schema }: QueryListProps): ReactElement {
         name="Query"
         className={styles.queryList__button}
         id="button-toggleQuery"
-        tooltip={queryListOpened ? "Hide" : "Show"}
+        tooltip={queryListOpened ? tooltips.hide : tooltips.show}
         onClick={toggleQueryList}
       />
 

@@ -16,7 +16,6 @@ function RequestEditor(): ReactElement {
   const [variablesCode, setVariablesCode] = useState("");
   const [headersCode, setHeadersCode] = useState("");
 
-  // Prettify
   function handlePrettify(): void {
     setCode(prettifyCode(code));
 
@@ -29,7 +28,6 @@ function RequestEditor(): ReactElement {
     }
   }
 
-  // Request
   async function handleRequest(): Promise<void> {
     if (!code.trim()) return;
 
@@ -48,17 +46,18 @@ function RequestEditor(): ReactElement {
       const data = await res.json();
 
       if (!res.ok) {
-        // throw error
-        setApiResponse(QUERY_ERRORS.request + data.errors[0].message);
-        return;
+        throw new Error(QUERY_ERRORS.request + data.errors[0].message);
       }
 
       const apiResponse = JSON.stringify(data, null, "  ");
       setApiResponse(apiResponse);
-      // catch error
     } catch (error) {
       if (error instanceof Error) {
-        setApiResponse(QUERY_ERRORS.api);
+        if (error.message.includes("Failed to fetch")) {
+          setApiResponse(QUERY_ERRORS.api);
+        } else {
+          setApiResponse(error.message);
+        }
       }
     }
   }

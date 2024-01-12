@@ -1,4 +1,5 @@
 import { ChangeEvent, ReactElement, useState } from "react";
+import clsx from "clsx";
 
 import { useAppContext, useLocale } from "../../../hooks";
 import { PLACEHOLDER_API } from "../../../constants";
@@ -38,14 +39,18 @@ function Playground(): ReactElement {
           />
           <Button
             name={playground.saveButton}
-            className={(styles.playground__form_button, styles.playground__header_button)}
+            className={clsx(styles.saveButton, styles.playground__button)}
             type="button"
           />
         </form>
 
         <Button
           name={playground.docButton}
-          className={styles.playground__header_button}
+          className={clsx(
+            styles.docButton,
+            styles.playground__button,
+            docOpened && styles.docButton_open,
+          )}
           tooltip={tooltips.docs}
           onClick={() => setDocOpened(!docOpened)}
         />
