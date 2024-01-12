@@ -4,3 +4,4 @@ export * from "./makeRequest";
 export * from "./isValidJson";
 export * from "./fetchSchema";
 export * from "./getTypeName";
+export * from "./isObjectType";
