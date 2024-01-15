@@ -23,19 +23,15 @@ function Documentation({ docOpened }: DocumentationProps): ReactElement {
 
   useEffect(() => {
     async function getSchema(): Promise<void> {
-      if (!docOpened) return;
-
       setSchemaLoading(true);
       setSchemaError("");
 
       try {
         const fetchedSchema = await fetchSchema(apiEndpoint);
 
-        setSchema(fetchedSchema);
+        fetchedSchema ? setSchema(fetchedSchema) : setSchemaError(QUERY_ERRORS.schema);
       } catch (err) {
-        if (err instanceof Error) {
-          setSchemaError(QUERY_ERRORS.schema);
-        }
+        setSchemaError(QUERY_ERRORS.schema);
       } finally {
         setSchemaLoading(false);
       }
@@ -45,10 +41,10 @@ function Documentation({ docOpened }: DocumentationProps): ReactElement {
   }, [docOpened, apiEndpoint]);
 
   return (
-    <div className={clsx(styles.doc, { [styles.doc__open]: docOpened })}>
+    <div className={clsx(styles.doc, { [styles.doc__open]: docOpened })} data-testid="doc">
       {schemaLoading && <span className={styles.doc__loading}>{loader}</span>}
       {schemaError && <ErrorMessage message={schemaError} className={styles.doc__error} />}
-      {!schemaLoading && !schemaError && schema && (
+      {!schemaLoading && !schemaError && (
         <>
           <QueryList schema={schema} />
           <TypeList schema={schema} />

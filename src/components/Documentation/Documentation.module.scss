@@ -29,6 +29,8 @@
   }
 
   &__error {
-    color: $black;
+    padding: 2rem;
+    color: $white;
+    background-color: $error-color;
   }
 }
