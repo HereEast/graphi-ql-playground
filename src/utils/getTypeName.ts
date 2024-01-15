@@ -4,7 +4,10 @@ import {
   IntrospectionNonNullTypeRef,
 } from "graphql";
 
-type Type = IntrospectionNamedTypeRef | IntrospectionNonNullTypeRef | IntrospectionListTypeRef;
+export type Type =
+  | IntrospectionNamedTypeRef
+  | IntrospectionNonNullTypeRef
+  | IntrospectionListTypeRef;
 
 export function getTypeName(type: Type): string | null {
   if ("name" in type && type.name) {

@@ -21,7 +21,7 @@ function ImageSection(): ReactElement {
             src="/images/playground-02.png"
             width={1000}
             height={2000}
-            alt="Image of the Playground's Request Editor"
+            alt="Image of the Playground's Response Editor"
             layout="responsive"
           />
         </div>
