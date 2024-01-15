@@ -22,6 +22,7 @@ export { default as QueryList } from "./Documentation/QueryList/QueryList";
 export { default as TypeList } from "./Documentation/TypeList/TypeList";
 export { default as Arguments } from "./Documentation/Arguments/Arguments";
 export { default as FieldList } from "./Documentation/FieldList/FieldList";
+export { default as EndpointForm } from "./EndpointForm/EndpointForm";
 
 export { default as ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 export { default as Home } from "./_pages/Home/Home";
