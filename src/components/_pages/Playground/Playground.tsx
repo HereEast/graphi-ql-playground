@@ -1,48 +1,24 @@
-import { ChangeEvent, ReactElement, useState } from "react";
+import { ReactElement, useState } from "react";
 import clsx from "clsx";
 
-import { useAppContext, useLocale } from "../../../hooks";
-import { PLACEHOLDER_API } from "../../../constants";
-import { Button, RequestEditor, ResponseEditor, Documentation } from "../..";
+import { useLocale } from "../../../hooks";
+import { Button, RequestEditor, ResponseEditor, Documentation, EndpointForm } from "../..";
 
 import styles from "./Playground.module.scss";
 
 function Playground(): ReactElement {
-  const { apiEndpoint, setApiEndpoint } = useAppContext();
   const { tooltips, playground } = useLocale();
 
-  const [value, setValue] = useState(apiEndpoint);
   const [docOpened, setDocOpened] = useState(false);
 
-  function handleInputChange(e: ChangeEvent<HTMLInputElement>): void {
-    setValue(e.target.value);
-  }
-
-  function saveEndpoint(): void {
-    if (apiEndpoint !== value) {
-      setApiEndpoint(value);
-      localStorage.setItem("endpoint", value);
-    }
+  function toggleDocOpened(value: boolean): void {
+    setDocOpened(value);
   }
 
   return (
     <section className={styles.playground}>
-      <header className={styles.playground__header}>
-        <form className={styles.playground__form}>
-          <input
-            value={value}
-            onChange={handleInputChange}
-            onClick={() => setDocOpened(false)}
-            onBlur={saveEndpoint}
-            className={styles.playground__form_input}
-            placeholder={PLACEHOLDER_API}
-          />
-          <Button
-            name={playground.saveButton}
-            className={clsx(styles.saveButton, styles.playground__button)}
-            type="button"
-          />
-        </form>
+      <div className={styles.playground__header}>
+        <EndpointForm toggleDocOpened={toggleDocOpened} />
 
         <Button
           name={playground.docButton}
@@ -52,9 +28,9 @@ function Playground(): ReactElement {
             docOpened && styles.docButton_open,
           )}
           tooltip={tooltips.docs}
-          onClick={() => setDocOpened(!docOpened)}
+          onClick={() => toggleDocOpened(!docOpened)}
         />
-      </header>
+      </div>
 
       <Documentation docOpened={docOpened} />
 

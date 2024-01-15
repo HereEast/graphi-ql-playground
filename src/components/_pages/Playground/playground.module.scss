@@ -22,17 +22,6 @@
     font-size: $text-size;
   }
 
-  &__form {
-    display: flex;
-    gap: 0.5rem;
-    width: 100%;
-
-    &_input {
-      height: 3rem;
-      padding-left: 1rem;
-    }
-  }
-
   &__views {
     display: flex;
     width: 100%;
