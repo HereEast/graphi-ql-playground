@@ -1,16 +1,14 @@
 import { ReactElement } from "react";
-import { IntrospectionField } from "graphql";
+import { IntrospectionInputValue } from "graphql";
 import { getTypeName } from "../../../utils";
 
 import styles from "./Arguments.module.scss";
 
 interface ArgumentsProps {
-  field: IntrospectionField;
+  args: readonly IntrospectionInputValue[];
 }
 
-function Arguments({ field }: ArgumentsProps): ReactElement | null {
-  const args = field.args;
-
+function Arguments({ args }: ArgumentsProps): ReactElement | null {
   return args.length > 0 ? (
     <span className={styles.args}>
       <span> (</span>
