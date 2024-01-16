@@ -1,10 +1,4 @@
-import {
-  prettifyCode,
-  formatCode,
-  removeExtraSpaces,
-  removeNewLines,
-  addIndents,
-} from "../../utils";
+import { prettifyCode, formatCode, removeExtraSpaces, removeNewLines, addIndents } from "../utils";
 
 describe("prettifyCode function", () => {
   test("should correctly apply all formatting rules", () => {

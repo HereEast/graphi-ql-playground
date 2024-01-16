@@ -1,7 +1,7 @@
 import "@testing-library/react";
 
 import { IntrospectionObjectType, IntrospectionInputObjectType } from "graphql";
-import { isObjectType, isObjectInputType } from "../../utils";
+import { isObjectType, isObjectInputType } from "../utils";
 
 describe("isObjectType function", () => {
   test("should return true for IntrospectionObjectType", () => {

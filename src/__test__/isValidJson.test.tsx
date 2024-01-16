@@ -1,6 +1,6 @@
 import "@testing-library/react";
 
-import { isValidJson } from "../../utils";
+import { isValidJson } from "../utils";
 
 describe("isValidJson function", () => {
   test("should return true for a valid JSON string", () => {

@@ -1,7 +1,7 @@
 import "@testing-library/react";
 
-import { DICTIONARY } from "../../constants";
-import { handleAuthError } from "../../utils";
+import { DICTIONARY } from "../constants";
+import { handleAuthError } from "../utils";
 
 const mockSetAuthError = jest.fn();
 

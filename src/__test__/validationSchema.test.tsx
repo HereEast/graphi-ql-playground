@@ -1,9 +1,9 @@
 import "@testing-library/jest-dom";
 
-import { LANGS } from "../../constants";
-import { generateLoginSchema, generateRegisterSchema } from "../../services";
+import { LANGS } from "../constants";
+import { generateLoginSchema, generateRegisterSchema } from "../services";
 
-jest.mock("../../services/firebase", () => ({
+jest.mock("../services/firebase", () => ({
   auth: {
     getAuth: jest.fn(),
   },

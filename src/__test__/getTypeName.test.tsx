@@ -1,6 +1,6 @@
 import "@testing-library/react";
 
-import { getTypeName, Type } from "../../utils";
+import { getTypeName, Type } from "../utils";
 
 describe("getTypeName function", () => {
   test("should return type name if 'name' in type and type.name is not null.", () => {
