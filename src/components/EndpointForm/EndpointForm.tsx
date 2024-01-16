@@ -38,6 +38,7 @@ function EndpointForm({ toggleDocOpened }: EndpointFormProps): ReactElement {
         className={styles.form__input}
         placeholder={PLACEHOLDER_API}
       />
+
       <Button
         name={playground.saveButton}
         className={clsx(styles.saveButton, styles.form__button)}

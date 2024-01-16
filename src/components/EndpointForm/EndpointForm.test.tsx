@@ -3,10 +3,28 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 import { AppContextProvider } from "../../context";
+import { IContextMock, ILocaleMock } from "../../__mocks__/types";
 import { EndpointForm } from "..";
 
 const APIEndpoint = "https://rickandmortyapi.com/graphql";
+
 const mockToggleDocOpened = jest.fn();
+const mockSetApiEndpoint = jest.fn();
+
+jest.mock("../../hooks/useAppContext", () => ({
+  useAppContext: (): IContextMock => ({
+    apiEndpoint: APIEndpoint,
+    setApiEndpoint: mockSetApiEndpoint,
+  }),
+}));
+
+jest.mock("../../hooks/useLocale", () => ({
+  useLocale: (): ILocaleMock => ({
+    playground: {
+      saveButton: "Save",
+    },
+  }),
+}));
 
 jest.mock("../../services/firebase", () => ({
   auth: {
@@ -14,30 +32,41 @@ jest.mock("../../services/firebase", () => ({
   },
 }));
 
-describe("EndpointForm component", () => {
-  test("should render an input and a button.", () => {
-    render(
-      <AppContextProvider>
-        <EndpointForm toggleDocOpened={mockToggleDocOpened} />
-      </AppContextProvider>,
-    );
+function renderComponent(): void {
+  render(
+    <AppContextProvider>
+      <EndpointForm toggleDocOpened={mockToggleDocOpened} />
+    </AppContextProvider>,
+  );
+}
+
+describe("should save new API endpoint on blur.", () => {
+  test("should save new API endpoint if current value and new value are different.", () => {
+    renderComponent();
 
     const input = screen.getByPlaceholderText(APIEndpoint);
-    const formButton = screen.getByRole("button", { name: /save/i });
+    expect(input).toBeInTheDocument();
+
+    fireEvent.change(input, { target: { value: "https://new-api.example.com" } });
+    fireEvent.blur(input);
+
+    expect(mockSetApiEndpoint).toHaveBeenCalled();
+  });
+
+  test("should render an input and a button.", () => {
+    renderComponent();
+
+    const input = screen.getByPlaceholderText(APIEndpoint);
+    const saveButton = screen.getByRole("button", { name: /save/i });
 
     expect(input).toBeInTheDocument();
-    expect(formButton).toBeInTheDocument();
+    expect(saveButton).toBeInTheDocument();
   });
 
   test("should close Doc panel on click on input.", () => {
-    render(
-      <AppContextProvider>
-        <EndpointForm toggleDocOpened={mockToggleDocOpened} />
-      </AppContextProvider>,
-    );
+    renderComponent();
 
     const input = screen.getByPlaceholderText(APIEndpoint);
-
     expect(input).toBeInTheDocument();
 
     fireEvent.click(input);
@@ -45,21 +74,14 @@ describe("EndpointForm component", () => {
     expect(mockToggleDocOpened).toHaveBeenCalledWith(false);
   });
 
-  test("", () => {
-    const newInputValue = "https://new-api.example.com";
-
-    render(
-      <AppContextProvider>
-        <EndpointForm toggleDocOpened={mockToggleDocOpened} />
-      </AppContextProvider>,
-    );
+  test("should input other input value.", () => {
+    renderComponent();
 
     const input = screen.getByPlaceholderText(APIEndpoint);
-
     expect(input).toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: newInputValue } });
+    fireEvent.change(input, { target: { value: "https://new-api.example.com" } });
 
-    expect(screen.getByDisplayValue(newInputValue)).toBeInTheDocument();
+    expect(screen.getByDisplayValue("https://new-api.example.com")).toBeInTheDocument();
   });
 });
