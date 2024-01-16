@@ -11,7 +11,7 @@ interface ProtectedRouteProps {
 function ProtectedRoute({ children }: ProtectedRouteProps): ReactElement | null {
   const router = useRouter();
 
-  const { user } = useAuthContext();
+  const { user, loading } = useAuthContext();
 
   useEffect(() => {
     if (!user) {
@@ -19,7 +19,7 @@ function ProtectedRoute({ children }: ProtectedRouteProps): ReactElement | null 
     }
   }, [router, user]);
 
-  return user ? <>{children}</> : null;
+  return user && !loading ? <>{children}</> : null;
 }
 
 export default ProtectedRoute;
