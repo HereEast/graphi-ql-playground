@@ -1,10 +1,15 @@
 export interface IContextMock {
-  apiEndpoint: string;
-  setApiEndpoint: jest.Mock;
+  apiEndpoint?: string;
+  setApiEndpoint?: jest.Mock;
+  setApiResponse?: jest.Mock;
 }
 
 export interface ILocaleMock {
-  playground: {
+  playground?: {
     saveButton: string;
+  };
+  tooltips?: {
+    prettify: string;
+    request: string;
   };
 }

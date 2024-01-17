@@ -17,8 +17,8 @@ const mockCode = "const greet = () => { console.log('Hello!'); }";
 const setCode = jest.fn();
 
 const props: EditorProps = {
-  mode: "edit",
   code: mockCode,
+  className: "",
 };
 
 describe("Editor component", () => {
@@ -39,6 +39,7 @@ describe("Editor component", () => {
     const props: EditorProps = {
       mode: "read",
       code: mockCode,
+      className: "",
     };
 
     render(
@@ -56,6 +57,7 @@ describe("Editor component", () => {
       mode: "edit",
       code: "",
       setCode: setCode,
+      className: "",
     };
 
     render(
@@ -64,7 +66,7 @@ describe("Editor component", () => {
       </AppContextProvider>,
     );
 
-    const textArea = screen.getByRole("textbox");
+    const textArea = screen.getByRole("textbox") as HTMLTextAreaElement;
 
     await userEvent.clear(textArea);
     await userEvent.type(textArea, "Hello");
