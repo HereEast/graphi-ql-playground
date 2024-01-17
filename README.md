@@ -1,42 +1,51 @@
-Test
+#### GraphiQL is a playground/IDE for graphQL requests.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<img width="1239" alt="image" src="https://github.com/HereEast/graphi-ql-playground/assets/73107927/24af4bc2-2c44-4055-b227-3f50ea735fed">
 
-## Getting Started
+## Home page
+- [x] Home page should contain general information about the developers, project, and course.
+- [x] In the upper right corner there are 2 buttons: Sign In and Sign Up.
+- [x] If the login token is valid and unexpired, the Sign In and Sign Up buttons are replaced with the Playground button.
+- [x] When the token expires, the user should be redirected to the Home automatically.
+- [x] Pressing the Sign In / Sign up button redirects a user to the route with the Sign In / Sign up form.
 
-First, run the development server:
+## Sign In / Sign Up
+- [x] Buttons for Sign In / Sign Up / Sign Out are everywhere where they should be.
+- [x] Client-side validation is implemented.
+- [x] Upon successful login, the user is redirected to the Playground.
+- [x] If the user is already logged in and tries to reach these routes, they should be redirected to the Playground.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Playground
+- [x] Functional editor enabling query editing and prettifying.
+- [x] Operational documentation explorer, visible only upon successful SDL request.
+- [x] Variables section that can be shown or hidden, specified variables are sent to the server.
+- [x] Header section that can be shown or hidden, user-added headers are sent to the server.
+- [x] Response section with an editor in read-only as a JSON viewer.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## General requirements
+- [x] Localization.
+- [x] Use TypeScript.
+- [x] Use Firebase for authentication. 
+- [x] Test coverage 80%.
+- [x] Use ESLing, Prettier, Husky git hooks.
+- [x] Responsive design. 
+ 
+## Test Coverage
+<img width="705" alt="image" src="https://github.com/HereEast/graphi-ql-playground/assets/73107927/21267a3f-48f5-4661-b08d-04be35e6004d">
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Tech Stack
+React  
+Next.js  
+JavaScript  
+TypeScript  
+SASS  
+Firebase  
+GraphQL  
+Jest  
+React Testing Library  
+React Hook Form  
+Yup  
+ESLint  
+Prettier  
+Husky  
+Git  
