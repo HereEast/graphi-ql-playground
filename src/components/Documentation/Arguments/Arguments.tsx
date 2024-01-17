@@ -9,7 +9,7 @@ interface ArgumentsProps {
 }
 
 function Arguments({ args }: ArgumentsProps): ReactElement | null {
-  return args.length > 0 ? (
+  return args?.length > 0 ? (
     <span className={styles.args}>
       <span> (</span>
 

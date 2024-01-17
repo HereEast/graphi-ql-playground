@@ -44,7 +44,7 @@ function QueryList({ schema }: QueryListProps): ReactElement {
           querySchema.fields.map((field) => (
             <div key={field.name} className={styles.queryList__field}>
               <span className={styles.name}>{field.name}</span>
-              <Arguments field={field} />
+              <Arguments args={field.args} />
               {": "}
               <span className={styles.type}>{getTypeName(field.type)}</span>
             </div>
