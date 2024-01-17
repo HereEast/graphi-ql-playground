@@ -6,11 +6,7 @@ This robust IDE is your go-to platform for crafting GraphQL requests across dive
 <img width="1239" alt="image" src="https://github.com/HereEast/graphi-ql-playground/assets/73107927/24af4bc2-2c44-4055-b227-3f50ea735fed">
 
 ## Pages
-- Home
-- Login
-- Register
-- Playground
-- 404 Page
+`Home` `Login` `Register` `Playground` `404 Page`
 
 ## Scripts
 ```jsx
