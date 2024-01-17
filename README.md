@@ -1,37 +1,33 @@
-#### GraphiQL is a playground/IDE for graphQL requests.
+# GraphiQL ►
+
+Welcome to the GraphiQL Playground!
+This robust IDE is your go-to platform for crafting GraphQL requests across diverse APIs. Whether you're exploring our default The Rick and Morty API, offering an extensive collection of characters, images, locations, and episodes, or experimenting with any other API endpoint supporting GraphQL requests, this playground empowers you to interact seamlessly with GraphQL.
 
 <img width="1239" alt="image" src="https://github.com/HereEast/graphi-ql-playground/assets/73107927/24af4bc2-2c44-4055-b227-3f50ea735fed">
 
-## Home page
-- [x] Home page should contain general information about the developers, project, and course.
-- [x] In the upper right corner there are 2 buttons: Sign In and Sign Up.
-- [x] If the login token is valid and unexpired, the Sign In and Sign Up buttons are replaced with the Playground button.
-- [x] When the token expires, the user should be redirected to the Home automatically.
-- [x] Pressing the Sign In / Sign up button redirects a user to the route with the Sign In / Sign up form.
+## Pages
+- Home
+- Login
+- Register
+- Playground
+- 404 Page
 
-## Sign In / Sign Up
-- [x] Buttons for Sign In / Sign Up / Sign Out are everywhere where they should be.
-- [x] Client-side validation is implemented.
-- [x] Upon successful login, the user is redirected to the Playground.
-- [x] If the user is already logged in and tries to reach these routes, they should be redirected to the Playground.
+## Scripts
+```jsx
+npm run build       // build the project,
+                    // compile the source code and generate production-ready output files
 
-## Playground
-- [x] Functional editor enabling query editing and prettifying.
-- [x] Operational documentation explorer, visible only upon successful SDL request.
-- [x] Variables section that can be shown or hidden, specified variables are sent to the server.
-- [x] Header section that can be shown or hidden, user-added headers are sent to the server.
-- [x] Response section with an editor in read-only as a JSON viewer.
+npm run dev         // starts a dev server for further development
 
-## General requirements
-- [x] Localization.
-- [x] Use TypeScript.
-- [x] Use Firebase for authentication. 
-- [x] Test coverage 80%.
-- [x] Use ESLing, Prettier, Husky git hooks.
-- [x] Responsive design. 
- 
-## Test Coverage
-<img width="705" alt="image" src="https://github.com/HereEast/graphi-ql-playground/assets/73107927/21267a3f-48f5-4661-b08d-04be35e6004d">
+npm run lint        // run a code linter, which checks the code for 
+                    // potential errors, coding style violations, and other issues
+
+npm format:fix      // automatically fix some of the issues 
+                    // reported by the linter (ex: formatting problems)
+
+npm run test        // run automated tests for the project 
+                    // to ensure its functionality and detect any issues
+```
 
 ## Tech Stack
 React  
