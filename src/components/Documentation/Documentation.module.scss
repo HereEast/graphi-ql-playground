@@ -1,0 +1,36 @@
+@import "../../styles/variables.scss";
+
+.doc {
+  position: absolute;
+  top: 7rem;
+  right: 0;
+  z-index: 10;
+  width: 36rem;
+  height: calc(100% - 9rem);
+  padding: 2rem;
+  background-color: $white;
+  border: 1px solid $blue;
+  border-right: none;
+  overflow: scroll;
+
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in;
+
+  @media (max-width: 768px) {
+    height: calc(100% - 13rem);
+  }
+
+  @media (max-width: 480px) {
+    width: 32rem;
+  }
+
+  &__open {
+    transform: translateX(0);
+  }
+
+  &__error {
+    padding: 2rem;
+    color: $white;
+    background-color: $error-color;
+  }
+}

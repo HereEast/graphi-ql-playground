@@ -1,0 +1,79 @@
+@import "../../styles/variables.scss";
+
+.team {
+  color: $white;
+  background-color: $black;
+
+  &__container {
+    padding: 6rem $padding-body 3rem;
+
+    @media (max-width: 768px) {
+      padding: 6rem 1rem 3rem;
+    }
+  }
+
+  &__title {
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  &__cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    @media (max-width: 700px) {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 0;
+    }
+  }
+}
+
+.card {
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6rem;
+  border: 1px solid $white;
+
+  @media (max-width: 700px) {
+    gap: 4rem;
+    margin-top: -1px;
+
+    &:first-child::after,
+    &:nth-child(2)::after {
+      display: none;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 6px);
+    bottom: -29px;
+    width: 12px;
+    height: 30px;
+    background-image: url("/icons/ic_arrow.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__name {
+    color: $white;
+    margin-bottom: 0.2rem;
+
+    &::after {
+      background-color: $white;
+    }
+  }
+}

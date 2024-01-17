@@ -1,0 +1,26 @@
+@import "../../../styles/variables.scss";
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.field {
+  &__name {
+    display: inline-block;
+    margin-bottom: 0.2rem;
+  }
+
+  &__type {
+    color: $black;
+  }
+
+  &__description {
+    display: block;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    color: $black;
+    opacity: 0.35;
+  }
+}

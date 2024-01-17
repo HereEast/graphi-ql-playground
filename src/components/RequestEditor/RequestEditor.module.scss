@@ -1,0 +1,67 @@
+@import "../../styles/variables.scss";
+
+.requestView {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: $editor-height-mobile;
+  }
+
+  &__buttons {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @media (max-width: 768px) {
+      top: 1rem;
+      right: 1rem;
+    }
+
+    &_button {
+      width: 6rem;
+      height: 6rem;
+      background-color: $button-back-secondary;
+
+      &:first-child {
+        background-color: $blue;
+      }
+
+      &:hover {
+        background-color: $black;
+
+        .button__icon_prettify {
+          background-image: url("/icons/ic_prettify--white.svg");
+          transition: all 0.2s ease-in;
+        }
+      }
+    }
+  }
+}
+
+.button__icon {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &_request {
+    margin-left: 2px;
+    background-image: url("/icons/ic_arrow--right.svg");
+  }
+
+  &_prettify {
+    width: 3rem;
+    height: 3rem;
+    background-image: url("/icons/ic_prettify.svg");
+  }
+}

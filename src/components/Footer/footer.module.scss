@@ -1,0 +1,83 @@
+@import "../../styles/variables.scss";
+
+.footer {
+  padding: 6rem $padding-body $padding-body;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $black;
+
+  @media (max-width: 768px) {
+    padding: 6rem 1rem $padding-body;
+  }
+
+  @media (max-width: 570px) {
+    padding: 6rem 1rem 1rem;
+  }
+
+  &__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+.team {
+  width: 100%;
+  margin-bottom: 6rem;
+
+  &__title {
+    font-size: $text-size;
+    font-weight: 400;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    @media (max-width: 700px) {
+      grid-template-columns: repeat(1, 100%);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 1rem;
+    }
+  }
+}
+
+.course {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: $white;
+
+  @media (max-width: 570px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 3rem;
+  }
+
+  &__links_item {
+    .link {
+      color: $white;
+      text-transform: uppercase;
+
+      &::after {
+        background-color: $white;
+      }
+    }
+  }
+
+  &__copyright {
+    margin-left: 1rem;
+  }
+}

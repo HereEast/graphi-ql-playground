@@ -1,0 +1,14 @@
+@import "../../styles/variables.scss";
+
+.responseView {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: $editor-height-mobile;
+  }
+}

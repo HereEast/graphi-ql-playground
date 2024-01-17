@@ -1,0 +1,68 @@
+@import "./variables.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Mono", monospace;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: $text-size;
+  background-color: $page-back;
+}
+
+main {
+  margin-top: $header-height;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  position: relative;
+  width: fit-content;
+
+  transition: all 0.2s ease-in;
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: $black;
+    left: 0;
+    bottom: 1px;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 0;
+    }
+  }
+}
+
+input {
+  height: 6rem;
+  width: 100%;
+  outline: none;
+  border: 1px solid $input-border;
+  padding: 0 2rem;
+
+  font-size: $text-size;
+
+  &::placeholder {
+    color: $placeholder-color;
+    font-weight: 400;
+  }
+
+  &:focus {
+    border: 1px solid $blue;
+  }
+}

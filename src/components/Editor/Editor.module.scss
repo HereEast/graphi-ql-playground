@@ -1,0 +1,52 @@
+@import "../../styles/variables.scss";
+
+.editor {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+
+  &__container {
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+  }
+
+  &__textArea {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    padding-left: 1rem;
+    display: block;
+    font-size: $text-size;
+    line-height: 1.35;
+    border: none;
+    outline: none;
+    resize: none;
+
+    &::placeholder {
+      color: $placeholder-color;
+    }
+  }
+}
+
+.editor__request {
+  &__textArea {
+    white-space: pre;
+    overflow-x: auto;
+  }
+}
+
+.editor__response {
+  &__textArea {
+    color: $white;
+    background-color: $blue;
+
+    white-space: pre;
+    overflow-x: auto;
+
+    &::placeholder {
+      color: $editor-read-lines;
+    }
+  }
+}

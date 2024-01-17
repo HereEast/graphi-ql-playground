@@ -1,0 +1,12 @@
+@import "../../styles/variables.scss";
+
+.message__error {
+  display: block;
+  font-size: $text-size;
+  color: $error-color;
+  margin-top: 0.5rem;
+
+  &_text {
+    white-space: pre-wrap;
+  }
+}

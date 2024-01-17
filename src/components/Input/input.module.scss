@@ -1,0 +1,38 @@
+@import "../../styles/variables.scss";
+
+.field {
+  width: 100%;
+
+  &__label {
+    position: relative;
+    display: block;
+  }
+
+  &__input {
+    height: 6rem;
+  }
+}
+
+.field__password {
+  width: 100%;
+
+  &_input {
+    padding-right: 7.5rem;
+  }
+
+  &_button {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    height: calc(100% - 2px);
+    color: $blue;
+    font-size: $text-size;
+    background-color: $white;
+    padding: 0 2rem;
+
+    &:hover {
+      color: $black;
+      background-color: $white;
+    }
+  }
+}

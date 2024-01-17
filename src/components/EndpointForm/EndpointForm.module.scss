@@ -1,0 +1,18 @@
+@import "../../styles/variables.scss";
+
+.form {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+
+  &__input {
+    height: 3rem;
+    padding-left: 1rem;
+  }
+
+  &__button {
+    height: 3rem;
+    padding: 0 2rem 2px;
+    font-size: $text-size;
+  }
+}

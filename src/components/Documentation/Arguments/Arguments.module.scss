@@ -1,0 +1,16 @@
+@import "../../../styles/variables.scss";
+
+.args {
+  color: $black;
+
+  &__name {
+    color: $black;
+  }
+
+  &__type {
+    position: relative;
+    width: fit-content;
+    color: $blue;
+    opacity: 0.35;
+  }
+}

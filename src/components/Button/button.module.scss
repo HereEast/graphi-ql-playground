@@ -1,0 +1,32 @@
+@import "../../styles/variables.scss";
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 6rem;
+  padding: 0 1rem;
+  padding-bottom: 1px;
+  font-size: $text-size;
+  color: $white;
+  text-transform: uppercase;
+  background-color: $blue;
+  border: none;
+
+  transition: all 0.2s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $button-back-hover;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+      background-color: $blue;
+    }
+  }
+}

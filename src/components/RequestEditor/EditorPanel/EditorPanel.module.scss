@@ -1,0 +1,76 @@
+@import "../../../styles/variables.scss";
+
+.panel {
+  background-color: $panel-header-back;
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    padding: 1rem;
+    border-top: 1px solid $blue;
+  }
+
+  .button {
+    height: 3rem;
+    font-size: $text-size;
+    color: $blue;
+    background-color: $button-back-secondary;
+    transition: none;
+
+    &:hover {
+      color: $white;
+      background-color: $blue;
+    }
+
+    &:first-child {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .button__toggle {
+    position: relative;
+    width: 3rem;
+    font-size: $text-size-button;
+    line-height: 0.6;
+    margin-left: auto;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0.95rem;
+      right: 0.9rem;
+      width: 1.2rem;
+      height: 1rem;
+      background-color: $blue;
+      clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+
+      transform: rotateZ(0);
+      transition: all 0.1s ease-in;
+      pointer-events: none;
+    }
+
+    &:hover::after {
+      background-color: $white;
+    }
+
+    &_opened::after {
+      bottom: 1.1rem;
+      transform: rotateZ(180deg);
+    }
+  }
+
+  .button.active {
+    color: $white;
+    background-color: $blue;
+  }
+
+  &__editors {
+    height: 0;
+    overflow: hidden;
+  }
+
+  &__editors_open {
+    height: 16rem;
+  }
+}

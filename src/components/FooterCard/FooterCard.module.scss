@@ -1,0 +1,49 @@
+@import "../../styles/variables.scss";
+
+.footer__card {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  aspect-ratio: 6/7.5;
+
+  transition: all 0.3s ease-in;
+
+  &_image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &:hover {
+    .footer__card_image {
+      opacity: 0.8;
+    }
+  }
+
+  &_link {
+    padding: 1rem;
+    width: calc(100% - 4rem);
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $blue;
+    color: $white;
+
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+
+    &:hover {
+      background-color: $white;
+      color: $black;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+}
