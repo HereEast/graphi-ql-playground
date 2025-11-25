@@ -16,7 +16,7 @@
     "check-password-strength": "^2.0.7",
     "firebase": "^10.7.1",
     "graphql": "^16.8.1",
-    "next": "14.0.3",
+    "next": "^14.2.33",
     "react": "^18",
     "react-dom": "^18",
     "react-firebase-hooks": "^5.1.1",
